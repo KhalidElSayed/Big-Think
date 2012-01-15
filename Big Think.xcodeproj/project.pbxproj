@@ -1,0 +1,296 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		FAFBEB0414C37BD100235178 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAFBEB0314C37BD100235178 /* UIKit.framework */; };
+		FAFBEB0614C37BD100235178 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAFBEB0514C37BD100235178 /* Foundation.framework */; };
+		FAFBEB0814C37BD100235178 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAFBEB0714C37BD100235178 /* CoreGraphics.framework */; };
+		FAFBEB0E14C37BD100235178 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = FAFBEB0C14C37BD100235178 /* InfoPlist.strings */; };
+		FAFBEB1014C37BD100235178 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FAFBEB0F14C37BD100235178 /* main.m */; };
+		FAFBEB1414C37BD100235178 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FAFBEB1314C37BD100235178 /* AppDelegate.m */; };
+		FAFBEB1714C37BD100235178 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAFBEB1614C37BD100235178 /* ViewController.m */; };
+		FAFBEB1A14C37BD100235178 /* ViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAFBEB1814C37BD100235178 /* ViewController_iPhone.xib */; };
+		FAFBEB1D14C37BD100235178 /* ViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAFBEB1B14C37BD100235178 /* ViewController_iPad.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		FAFBEAFF14C37BD100235178 /* Big Think.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Big Think.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FAFBEB0314C37BD100235178 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		FAFBEB0514C37BD100235178 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		FAFBEB0714C37BD100235178 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		FAFBEB0B14C37BD100235178 /* Big Think-Info.plist */ = {isa = PBXFileReference; path = "Big Think-Info.plist"; sourceTree = "<group>"; };
+		FAFBEB0D14C37BD100235178 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		FAFBEB0F14C37BD100235178 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		FAFBEB1114C37BD100235178 /* Big Think-Prefix.pch */ = {isa = PBXFileReference; path = "Big Think-Prefix.pch"; sourceTree = "<group>"; };
+		FAFBEB1214C37BD100235178 /* AppDelegate.h */ = {isa = PBXFileReference; path = AppDelegate.h; sourceTree = "<group>"; };
+		FAFBEB1314C37BD100235178 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		FAFBEB1514C37BD100235178 /* ViewController.h */ = {isa = PBXFileReference; path = ViewController.h; sourceTree = "<group>"; };
+		FAFBEB1614C37BD100235178 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		FAFBEB1914C37BD100235178 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController_iPhone.xib; sourceTree = "<group>"; };
+		FAFBEB1C14C37BD100235178 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController_iPad.xib; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		FAFBEAFC14C37BD100235178 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FAFBEB0414C37BD100235178 /* UIKit.framework in Frameworks */,
+				FAFBEB0614C37BD100235178 /* Foundation.framework in Frameworks */,
+				FAFBEB0814C37BD100235178 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		FAFBEAF414C37BD100235178 = {
+			isa = PBXGroup;
+			children = (
+				FAFBEB0914C37BD100235178 /* Big Think */,
+				FAFBEB0214C37BD100235178 /* Frameworks */,
+				FAFBEB0014C37BD100235178 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		FAFBEB0014C37BD100235178 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				FAFBEAFF14C37BD100235178 /* Big Think.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		FAFBEB0214C37BD100235178 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				FAFBEB0314C37BD100235178 /* UIKit.framework */,
+				FAFBEB0514C37BD100235178 /* Foundation.framework */,
+				FAFBEB0714C37BD100235178 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		FAFBEB0914C37BD100235178 /* Big Think */ = {
+			isa = PBXGroup;
+			children = (
+				FAFBEB1214C37BD100235178 /* AppDelegate.h */,
+				FAFBEB1314C37BD100235178 /* AppDelegate.m */,
+				FAFBEB1514C37BD100235178 /* ViewController.h */,
+				FAFBEB1614C37BD100235178 /* ViewController.m */,
+				FAFBEB1814C37BD100235178 /* ViewController_iPhone.xib */,
+				FAFBEB1B14C37BD100235178 /* ViewController_iPad.xib */,
+				FAFBEB0A14C37BD100235178 /* Supporting Files */,
+			);
+			path = "Big Think";
+			sourceTree = "<group>";
+		};
+		FAFBEB0A14C37BD100235178 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				FAFBEB0B14C37BD100235178 /* Big Think-Info.plist */,
+				FAFBEB0C14C37BD100235178 /* InfoPlist.strings */,
+				FAFBEB0F14C37BD100235178 /* main.m */,
+				FAFBEB1114C37BD100235178 /* Big Think-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		FAFBEAFE14C37BD100235178 /* Big Think */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FAFBEB2014C37BD100235178 /* Build configuration list for PBXNativeTarget "Big Think" */;
+			buildPhases = (
+				FAFBEAFB14C37BD100235178 /* Sources */,
+				FAFBEAFC14C37BD100235178 /* Frameworks */,
+				FAFBEAFD14C37BD100235178 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Big Think";
+			productName = "Big Think";
+			productReference = FAFBEAFF14C37BD100235178 /* Big Think.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		FAFBEAF614C37BD100235178 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+				ORGANIZATIONNAME = Home;
+			};
+			buildConfigurationList = FAFBEAF914C37BD100235178 /* Build configuration list for PBXProject "Big Think" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = FAFBEAF414C37BD100235178;
+			productRefGroup = FAFBEB0014C37BD100235178 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				FAFBEAFE14C37BD100235178 /* Big Think */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		FAFBEAFD14C37BD100235178 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FAFBEB0E14C37BD100235178 /* InfoPlist.strings in Resources */,
+				FAFBEB1A14C37BD100235178 /* ViewController_iPhone.xib in Resources */,
+				FAFBEB1D14C37BD100235178 /* ViewController_iPad.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		FAFBEAFB14C37BD100235178 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FAFBEB1014C37BD100235178 /* main.m in Sources */,
+				FAFBEB1414C37BD100235178 /* AppDelegate.m in Sources */,
+				FAFBEB1714C37BD100235178 /* ViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		FAFBEB0C14C37BD100235178 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FAFBEB0D14C37BD100235178 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		FAFBEB1814C37BD100235178 /* ViewController_iPhone.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FAFBEB1914C37BD100235178 /* en */,
+			);
+			name = ViewController_iPhone.xib;
+			sourceTree = "<group>";
+		};
+		FAFBEB1B14C37BD100235178 /* ViewController_iPad.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FAFBEB1C14C37BD100235178 /* en */,
+			);
+			name = ViewController_iPad.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		FAFBEB1E14C37BD100235178 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		FAFBEB1F14C37BD100235178 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		FAFBEB2114C37BD100235178 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Big Think/Big Think-Prefix.pch";
+				INFOPLIST_FILE = "Big Think/Big Think-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		FAFBEB2214C37BD100235178 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Big Think/Big Think-Prefix.pch";
+				INFOPLIST_FILE = "Big Think/Big Think-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		FAFBEAF914C37BD100235178 /* Build configuration list for PBXProject "Big Think" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FAFBEB1E14C37BD100235178 /* Debug */,
+				FAFBEB1F14C37BD100235178 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FAFBEB2014C37BD100235178 /* Build configuration list for PBXNativeTarget "Big Think" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FAFBEB2114C37BD100235178 /* Debug */,
+				FAFBEB2214C37BD100235178 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = FAFBEAF614C37BD100235178 /* Project object */;
+}
