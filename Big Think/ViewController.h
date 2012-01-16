@@ -7,7 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "RKMatrixView.h"
 
-@interface ViewController : UIViewController
+@interface ViewController : UIViewController <RKMatrixViewDelegate, RKMatrixViewDatasource>
+{
+    RKMatrixView*   _matrixView;
+}
+
+@property (strong, nonatomic) IBOutlet RKMatrixView *matrixView;
+
 
 @end

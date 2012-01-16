@@ -16,6 +16,17 @@
 		FAFBEB1714C37BD100235178 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAFBEB1614C37BD100235178 /* ViewController.m */; };
 		FAFBEB1A14C37BD100235178 /* ViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAFBEB1814C37BD100235178 /* ViewController_iPhone.xib */; };
 		FAFBEB1D14C37BD100235178 /* ViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAFBEB1B14C37BD100235178 /* ViewController_iPad.xib */; };
+		FAFBEB2914C37C6B00235178 /* three.png in Resources */ = {isa = PBXBuildFile; fileRef = FAFBEB2314C37C6B00235178 /* three.png */; };
+		FAFBEB2A14C37C6B00235178 /* two.png in Resources */ = {isa = PBXBuildFile; fileRef = FAFBEB2414C37C6B00235178 /* two.png */; };
+		FAFBEB2B14C37C6B00235178 /* one.png in Resources */ = {isa = PBXBuildFile; fileRef = FAFBEB2514C37C6B00235178 /* one.png */; };
+		FAFBEB2C14C37C6B00235178 /* ChaparralPro-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = FAFBEB2614C37C6B00235178 /* ChaparralPro-Regular.otf */; };
+		FAFBEB2D14C37C6B00235178 /* bt.png in Resources */ = {isa = PBXBuildFile; fileRef = FAFBEB2714C37C6B00235178 /* bt.png */; };
+		FAFBEB2E14C37C6B00235178 /* shot.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FAFBEB2814C37C6B00235178 /* shot.jpg */; };
+		FAFBEB3414C37CA900235178 /* RKMatrixView.m in Sources */ = {isa = PBXBuildFile; fileRef = FAFBEB3114C37CA900235178 /* RKMatrixView.m */; };
+		FAFBEB3514C37CA900235178 /* RKMatrixViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FAFBEB3314C37CA900235178 /* RKMatrixViewCell.m */; };
+		FAFBEB3914C37CC600235178 /* UIColor+RKColor.m in Sources */ = {isa = PBXBuildFile; fileRef = FAFBEB3814C37CC600235178 /* UIColor+RKColor.m */; };
+		FAFBEB4114C3875C00235178 /* RKLargeCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = FAFBEB4014C3875C00235178 /* RKLargeCellView.m */; };
+		FAFBEB4D14C3B5A300235178 /* View.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAFBEB4C14C3B5A300235178 /* View.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,16 +34,31 @@
 		FAFBEB0314C37BD100235178 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		FAFBEB0514C37BD100235178 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		FAFBEB0714C37BD100235178 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		FAFBEB0B14C37BD100235178 /* Big Think-Info.plist */ = {isa = PBXFileReference; path = "Big Think-Info.plist"; sourceTree = "<group>"; };
+		FAFBEB0B14C37BD100235178 /* Big Think-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Big Think-Info.plist"; sourceTree = "<group>"; };
 		FAFBEB0D14C37BD100235178 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		FAFBEB0F14C37BD100235178 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		FAFBEB1114C37BD100235178 /* Big Think-Prefix.pch */ = {isa = PBXFileReference; path = "Big Think-Prefix.pch"; sourceTree = "<group>"; };
-		FAFBEB1214C37BD100235178 /* AppDelegate.h */ = {isa = PBXFileReference; path = AppDelegate.h; sourceTree = "<group>"; };
+		FAFBEB1114C37BD100235178 /* Big Think-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Big Think-Prefix.pch"; sourceTree = "<group>"; };
+		FAFBEB1214C37BD100235178 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		FAFBEB1314C37BD100235178 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		FAFBEB1514C37BD100235178 /* ViewController.h */ = {isa = PBXFileReference; path = ViewController.h; sourceTree = "<group>"; };
+		FAFBEB1514C37BD100235178 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		FAFBEB1614C37BD100235178 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		FAFBEB1914C37BD100235178 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController_iPhone.xib; sourceTree = "<group>"; };
 		FAFBEB1C14C37BD100235178 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController_iPad.xib; sourceTree = "<group>"; };
+		FAFBEB2314C37C6B00235178 /* three.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = three.png; sourceTree = "<group>"; };
+		FAFBEB2414C37C6B00235178 /* two.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = two.png; sourceTree = "<group>"; };
+		FAFBEB2514C37C6B00235178 /* one.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = one.png; sourceTree = "<group>"; };
+		FAFBEB2614C37C6B00235178 /* ChaparralPro-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ChaparralPro-Regular.otf"; sourceTree = "<group>"; };
+		FAFBEB2714C37C6B00235178 /* bt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bt.png; sourceTree = "<group>"; };
+		FAFBEB2814C37C6B00235178 /* shot.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = shot.jpg; sourceTree = "<group>"; };
+		FAFBEB3014C37CA900235178 /* RKMatrixView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RKMatrixView.h; sourceTree = "<group>"; };
+		FAFBEB3114C37CA900235178 /* RKMatrixView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RKMatrixView.m; sourceTree = "<group>"; };
+		FAFBEB3214C37CA900235178 /* RKMatrixViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RKMatrixViewCell.h; sourceTree = "<group>"; };
+		FAFBEB3314C37CA900235178 /* RKMatrixViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RKMatrixViewCell.m; sourceTree = "<group>"; };
+		FAFBEB3714C37CC600235178 /* UIColor+RKColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+RKColor.h"; sourceTree = "<group>"; };
+		FAFBEB3814C37CC600235178 /* UIColor+RKColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+RKColor.m"; sourceTree = "<group>"; };
+		FAFBEB3F14C3875C00235178 /* RKLargeCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RKLargeCellView.h; sourceTree = "<group>"; };
+		FAFBEB4014C3875C00235178 /* RKLargeCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RKLargeCellView.m; sourceTree = "<group>"; };
+		FAFBEB4C14C3B5A300235178 /* View.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = View.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +105,8 @@
 		FAFBEB0914C37BD100235178 /* Big Think */ = {
 			isa = PBXGroup;
 			children = (
+				FAFBEB3E14C3872700235178 /* Test Cell Views */,
+				FAFBEB2F14C37C9800235178 /* RKMatrix */,
 				FAFBEB1214C37BD100235178 /* AppDelegate.h */,
 				FAFBEB1314C37BD100235178 /* AppDelegate.m */,
 				FAFBEB1514C37BD100235178 /* ViewController.h */,
@@ -93,12 +121,49 @@
 		FAFBEB0A14C37BD100235178 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				FAFBEB3614C37CB400235178 /* Categories */,
+				FAFBEB2314C37C6B00235178 /* three.png */,
+				FAFBEB2414C37C6B00235178 /* two.png */,
+				FAFBEB2514C37C6B00235178 /* one.png */,
+				FAFBEB2614C37C6B00235178 /* ChaparralPro-Regular.otf */,
+				FAFBEB2714C37C6B00235178 /* bt.png */,
+				FAFBEB2814C37C6B00235178 /* shot.jpg */,
 				FAFBEB0B14C37BD100235178 /* Big Think-Info.plist */,
 				FAFBEB0C14C37BD100235178 /* InfoPlist.strings */,
 				FAFBEB0F14C37BD100235178 /* main.m */,
 				FAFBEB1114C37BD100235178 /* Big Think-Prefix.pch */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		FAFBEB2F14C37C9800235178 /* RKMatrix */ = {
+			isa = PBXGroup;
+			children = (
+				FAFBEB3014C37CA900235178 /* RKMatrixView.h */,
+				FAFBEB3114C37CA900235178 /* RKMatrixView.m */,
+				FAFBEB3214C37CA900235178 /* RKMatrixViewCell.h */,
+				FAFBEB3314C37CA900235178 /* RKMatrixViewCell.m */,
+			);
+			name = RKMatrix;
+			sourceTree = "<group>";
+		};
+		FAFBEB3614C37CB400235178 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				FAFBEB3714C37CC600235178 /* UIColor+RKColor.h */,
+				FAFBEB3814C37CC600235178 /* UIColor+RKColor.m */,
+			);
+			name = Categories;
+			sourceTree = "<group>";
+		};
+		FAFBEB3E14C3872700235178 /* Test Cell Views */ = {
+			isa = PBXGroup;
+			children = (
+				FAFBEB3F14C3875C00235178 /* RKLargeCellView.h */,
+				FAFBEB4014C3875C00235178 /* RKLargeCellView.m */,
+				FAFBEB4C14C3B5A300235178 /* View.xib */,
+			);
+			name = "Test Cell Views";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -155,6 +220,13 @@
 				FAFBEB0E14C37BD100235178 /* InfoPlist.strings in Resources */,
 				FAFBEB1A14C37BD100235178 /* ViewController_iPhone.xib in Resources */,
 				FAFBEB1D14C37BD100235178 /* ViewController_iPad.xib in Resources */,
+				FAFBEB2914C37C6B00235178 /* three.png in Resources */,
+				FAFBEB2A14C37C6B00235178 /* two.png in Resources */,
+				FAFBEB2B14C37C6B00235178 /* one.png in Resources */,
+				FAFBEB2C14C37C6B00235178 /* ChaparralPro-Regular.otf in Resources */,
+				FAFBEB2D14C37C6B00235178 /* bt.png in Resources */,
+				FAFBEB2E14C37C6B00235178 /* shot.jpg in Resources */,
+				FAFBEB4D14C3B5A300235178 /* View.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -168,6 +240,10 @@
 				FAFBEB1014C37BD100235178 /* main.m in Sources */,
 				FAFBEB1414C37BD100235178 /* AppDelegate.m in Sources */,
 				FAFBEB1714C37BD100235178 /* ViewController.m in Sources */,
+				FAFBEB3414C37CA900235178 /* RKMatrixView.m in Sources */,
+				FAFBEB3514C37CA900235178 /* RKMatrixViewCell.m in Sources */,
+				FAFBEB3914C37CC600235178 /* UIColor+RKColor.m in Sources */,
+				FAFBEB4114C3875C00235178 /* RKLargeCellView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -221,7 +297,7 @@
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.1;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -240,7 +316,7 @@
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.1;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -254,6 +330,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Big Think/Big Think-Prefix.pch";
 				INFOPLIST_FILE = "Big Think/Big Think-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -265,6 +342,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Big Think/Big Think-Prefix.pch";
 				INFOPLIST_FILE = "Big Think/Big Think-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};

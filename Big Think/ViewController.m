@@ -7,8 +7,11 @@
 //
 
 #import "ViewController.h"
+#import "RKMatrixViewCell.h"
+#import "RKLargeCellView.h"
 
 @implementation ViewController
+@synthesize matrixView = _matrixView;
 
 - (void)didReceiveMemoryWarning
 {
@@ -22,43 +25,38 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+
+    _matrixView.datasource = self;
+    _matrixView.delegate = self;
+   
+    [_matrixView demoo];
+
+
+
 }
 
 - (void)viewDidUnload
 {
+    [self setMatrixView:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
 }
 
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-}
 
-- (void)viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
-}
+#pragma mark - RKMatrixViewDatasource Functions
 
-- (void)viewWillDisappear:(BOOL)animated
+-(UIView *) matrixView:(RKMatrixView *)matrixView viewForLocation:(RK2DLocation)location withFrame:(CGRect)frame
 {
-	[super viewWillDisappear:animated];
-}
-
-- (void)viewDidDisappear:(BOOL)animated
-{
-	[super viewDidDisappear:animated];
+    RKLargeCellView *cell = [[RKLargeCellView alloc]initWithFrame:frame];
+    return cell;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
-    // Return YES for supported orientations
-    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
-        return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
-    } else {
+
         return YES;
-    }
+
 }
 
 @end
