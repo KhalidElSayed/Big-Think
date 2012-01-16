@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "RKMatrixViewCell.h"
+#import "RKMediumCellView.h"
 #import "RKLargeCellView.h"
 
 @implementation ViewController
@@ -49,6 +50,7 @@
 -(UIView *) matrixView:(RKMatrixView *)matrixView viewForLocation:(RK2DLocation)location withFrame:(CGRect)frame
 {
     RKLargeCellView *cell = [[RKLargeCellView alloc]initWithFrame:frame];
+    //RKMediumCellView  *cell = [[RKMediumCellView alloc]initWithFrame:frame];
     return cell;
 }
 

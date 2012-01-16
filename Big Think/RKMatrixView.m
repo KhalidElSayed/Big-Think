@@ -57,8 +57,16 @@
     // Initialization code
   //  self.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     
-    _scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, self.bounds.size.width + _pagePadding, self.bounds.size.height + _pagePadding)];
+    CGRect frame = self.frame;
+    frame.origin.x -= _pagePadding;
+    frame.origin.y -= _pagePadding;
+    frame.size.width += (2 * _pagePadding);
+    frame.size.height += (2 * _pagePadding);
+
+    _scrollView = [[UIScrollView alloc]initWithFrame:frame];
     
+    //_scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width + _pagePadding, self.frame.size.height + _pagePadding)];
+
     [_scrollView setPagingEnabled:YES];
     [_scrollView setScrollEnabled:YES];
     [_scrollView setDirectionalLockEnabled:YES];
@@ -167,6 +175,26 @@
     
 }
 
+-(void)layoutSubviews
+{
+    CGRect bounds = _scrollView.bounds;
+    _scrollView.contentSize = CGSizeMake(bounds.size.width * 5, bounds.size.height * 5);
+
+    
+    //[_scrollView setContentSize:CGSizeMake(5 * (self.frame.size.width + _pagePadding), 5 * (self.frame.size.height + _pagePadding))];
+    
+    
+    NSLog(@"self.frame : %f, %f, %f , %f", self.frame.origin.x, self.frame.origin.y, self.frame.size.width, self.frame.size.height);
+    NSLog(@"_scrollView.frame : %f, %f, %f , %f", _scrollView.frame.origin.x, _scrollView.frame.origin.y, _scrollView.frame.size.width, _scrollView.frame.size.height);
+    
+    NSLog(@"_scrollView.bounds : %f, %f, %f , %f", _scrollView.bounds.origin.x, _scrollView.bounds.origin.y, _scrollView.bounds.size.width, _scrollView.bounds.size.height);
+    NSLog(@"_scrollView.contentSize : %f, %f, ", _scrollView.contentSize.width, _scrollView.contentSize.height);
+    
+    NSLog(@"_firstCell.frame : %f, %f, %f , %f", _firstCell.frame.origin.x, _firstCell.frame.origin.y, _firstCell.frame.size.width, _firstCell.frame.size.height);        
+    
+    
+}
+
 -(void)setNumberOfPages:(NSInteger)pages
 {
     
@@ -176,11 +204,21 @@
 {    
     
     CGRect pageFrame = self.frame;
-   // pageFrame.size.width += 5.0f;
+
     pageFrame.origin.x = location.column * (_scrollView.frame.size.width);
     pageFrame.origin.y = location.row * (_scrollView.frame.size.height);
     
-    UIView *pageTile = [[UIView alloc]initWithFrame:pageFrame];
+    CGRect bounds = _scrollView.bounds;
+    CGRect pFrame = bounds;
+    pFrame.size.width -= (2 * _pagePadding);
+    pFrame.origin.x = (bounds.size.width * location.column) + _pagePadding;
+  
+    
+    pFrame.size.height -= (2 * _pagePadding);
+    pFrame.origin.y = (bounds.size.height * location.row) + _pagePadding;
+    
+    
+    UIView *pageTile = [[UIView alloc]initWithFrame:pFrame];
     pageTile.backgroundColor = [UIColor randomColor];
     
     pageTile.autoresizingMask = UIViewAutoresizingFlexibleWidth         | 
