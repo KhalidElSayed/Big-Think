@@ -11,6 +11,7 @@
 #import "RKMediumCellView.h"
 #import "RKLargeCellView.h"
 
+
 @implementation ViewController
 @synthesize matrixView = _matrixView;
 
@@ -31,9 +32,6 @@
     _matrixView.delegate = self;
    
     [_matrixView demoo];
-
-
-
 }
 
 - (void)viewDidUnload
@@ -49,16 +47,33 @@
 
 -(UIView *) matrixView:(RKMatrixView *)matrixView viewForLocation:(RK2DLocation)location withFrame:(CGRect)frame
 {
-    RKLargeCellView *cell = [[RKLargeCellView alloc]initWithFrame:frame];
-    //RKMediumCellView  *cell = [[RKMediumCellView alloc]initWithFrame:frame];
+        RKLargeCellView *cell = [[RKLargeCellView alloc]initWithFrame:frame];
+             return cell;
+}
+
+
+-(RKMatrixViewCell *)matrixView:(RKMatrixView *)matrixView cellForLocation:(RK2DLocation)location
+{
+    
+    RKMatrixViewCell *cell = [_matrixView dequeResuableCell];    
+    if(!cell)
+    {
+        cell = [[RKMatrixViewCell alloc]init];
+        cell.contentView = [[RKLargeCellView alloc]initWithFrame:CGRectZero];
+    }
+    
     return cell;
+}
+
+-(int)numberOfCellsInMatrix:(RKMatrixView *)matrix
+{
+    return 25;  // **** need to get to this ****
+                // The amount of cells needs to be a perfect square
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
-
         return YES;
-
 }
 
 @end

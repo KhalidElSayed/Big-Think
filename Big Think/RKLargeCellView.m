@@ -15,25 +15,46 @@
 
 - (id)initWithFrame:(CGRect)frame
 {
-    self = [[[NSBundle mainBundle] loadNibNamed:@"RKLargeCellView" owner:self options:nil] lastObject];
-    if (self) {
-        // Initialization code
-        
-        //self.title.font = [UIFont fontWithName:@"ChaparralPro-Regular" size:50.0f]; 
-
-        self.frame = frame;
-        self.title.font = [UIFont fontWithName:@"ChaparralPro-Regular" size:50.0f];
-        
-        if(UIDeviceOrientationIsLandscape([[UIDevice currentDevice]orientation]))
+    
+    if([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad)
+    {
+        self = [[[NSBundle mainBundle] loadNibNamed:@"RKLargeCellView" owner:self options:nil] lastObject];
+    
+        if (self) 
         {
-            [additionalInformationPane removeFromSuperview];
+            self.frame = frame;
+            self.title.font = [UIFont fontWithName:@"ChaparralPro-Regular" size:50.0f];
+            
+            if(UIDeviceOrientationIsLandscape([[UIDevice currentDevice]orientation]))
+            {
+                [additionalInformationPane removeFromSuperview];
+            }
+            
+            
+            [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(willRotate:) name:UIApplicationWillChangeStatusBarOrientationNotification  object:nil];
+            
         }
 
-        
-     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(willRotate:) name:UIApplicationWillChangeStatusBarOrientationNotification  object:nil];
+
     
     }
-    return self;
+    else if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone)
+    {
+        
+        self = [[[NSBundle mainBundle] loadNibNamed:@"RKLargeCellViewiPhone" owner:self options:nil] lastObject];
+        if (self) 
+        {
+            self.frame = frame;
+            self.title.font = [UIFont fontWithName:@"ChaparralPro-Regular" size:50.0f];
+        }
+        
+
+    }
+    else
+        NSLog(@"No View associated with this device");
+    
+        return self;    
+       
 }
 
 -(void)dealloc
@@ -60,12 +81,12 @@
     {
         case 1:
         case 2:
-            NSLog(@"Orientation Changed to Portrait");
+       //     NSLog(@"Orientation Changed to Portrait");
             [self addSubview:additionalInformationPane];
             break;
         case 3:
         case 4:
-            NSLog(@"Orientation Changed to Landscape");
+         //   NSLog(@"Orientation Changed to Landscape");
             [additionalInformationPane removeFromSuperview];
             
             break;

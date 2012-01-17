@@ -33,11 +33,16 @@ typedef NSUInteger RKGridViewLayoutType;
     RK2DLocation            _currentLocation;
     id                      delegate;
     id                      datasource;
+    NSMutableSet*           _resusableCells;
+    NSMutableSet*           _visableCells;
+    
+    
+    int                     _numberOfCells;
     RKGridViewLayoutType    _layout;
     NSMutableDictionary*    _cells;
     BOOL                    _landscape;
     UIView*                 _firstCell;
-    NSMutableArray*         _testCells;
+
     
     
 }
@@ -46,24 +51,25 @@ typedef NSUInteger RKGridViewLayoutType;
 @property (nonatomic,assign) id<RKMatrixViewDatasource> datasource;                       // default nil. weak reference
 @property (nonatomic) RK2DLocation currentLocation;
 @property (nonatomic) RKGridViewLayoutType layout;
+@property (nonatomic) int numberOfCells;
 
 -(void)demoo;
 -(void)willRotate:(NSNotification *)notification;
+-(RKMatrixViewCell *)dequeResuableCell;
 @end
 
 
 
 @protocol RKMatrixViewDatasource<NSObject>
--(UIView *) matrixView:(RKMatrixView *)matrixView viewForLocation:(RK2DLocation)location withFrame:(CGRect)frame;
-@optional 
 -(RKMatrixViewCell*) matrixView:(RKMatrixView *)matrixView cellForLocation:(RK2DLocation)location;
+-(int)numberOfCellsInMatrix:(RKMatrixView *)matrix;
 
+@optional 
+-(UIView *) matrixView:(RKMatrixView *)matrixView viewForLocation:(RK2DLocation)location withFrame:(CGRect)frame;
 @end
 
 
 
 @protocol RKMatrixViewDelegate<NSObject>
 @optional
-
-
 @end

@@ -7,17 +7,20 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "RKMatrixView.h"
 
 @interface RKMatrixViewCell : UIView 
 {
 
     UIView*         _contentView;
+    RK2DLocation    _location;
     
     
 }
 @property (strong, nonatomic)UIView* contentView;
+@property (nonatomic)RK2DLocation location;
 
-
-
+-(void)prepareForReuse;
+-(id)init;
 
 @end

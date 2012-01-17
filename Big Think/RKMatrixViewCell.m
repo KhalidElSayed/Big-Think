@@ -10,6 +10,7 @@
 
 @implementation RKMatrixViewCell
 @synthesize contentView = _contentView;
+@synthesize location;
 
 
 
@@ -19,15 +20,36 @@
     if (self) {
         // Initialization code
         
-        self.autoresizingMask = UIViewAutoresizingFlexibleWidth | 
-        UIViewAutoresizingFlexibleHeight        ;
- 
+        self.autoresizingMask = UIViewAutoresizingFlexibleWidth         | 
+        UIViewAutoresizingFlexibleHeight        | 
+        UIViewAutoresizingFlexibleBottomMargin  | 
+        UIViewAutoresizingFlexibleLeftMargin    | 
+        UIViewAutoresizingFlexibleRightMargin   | 
+        UIViewAutoresizingFlexibleTopMargin; 
         
     }
     
     return self;
     
     
+}
+
+-(id)init
+{
+    self = [super initWithFrame:CGRectZero];
+    if (self) {
+        // Initialization code
+        
+        self.autoresizingMask = UIViewAutoresizingFlexibleWidth         | 
+        UIViewAutoresizingFlexibleHeight        | 
+        UIViewAutoresizingFlexibleBottomMargin  | 
+        UIViewAutoresizingFlexibleLeftMargin    | 
+        UIViewAutoresizingFlexibleRightMargin   | 
+        UIViewAutoresizingFlexibleTopMargin; 
+        
+    }
+    return self;
+
 }
 
 -(void)setContentView:(UIView *)contentView
@@ -38,11 +60,28 @@
     }
     
     
-    contentView.frame = self.bounds;
+    self.frame = contentView.bounds;
     _contentView = contentView;        
     [self addSubview:_contentView];
 }
 
+
+-(void)setFrame:(CGRect)frame
+{
+    if(self.contentView)
+        _contentView.frame = frame;
+    
+}
+
+
+
+-(void)prepareForReuse
+{
+    _location.row = -1;
+    _location.column = -1;
+    [self removeFromSuperview];
+    
+}
 
 
 @end
