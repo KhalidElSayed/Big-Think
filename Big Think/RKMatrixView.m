@@ -316,15 +316,12 @@
     
     if(location.row < 0 || location.column < 0)
         return;
-    BOOL alreadyOnScreen = NO;
-    
+       
     for (RKMatrixViewCell *cell in _visableCells) 
     {
         if (cell.location.row == location.row && cell.location.column == location.column) 
-            
         {
             return;
-            //alreadyOnScreen = YES;
         }
     }
     
