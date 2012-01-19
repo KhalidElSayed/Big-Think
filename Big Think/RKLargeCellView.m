@@ -12,6 +12,7 @@
 @synthesize header;
 @synthesize title;
 @synthesize additionalInformationPane;
+@synthesize imageView;
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -23,6 +24,7 @@
         if (self) 
         {
             self.frame = frame;
+            
             self.title.font = [UIFont fontWithName:@"ChaparralPro-Regular" size:50.0f];
             
             if(UIDeviceOrientationIsLandscape([[UIDevice currentDevice]orientation]))

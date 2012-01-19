@@ -8,30 +8,41 @@
 
 #import "RKMatrixViewCell.h"
 
+@interface RKMatrixViewCell()
+{
+    
+}
+-(void)myInit;
+
+@end
+
 @implementation RKMatrixViewCell
 @synthesize contentView = _contentView;
 @synthesize location;
 
+-(void)myInit
+{
 
+    self.autoresizingMask = UIViewAutoresizingFlexibleWidth         | 
+    UIViewAutoresizingFlexibleHeight        |   
+    UIViewAutoresizingFlexibleBottomMargin  | 
+    UIViewAutoresizingFlexibleLeftMargin    | 
+    UIViewAutoresizingFlexibleRightMargin   | 
+    UIViewAutoresizingFlexibleTopMargin; 
+
+
+    
+    self.backgroundColor = [UIColor redColor];
+}
 
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
-        
-        self.autoresizingMask = UIViewAutoresizingFlexibleWidth         | 
-        UIViewAutoresizingFlexibleHeight        | 
-        UIViewAutoresizingFlexibleBottomMargin  | 
-        UIViewAutoresizingFlexibleLeftMargin    | 
-        UIViewAutoresizingFlexibleRightMargin   | 
-        UIViewAutoresizingFlexibleTopMargin; 
-        
-    }
-    
+        [self myInit];
+           }
     return self;
-    
-    
 }
 
 -(id)init
@@ -39,14 +50,7 @@
     self = [super initWithFrame:CGRectZero];
     if (self) {
         // Initialization code
-        
-        self.autoresizingMask = UIViewAutoresizingFlexibleWidth         | 
-        UIViewAutoresizingFlexibleHeight        | 
-        UIViewAutoresizingFlexibleBottomMargin  | 
-        UIViewAutoresizingFlexibleLeftMargin    | 
-        UIViewAutoresizingFlexibleRightMargin   | 
-        UIViewAutoresizingFlexibleTopMargin; 
-        
+        [self myInit];        
     }
     return self;
 
@@ -59,18 +63,22 @@
         [self.contentView removeFromSuperview];
     }
     
+    CGRect frame = self.frame;
+    frame.size = contentView.bounds.size;
+    [super setFrame:frame];
     
-    self.frame = contentView.bounds;
     _contentView = contentView;        
     [self addSubview:_contentView];
 }
 
 
--(void)setFrame:(CGRect)frame
+-(void)setFrame:(CGRect)aFrame
 {
-    if(self.contentView)
-        _contentView.frame = frame;
     
+    [super setFrame:aFrame];
+    if(self.contentView)
+        _contentView.frame = self.bounds;
+
 }
 
 

@@ -43,6 +43,8 @@ typedef NSUInteger RKGridViewLayoutType;
     BOOL                    _landscape;
     UIView*                 _firstCell;
 
+    NSMutableDictionary*         _testPages;
+    
     
     
 }

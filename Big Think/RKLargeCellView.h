@@ -18,6 +18,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *header;
 @property (strong, nonatomic) IBOutlet UILabel *title;
 @property (strong, nonatomic) IBOutlet UIView *additionalInformationPane;
+@property (strong, nonatomic) IBOutlet UIImageView *imageView;
 
 
 @end

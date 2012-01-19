@@ -37,7 +37,7 @@
     if (idiom == UIUserInterfaceIdiomPad) 
     {
         _cellPaddingWidth = 50.0f;
-        _cellPaddingHeight = 70.0f;
+        _cellPaddingHeight = 50.0f;
         _pagePadding = 50.0f;
         
     }
@@ -49,7 +49,7 @@
     }
     
     
-    CGRect frame = self.frame;
+    CGRect frame = self.bounds;
     frame.origin.x -= _pagePadding;
     frame.origin.y -= _pagePadding;
     frame.size.width += (2 * _pagePadding);
@@ -63,12 +63,14 @@
     
     _scrollView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bt.png"]];
     _scrollView.autoresizingMask =  UIViewAutoresizingFlexibleWidth         | 
-    UIViewAutoresizingFlexibleHeight        |
-    UIViewAutoresizingFlexibleBottomMargin  |
-    UIViewAutoresizingFlexibleLeftMargin    |
-    UIViewAutoresizingFlexibleRightMargin   |
-    UIViewAutoresizingFlexibleTopMargin;    
-    
+    UIViewAutoresizingFlexibleHeight;
+    /*
+     |
+     UIViewAutoresizingFlexibleBottomMargin  |
+     UIViewAutoresizingFlexibleLeftMargin    |
+     UIViewAutoresizingFlexibleRightMargin   |
+     UIViewAutoresizingFlexibleTopMargin;    
+     */
     [self addSubview:_scrollView];
     
     _resusableCells = [[NSMutableSet alloc]init];
@@ -77,7 +79,8 @@
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(willRotate:) name:UIApplicationDidChangeStatusBarOrientationNotification  object:nil];
     
-    
+    //---------------------------------------------------------------
+    _testPages = [[NSMutableDictionary alloc]init];
     
     
     
@@ -114,16 +117,108 @@
 {
     CGRect bounds = _scrollView.bounds;
     _scrollView.contentSize = CGSizeMake(bounds.size.width * sqrtf(_numberOfCells), bounds.size.height * sqrtf(_numberOfCells));
+    CGRect frame = self.bounds;
     
-#define DEBUG_LAYOUT_SUBVIEWS NO
+    frame.origin.x -= _pagePadding;
+    frame.origin.y -= _pagePadding;
+    frame.size.width += (2 * _pagePadding);
+    frame.size.height += (2 * _pagePadding);
+    //_scrollView.frame = frame;
+    
+#define DEBUG_LAYOUT_SUBVIEWS YES
     
     if(DEBUG_LAYOUT_SUBVIEWS)
     {
-        NSLog(@"self.frame : %f, %f, %f , %f", self.frame.origin.x, self.frame.origin.y, self.frame.size.width, self.frame.size.height);
-        NSLog(@"_scrollView.frame : %f, %f, %f , %f", _scrollView.frame.origin.x, _scrollView.frame.origin.y, _scrollView.frame.size.width, _scrollView.frame.size.height);
-        NSLog(@"_scrollView.bounds : %f, %f, %f , %f", _scrollView.bounds.origin.x, _scrollView.bounds.origin.y, _scrollView.bounds.size.width, _scrollView.bounds.size.height);
-        NSLog(@"_scrollView.contentSize : %f, %f, ", _scrollView.contentSize.width, _scrollView.contentSize.height);
-        NSLog(@"_firstCell.frame : %f, %f, %f , %f", _firstCell.frame.origin.x, _firstCell.frame.origin.y, _firstCell.frame.size.width, _firstCell.frame.size.height);        
+        
+        
+        
+        UIDeviceOrientation orientation = [[UIDevice currentDevice]orientation];
+        
+        if(UIDeviceOrientationIsLandscape(orientation))
+        {
+            
+            CGRect correctSelfFrame = CGRectMake(0, 44, 1024, 704);
+            if(!CGRectEqualToRect(correctSelfFrame, self.frame))
+            {
+                NSLog(@"!ERROR!self.frame : %f, %f, %f , %f", self.frame.origin.x, self.frame.origin.y, self.frame.size.width, self.frame.size.height);
+            }
+            CGRect correctSelfBounds = CGRectMake(0, 0, 1024, 704);
+            if(!CGRectEqualToRect(self.bounds, correctSelfBounds))
+            {
+                NSLog(@"!ERROR!self.bounds : %f, %f, %f , %f\n\n", self.bounds.origin.x, self.bounds.origin.y, self.bounds.size.width, self.bounds.size.height);  
+            }
+            
+            
+            CGRect correctScrollViewBounds = CGRectMake(0, 0, 1024, 704);
+            if(!CGRectEqualToRect(correctScrollViewBounds, _scrollView.bounds))
+            {
+                 NSLog(@"!ERROR!_scrollView.bounds : %f, %f, %f , %f", _scrollView.bounds.origin.x, _scrollView.bounds.origin.y, _scrollView.bounds.size.width, _scrollView.bounds.size.height);
+            }
+            
+            
+            CGRect correctScrollViewFrame = CGRectMake(-50, -50, 1124, 804);
+            if(!CGRectEqualToRect(correctScrollViewFrame, _scrollView.frame))
+            {
+                NSLog(@"!ERROR!scrollView.frame : %f, %f, %f , %f", _scrollView.frame.origin.x, _scrollView.frame.origin.y, _scrollView.frame.size.width, _scrollView.frame.size.height);    
+            }
+            
+            CGRect correctPageViewFrame = CGRectMake(50, 50, 1024, 704);
+            CGRect firstPageFrame = [[_testPages objectForKey:@"{0,0}"] frame];
+            if(!CGRectEqualToRect(correctPageViewFrame, firstPageFrame))
+            {
+                NSLog(@"!ERROR!page{0,0}.frame : %f, %f, %f, %f",frame.origin.x, frame.origin.y, frame.size.width, frame.size.height);
+            }
+            
+            
+            
+            
+            
+        }
+        else if(UIDeviceOrientationIsPortrait(orientation))
+        {
+            CGRect correctSelfFrame = CGRectMake(0, 44, 768, 960);
+            if(!CGRectEqualToRect(correctSelfFrame, self.frame))
+            {
+                NSLog(@"!ERROR!self.frame : %f, %f, %f , %f", self.frame.origin.x, self.frame.origin.y, self.frame.size.width, self.frame.size.height);
+                
+            }
+            CGRect correctSelfBounds = CGRectMake(0, 0, 768, 960);
+            if(!CGRectEqualToRect(self.bounds, correctSelfBounds))
+            {
+                NSLog(@"!ERROR!self.bounds : %f, %f, %f , %f\n\n", self.bounds.origin.x, self.bounds.origin.y, self.bounds.size.width, self.bounds.size.height);  
+            }
+            
+            
+            
+            CGRect correctScrollViewFrame = CGRectMake(-50, -50, 868, 1060);
+            if(!CGRectEqualToRect(correctScrollViewFrame, _scrollView.frame))
+            {
+                NSLog(@"!ERROR!scrollView.frame : %f, %f, %f , %f", _scrollView.frame.origin.x, _scrollView.frame.origin.y, _scrollView.frame.size.width, _scrollView.frame.size.height);    
+            }
+            
+            CGRect correctScrollViewBounds = CGRectMake(0, 0, 768, 960);
+            if(!CGRectEqualToRect(correctScrollViewBounds, _scrollView.bounds))
+            {
+                NSLog(@"!ERROR!_scrollView.bounds : %f, %f, %f , %f", _scrollView.bounds.origin.x, _scrollView.bounds.origin.y, _scrollView.bounds.size.width, _scrollView.bounds.size.height);
+            }
+
+            
+            CGRect correctPageViewFrame = CGRectMake(50, 50, 768, 960);
+            CGRect firstPageFrame = [[_testPages objectForKey:@"{0,0}"] frame];
+            if(!CGRectEqualToRect(correctPageViewFrame, firstPageFrame))
+            {
+                NSLog(@"!ERROR!page{0,0}.frame : %f, %f, %f, %f",frame.origin.x, frame.origin.y, frame.size.width, frame.size.height);
+            }
+            
+            
+            
+            
+            
+            
+            
+        }
+        
+     
     }
     
 }
@@ -210,7 +305,7 @@
 
 -(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
-    [self unloadUneccesaryCells];
+    //  [self unloadUneccesaryCells];
 }
 
 
@@ -316,7 +411,7 @@
     
     if(location.row < 0 || location.column < 0)
         return;
-       
+    
     for (RKMatrixViewCell *cell in _visableCells) 
     {
         if (cell.location.row == location.row && cell.location.column == location.column) 
@@ -327,84 +422,85 @@
     
     
     
-           CGRect pageFrame = self.frame;
+    //  CGRect pageFrame = self.frame;
+    //  pageFrame.origin.x = location.column * (_scrollView.frame.size.width);
+    //  pageFrame.origin.y = location.row * (_scrollView.frame.size.height);
+    
+    
+    CGRect bounds = _scrollView.bounds;
+    CGRect pageFrame = bounds;
+    
+    pageFrame.origin.x      = (bounds.size.width * location.column) + _pagePadding;
+    pageFrame.origin.y      = (bounds.size.height * location.row) + _pagePadding;      
+    pageFrame.size.height  -= (2 * _pagePadding);
+    pageFrame.size.width   -= (2 * _pagePadding);   
+    
+    
+    UIView *pageTile = [[UIView alloc]initWithFrame:pageFrame];
+    pageTile.backgroundColor = [UIColor randomColor];
+    pageTile.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    
+    if(location.row == 0 && location.column == 0)
+        [_testPages setObject:pageTile forKey:@"{0,0}"];
+    else if(location.row == 0 && location.column == 1)
+        [_testPages setObject:pageTile forKey:@"{0,1}"];
+    else if (location.row == 1 && location.column == 0)
+        [_testPages setObject:pageTile forKey:@"{1,0}"];
+    else if (location.row == 1 && location.column ==1 )
+        [_testPages setObject:pageTile forKey:@"{1,1}"];
+    
+    
+    CGRect cellFrame;
+    cellFrame.origin = CGPointMake(_cellPaddingWidth, _cellPaddingHeight);
+    cellFrame.size.width = pageFrame.size.width - (_cellPaddingWidth * 2);
+    cellFrame.size.height = pageFrame.size.height - (_cellPaddingHeight * 2);
+    
+    
+    
+    RKMatrixViewCell *newCell;
+    
+    if([self.datasource respondsToSelector:@selector(matrixView:cellForLocation:)])
+    {
+        newCell = [self.datasource matrixView:self cellForLocation:location];
+    }
+    else if([self.datasource respondsToSelector:@selector(matrixView:viewForLocation:withFrame:)])
+    {
+        CGRect contentFrame = cellFrame;
+        cellFrame.origin = CGPointZero;
         
-        pageFrame.origin.x = location.column * (_scrollView.frame.size.width);
-        pageFrame.origin.y = location.row * (_scrollView.frame.size.height);
-        
-        CGRect bounds = _scrollView.bounds;
-        CGRect pFrame = bounds;
-        pFrame.size.width -= (2 * _pagePadding);
-        pFrame.origin.x = (bounds.size.width * location.column) + _pagePadding;
-        
-        
-        pFrame.size.height -= (2 * _pagePadding);
-        pFrame.origin.y = (bounds.size.height * location.row) + _pagePadding;
-        
-        
-        UIView *pageTile = [[UIView alloc]initWithFrame:pFrame];
-        pageTile.backgroundColor = [UIColor randomColor];
-        
-        pageTile.autoresizingMask = UIViewAutoresizingFlexibleWidth         | 
-        UIViewAutoresizingFlexibleHeight        | 
-        UIViewAutoresizingFlexibleBottomMargin  | 
-        UIViewAutoresizingFlexibleLeftMargin    | 
-        UIViewAutoresizingFlexibleRightMargin   | 
-        UIViewAutoresizingFlexibleTopMargin;
-        
-        
-        
-        CGRect cellFrame;
-        cellFrame.origin = CGPointMake(_cellPaddingWidth, _cellPaddingHeight);
-        cellFrame.size.width = pageFrame.size.width - (_cellPaddingWidth * 2);
-        cellFrame.size.height = pageFrame.size.height - (_cellPaddingHeight * 2);
-        
-        
-        
-        RKMatrixViewCell *newCell;
-        
-        if([self.datasource respondsToSelector:@selector(matrixView:cellForLocation:)])
-        {
-            newCell = [self.datasource matrixView:self cellForLocation:location];
-        }
-        else if([self.datasource respondsToSelector:@selector(matrixView:viewForLocation:withFrame:)])
-        {
-            CGRect contentFrame = cellFrame;
-            cellFrame.origin = CGPointZero;
-            
-            newCell = [[RKMatrixViewCell alloc]init];
-            newCell.contentView = [self.datasource matrixView:self viewForLocation:location withFrame:contentFrame];
-        }
-        else
-        {
-            NSLog(@"Does not respond to selector!!");
-        }
-        
-        newCell.frame = cellFrame;
-        newCell.location = location;
-        
-        [pageTile addSubview:newCell];
-        
-        //-----------------------------Testing--------------------------
-        UILabel *position = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, pFrame.size.width, 200.0f)];
-        position.text = [NSString stringWithFormat:@"{%i , %i}", location.row, location.column];
-        position.font = [UIFont fontWithName:@"Helvetica" size:50.0f ];
-        position.textColor = [UIColor blackColor];
-        position.textAlignment = UITextAlignmentCenter;
-        position.backgroundColor = [UIColor clearColor];
-        [pageTile addSubview:position];
-        //-----------------------------Testing--------------------------
-        
-        
-        [_scrollView addSubview:pageTile];
-        [_visableCells addObject:newCell];
+        newCell = [[RKMatrixViewCell alloc]init];
+        newCell.contentView = [self.datasource matrixView:self viewForLocation:location withFrame:contentFrame];
+    }
+    else
+    {
+        NSLog(@"Does not respond to selector!!");
+    }
+    
+    newCell.frame = cellFrame;
+    newCell.location = location;
+    
+    [pageTile addSubview:newCell];
+    
+    //-----------------------------Testing--------------------------
+    UILabel *position = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, pageFrame.size.width, 200.0f)];
+    position.text = [NSString stringWithFormat:@"{%i , %i}", location.row, location.column];
+    position.font = [UIFont fontWithName:@"Helvetica" size:50.0f ];
+    position.textColor = [UIColor blackColor];
+    position.textAlignment = UITextAlignmentCenter;
+    position.backgroundColor = [UIColor clearColor];
+    [pageTile addSubview:position];
+    //-----------------------------Testing--------------------------
+    
+    
+    [_scrollView addSubview:pageTile];
+    [_visableCells addObject:newCell];
 #define DEBUG_LOAD_CELLS NO
-        
-        if (DEBUG_LOAD_CELLS) 
-            NSLog(@"Loading Cell at location {%i,%i}", location.row, location.column);
-        
-        if(location.row == 0 && location.column == 0)
-            _firstCell = pageTile;
+    
+    if (DEBUG_LOAD_CELLS) 
+        NSLog(@"Loading Cell at location {%i,%i}", location.row, location.column);
+    
+    if(location.row == 0 && location.column == 0)
+        _firstCell = pageTile;
     
     
 }
@@ -438,7 +534,7 @@
             default:
                 break;
         }
-                
+        
     }
     else
     {
