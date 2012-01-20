@@ -1,6 +1,6 @@
 //
 //  RKGrid.h
-//  Major grid
+//  
 //
 //  Created by Richard Kirk on 1/9/12.
 //  Copyright (c) 2012 Home. All rights reserved.
@@ -34,21 +34,17 @@ typedef NSUInteger RKGridViewLayoutType;
     id                      delegate;
     id                      datasource;
     NSMutableSet*           _resusableCells;
-    NSMutableDictionary*           _visableCells;
-    
-    
+    NSMutableDictionary*    _visableCells;
     int                     _numberOfCells;
     RKGridViewLayoutType    _layout;
     NSMutableDictionary*    _cells;
     BOOL                    _landscape;
     UIView*                 _firstCell;
 
-    NSMutableDictionary*         _testPages;
     
     
     
 }
-
 @property (nonatomic,assign) id<RKMatrixViewDelegate> delegate;                       // default nil. weak reference
 @property (nonatomic,assign) id<RKMatrixViewDatasource> datasource;                       // default nil. weak reference
 @property (nonatomic) RK2DLocation currentLocation;

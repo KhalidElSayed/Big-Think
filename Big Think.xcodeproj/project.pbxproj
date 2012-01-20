@@ -114,6 +114,15 @@
 			name = Medium;
 			sourceTree = "<group>";
 		};
+		FA288DFE14C8F1E300F470BE /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				FA288DF614C8EB2300F470BE /* landscapeBackround.png */,
+				FA288DFC14C8EDE300F470BE /* portraitBackround.png */,
+			);
+			name = Images;
+			sourceTree = "<group>";
+		};
 		FAFBEAF414C37BD100235178 = {
 			isa = PBXGroup;
 			children = (
@@ -160,8 +169,6 @@
 		FAFBEB0A14C37BD100235178 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				FA288DF614C8EB2300F470BE /* landscapeBackround.png */,
-				FA288DFC14C8EDE300F470BE /* portraitBackround.png */,
 				FA72ED7214C3DBB2001A7C25 /* 72Icon.png */,
 				FA72ED7414C3DBBC001A7C25 /* 57Icon.png */,
 				FAFBEB3614C37CB400235178 /* Categories */,
@@ -182,6 +189,7 @@
 		FAFBEB2F14C37C9800235178 /* RKMatrix */ = {
 			isa = PBXGroup;
 			children = (
+				FA288DFE14C8F1E300F470BE /* Images */,
 				FAFBEB3014C37CA900235178 /* RKMatrixView.h */,
 				FAFBEB3114C37CA900235178 /* RKMatrixView.m */,
 				FAFBEB3214C37CA900235178 /* RKMatrixViewCell.h */,

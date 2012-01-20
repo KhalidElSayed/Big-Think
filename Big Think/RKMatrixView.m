@@ -15,20 +15,16 @@
 {
     CGFloat     _cellPaddingWidth;
     CGFloat     _cellPaddingHeight;
-
     CGFloat     _pagePadding;
     CGPoint     _contentOffsetMarker;   // Used to determine the direction a user wants to scroll
 }
 -(void)initForDevice:(UIUserInterfaceIdiom)idiom;
--(void)loadMatrixWithLocation:(RK2DLocation)location;
 -(void)reloadData;
 -(void)unloadUneccesaryCells;
--(void)addPageForLocation:(RK2DLocation)location;
+-(void)loadPageForLocation:(RK2DLocation)location;
 -(RKMatrixViewCell *)cellForLocation:(RK2DLocation)location;
 -(NSString *)stringFromLocation:(RK2DLocation)location;
 -(RK2DLocation)locationFromString:(NSString *)location;
-
-
 @end
 
 
@@ -73,14 +69,13 @@
     [self addSubview:_scrollView];
     
     _layout = RKGridViewLayoutLarge;
-    
     _resusableCells = [[NSMutableSet alloc]init];
     _visableCells = [[NSMutableDictionary alloc]init];
     
-    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(willRotate:) name:UIApplicationDidChangeStatusBarOrientationNotification  object:nil];
-    
 }
+
+
 -(id)initWithCoder:(NSCoder *)aDecoder
 {
     self = [super initWithCoder:aDecoder];
@@ -129,27 +124,7 @@
             CGRect correctScrollViewFrame = CGRectMake(-50, -50, 1124, 804);
             if(!CGRectEqualToRect(correctScrollViewFrame, _scrollView.frame))
                 NSLog(@"!ERROR!scrollView.frame : %@", NSStringFromCGRect(_scrollView.frame));    
-            CGRect correctPageViewFrame = CGRectMake(50, 50, 1024, 704);
-            CGRect pageFrame = [[_testPages objectForKey:@"{0,0}"] frame];
-            if(!CGRectEqualToRect(correctPageViewFrame, pageFrame))
-                NSLog(@"!ERROR!page{0,0}.frame : %@", NSStringFromCGRect(pageFrame));
-            
-            correctPageViewFrame = CGRectMake(1174, 50, 1024, 704);
-            pageFrame = [[_testPages objectForKey:@"{0,1}"] frame];
-            if(!CGRectEqualToRect(correctPageViewFrame, pageFrame))
-                NSLog(@"!ERROR!page{0,1}.frame : %@", NSStringFromCGRect(pageFrame));
-            
-            correctPageViewFrame = CGRectMake(50, 854, 1024, 704);
-            pageFrame = [[_testPages objectForKey:@"{1,0}"] frame];
-            if(!CGRectEqualToRect(correctPageViewFrame, pageFrame))
-                NSLog(@"!ERROR!page{1,0}.frame : %@", NSStringFromCGRect(pageFrame));
-            
-            correctPageViewFrame = CGRectMake(1174, 854, 1024, 704);
-            pageFrame = [[_testPages objectForKey:@"{1,1}"] frame];
-            if(!CGRectEqualToRect(correctPageViewFrame, pageFrame))
-                NSLog(@"!ERROR!page{1,1}.frame : %@", NSStringFromCGRect(pageFrame));
-            
-            
+                    
         }
         else if(UIDeviceOrientationIsPortrait(orientation))
         {
@@ -165,31 +140,9 @@
             CGRect correctScrollViewBounds = CGRectMake(0, 0, 768, 960);
             if(!CGRectEqualToRect(correctScrollViewBounds, _scrollView.bounds)){}
                 //NSLog(@"!ERROR!_scrollView.bounds : %@", NSStringFromCGRect(_scrollView.bounds));
-            CGRect correctPageViewFrame = CGRectMake(50, 50, 768, 960);
-            CGRect pageFrame = [[_testPages objectForKey:@"{0,0}"] frame];
-            if(!CGRectEqualToRect(correctPageViewFrame, pageFrame))
-                NSLog(@"!ERROR!page{0,0}.frame : %@", NSStringFromCGRect(pageFrame));
-            
-            correctPageViewFrame = CGRectMake(918, 50, 768, 960);
-            pageFrame = [[_testPages objectForKey:@"{0,1}"] frame];
-            if(!CGRectEqualToRect(correctPageViewFrame, pageFrame))
-                NSLog(@"!ERROR!page{0,1}.frame : %@", NSStringFromCGRect(pageFrame));
-            
-            correctPageViewFrame = CGRectMake(50, 1110, 768, 960);
-            pageFrame = [[_testPages objectForKey:@"{1,0}"] frame];
-            if(!CGRectEqualToRect(correctPageViewFrame, pageFrame))
-                NSLog(@"!ERROR!page{1,0}.frame : %@", NSStringFromCGRect(pageFrame));
-            
-            correctPageViewFrame = CGRectMake(918, 1100, 768, 960);
-            pageFrame = [[_testPages objectForKey:@"{1,1}"] frame];
-            if(!CGRectEqualToRect(correctPageViewFrame, pageFrame))
-                NSLog(@"!ERROR!page{1,1}.frame : %@", NSStringFromCGRect(pageFrame));
-
         }
     }
 }
-
-
 
 
 #pragma mark - UIScrollViewDelegate Functions
@@ -261,9 +214,7 @@
     if(DEBUG_DRAGGING_DIRECTION)
         NSLog(@"%@",direction);
     
-    
-
-    [self addPageForLocation:locationUserIsMovingTo];
+    [self loadPageForLocation:locationUserIsMovingTo];
 }
 
 
@@ -271,7 +222,6 @@
 {
     [self unloadUneccesaryCells];
 }
-
 
 
 #pragma mark - Memory Management 
@@ -318,8 +268,6 @@
     }
     
     return cell;
-    
-    
 }
 
 
@@ -364,44 +312,9 @@
 }
 
 
-
-
--(void)addPageForLocation:(RK2DLocation)location
+-(void)loadPageForLocation:(RK2DLocation)location
 {
-    /*
-    CGRect bounds = _scrollView.bounds;
-    
-    CGRect pageFrame = bounds;
-    pageFrame.origin.x      = (bounds.size.width * location.column) + _pagePadding;
-    pageFrame.origin.y      = (bounds.size.height * location.row) + _pagePadding;      
-    pageFrame.size.height  -= (2 * _pagePadding);
-    pageFrame.size.width   -= (2 * _pagePadding);   
-    
-    
-    UIView *pageTile = [_testPages objectForKey:[self stringFromLocation:location]];
-    if(!pageTile)
-    {
-    pageTile = [[UIView alloc]initWithFrame:pageFrame];
-    pageTile.backgroundColor = [UIColor randomColor];
-        [_testPages setObject:pageTile forKey:[self stringFromLocation:location]];
-    }
-    
-    pageTile.tag = 1;
-    
-    
-    
-    //----------------------TESTING----------------------------------
-    if(location.row == 0 && location.column == 0)
-        _firstCell = pageTile;
-    UILabel *position = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, pageFrame.size.width, 200.0f)];
-    position.text = [NSString stringWithFormat:@"{%i , %i}", location.row, location.column];
-    position.font = [UIFont fontWithName:@"Helvetica" size:50.0f ];
-    position.textColor = [UIColor blackColor];
-    position.textAlignment = UITextAlignmentCenter;
-    position.backgroundColor = [UIColor clearColor];
-    [pageTile addSubview:position];
-    //---------------------------------------------------------------
-    */
+
     
     //  Determine which cells should be on this page 
     if(_layout == RKGridViewLayoutLarge)    // 1 Large Cell
@@ -424,23 +337,13 @@
     {
         
     }
-
-    
-
-    
-    
-    
     
 }
 
+
 -(RKMatrixViewCell *)cellForLocation:(RK2DLocation)location
 {
-    
-    
-    
-    
     RKMatrixViewCell *cell = [_visableCells objectForKey:[self stringFromLocation:location]];
-   
     
     CGRect cellFrame;
     if(_layout == RKGridViewLayoutLarge)
@@ -465,20 +368,15 @@
 
     if(!cell)
     {
-        
-
-        
         if([self.datasource respondsToSelector:@selector(matrixView:cellForLocation:)])
         {
             cell = [self.datasource matrixView:self cellForLocation:location];
         }
         else if([self.datasource respondsToSelector:@selector(matrixView:viewForLocation:withFrame:)])
         {
-                       
             cell = [[RKMatrixViewCell alloc]init];
             CGRect contentFrame = cellFrame;
             cellFrame.origin = CGPointZero;
-    
             cell.contentView = [self.datasource matrixView:self viewForLocation:location withFrame:contentFrame];
         }
         else
@@ -491,15 +389,14 @@
         cell.frame = cellFrame;
         
     return cell;
-   
 }
-
 
 
 -(NSString *)stringFromLocation:(RK2DLocation)location
 {
     return [NSString stringWithFormat:@"{%i,%i}",location.row, location.column];
 }
+
 
 -(RK2DLocation)locationFromString:(NSString *)location
 {
@@ -548,8 +445,7 @@
     RK2DLocation loc;
     loc.row = 0;
     loc.column = 0;
-    //[self loadMatrixWithLocation:loc];
-    [self addPageForLocation:loc];
+    [self loadPageForLocation:loc];
 }
 
 
@@ -568,9 +464,6 @@
 
 -(void)willRotate:(NSNotification *)notification
 {
-    
-    
-    
     NSNumber *num = [notification.userInfo objectForKey:@"UIApplicationStatusBarOrientationUserInfoKey"];
     
     switch ([num intValue]) 
