@@ -19,6 +19,8 @@
 @implementation RKMatrixViewCell
 @synthesize contentView = _contentView;
 @synthesize location;
+@synthesize currentLayout;
+
 
 -(void)myInit
 {
@@ -32,7 +34,7 @@
 
 
     
-    self.backgroundColor = [UIColor redColor];
+    self.backgroundColor = [UIColor clearColor];
 }
 
 - (id)initWithFrame:(CGRect)frame

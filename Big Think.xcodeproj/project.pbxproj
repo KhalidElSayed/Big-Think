@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		FA038E8C14C4EF3F00FB1142 /* RKLargeCellViewiPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA038E8B14C4EF3F00FB1142 /* RKLargeCellViewiPhone.xib */; };
+		FA288DF414C8C69800F470BE /* View.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA288DF314C8C69800F470BE /* View.xib */; };
+		FA288DF814C8EB2300F470BE /* landscapeBackround.png in Resources */ = {isa = PBXBuildFile; fileRef = FA288DF614C8EB2300F470BE /* landscapeBackround.png */; };
+		FA288DFD14C8EDE300F470BE /* portraitBackround.png in Resources */ = {isa = PBXBuildFile; fileRef = FA288DFC14C8EDE300F470BE /* portraitBackround.png */; };
 		FA70B54B14C4B5FE00DD3D3B /* RKMediumCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA70B54A14C4B5FE00DD3D3B /* RKMediumCellView.xib */; };
 		FA70B54F14C4BE9700DD3D3B /* RKMediumCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA70B54E14C4BE9700DD3D3B /* RKMediumCellView.m */; };
 		FA70B55214C4C46D00DD3D3B /* RKLargeCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA70B55114C4C46D00DD3D3B /* RKLargeCellView.m */; };
@@ -36,6 +39,9 @@
 
 /* Begin PBXFileReference section */
 		FA038E8B14C4EF3F00FB1142 /* RKLargeCellViewiPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RKLargeCellViewiPhone.xib; sourceTree = "<group>"; };
+		FA288DF314C8C69800F470BE /* View.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = View.xib; sourceTree = "<group>"; };
+		FA288DF614C8EB2300F470BE /* landscapeBackround.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = landscapeBackround.png; sourceTree = "<group>"; };
+		FA288DFC14C8EDE300F470BE /* portraitBackround.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = portraitBackround.png; sourceTree = "<group>"; };
 		FA70B54A14C4B5FE00DD3D3B /* RKMediumCellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RKMediumCellView.xib; sourceTree = "<group>"; };
 		FA70B54D14C4BE9700DD3D3B /* RKMediumCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RKMediumCellView.h; sourceTree = "<group>"; };
 		FA70B54E14C4BE9700DD3D3B /* RKMediumCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RKMediumCellView.m; sourceTree = "<group>"; };
@@ -93,6 +99,7 @@
 				FA70B55114C4C46D00DD3D3B /* RKLargeCellView.m */,
 				FAFBEB4C14C3B5A300235178 /* RKLargeCellView.xib */,
 				FA038E8B14C4EF3F00FB1142 /* RKLargeCellViewiPhone.xib */,
+				FA288DF314C8C69800F470BE /* View.xib */,
 			);
 			name = Large;
 			sourceTree = "<group>";
@@ -153,6 +160,8 @@
 		FAFBEB0A14C37BD100235178 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				FA288DF614C8EB2300F470BE /* landscapeBackround.png */,
+				FA288DFC14C8EDE300F470BE /* portraitBackround.png */,
 				FA72ED7214C3DBB2001A7C25 /* 72Icon.png */,
 				FA72ED7414C3DBBC001A7C25 /* 57Icon.png */,
 				FAFBEB3614C37CB400235178 /* Categories */,
@@ -264,6 +273,9 @@
 				FA72ED7514C3DBBC001A7C25 /* 57Icon.png in Resources */,
 				FA70B54B14C4B5FE00DD3D3B /* RKMediumCellView.xib in Resources */,
 				FA038E8C14C4EF3F00FB1142 /* RKLargeCellViewiPhone.xib in Resources */,
+				FA288DF414C8C69800F470BE /* View.xib in Resources */,
+				FA288DF814C8EB2300F470BE /* landscapeBackround.png in Resources */,
+				FA288DFD14C8EDE300F470BE /* portraitBackround.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

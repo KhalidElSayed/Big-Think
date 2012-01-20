@@ -34,7 +34,7 @@ typedef NSUInteger RKGridViewLayoutType;
     id                      delegate;
     id                      datasource;
     NSMutableSet*           _resusableCells;
-    NSMutableSet*           _visableCells;
+    NSMutableDictionary*           _visableCells;
     
     
     int                     _numberOfCells;
