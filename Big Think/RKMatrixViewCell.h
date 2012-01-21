@@ -19,6 +19,7 @@
 }
 @property (strong, nonatomic)UIView* contentView;
 @property (nonatomic)RK2DLocation location;
+@property (nonatomic)RK2DLocation page;
 @property (nonatomic)RKGridViewLayoutType currentLayout;
 
 -(void)prepareForReuse;

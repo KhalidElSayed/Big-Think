@@ -18,7 +18,7 @@
 
 @implementation RKMatrixViewCell
 @synthesize contentView = _contentView;
-@synthesize location;
+@synthesize location, page;
 @synthesize currentLayout;
 
 
