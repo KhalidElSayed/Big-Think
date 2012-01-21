@@ -9,10 +9,10 @@
 #import "RKLargeCellView.h"
 
 @implementation RKLargeCellView
-@synthesize header;
-@synthesize title;
-@synthesize additionalInformationPane;
-@synthesize imageView;
+@synthesize header = _header;
+@synthesize title = _title;
+@synthesize additionalInformationPane = _additionalInfoView;
+@synthesize imageView = _imgView;
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -29,7 +29,7 @@
             
             if(UIDeviceOrientationIsLandscape([[UIDevice currentDevice]orientation]))
             {
-                [additionalInformationPane removeFromSuperview];
+                [self.additionalInformationPane removeFromSuperview];
             }
             
             
@@ -84,12 +84,12 @@
         case 1:
         case 2:
        //     NSLog(@"Orientation Changed to Portrait");
-            [self addSubview:additionalInformationPane];
+            [self addSubview:self.additionalInformationPane];
             break;
         case 3:
         case 4:
          //   NSLog(@"Orientation Changed to Landscape");
-            [additionalInformationPane removeFromSuperview];
+            [self.additionalInformationPane removeFromSuperview];
             
             break;
         default:

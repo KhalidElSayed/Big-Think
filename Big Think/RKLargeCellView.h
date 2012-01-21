@@ -10,10 +10,10 @@
 
 @interface RKLargeCellView : UIView
 {
-   // UIImageView*    _imgView;
-   // UILabel*        _header;
-   // UILabel*        _title;
-    //UIView*         _additionalInfoView;
+        UIImageView*    _imgView;
+    UILabel*        _header;
+    UILabel*        _title;
+    UIView*         _additionalInfoView;
 }
 @property (strong, nonatomic) IBOutlet UILabel *header;
 @property (strong, nonatomic) IBOutlet UILabel *title;

@@ -16,5 +16,6 @@
 
 @property (strong, nonatomic) IBOutlet RKMatrixView *matrixView;
 
+- (IBAction)sliderChanged:(UISlider *)sender;
 
 @end

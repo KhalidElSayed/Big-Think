@@ -18,7 +18,7 @@
 
 @implementation RKMatrixViewCell
 @synthesize contentView = _contentView;
-@synthesize location, page;
+@synthesize location;
 @synthesize currentLayout;
 
 
@@ -62,13 +62,10 @@
 {
     if (self.contentView) 
     {
-        [self.contentView removeFromSuperview];
+        [_contentView removeFromSuperview];
+        _contentView = nil;
     }
-    
-    CGRect frame = self.frame;
-    frame.size = contentView.bounds.size;
-    [super setFrame:frame];
-    
+   
     _contentView = contentView;        
     [self addSubview:_contentView];
 }
@@ -76,11 +73,9 @@
 
 -(void)setFrame:(CGRect)aFrame
 {
-    
     [super setFrame:aFrame];
     if(self.contentView)
         _contentView.frame = self.bounds;
-
 }
 
 
@@ -89,6 +84,7 @@
 {
     _location.row = -1;
     _location.column = -1;
+    _contentView = nil;
     [self removeFromSuperview];
     
 }

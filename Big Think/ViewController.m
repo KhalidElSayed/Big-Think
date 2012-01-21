@@ -59,11 +59,16 @@
     if(!cell)
     {
         cell = [[RKMatrixViewCell alloc]init];
-        cell.contentView = [[RKLargeCellView alloc]initWithFrame:CGRectZero];
+       
     }
-    
+    RKLargeCellView *view = [[RKLargeCellView alloc]initWithFrame:CGRectZero];
+    view.title.text = [NSString stringWithFormat:@"{%i,%i}",location.row, location.column];
+    cell.contentView = view;
+
     return cell;
 }
+
+
 
 -(int)numberOfCellsInMatrix:(RKMatrixView *)matrix
 {
@@ -76,4 +81,9 @@
         return YES;
 }
 
+- (IBAction)sliderChanged:(UISlider *)sender 
+{
+   
+    [self.matrixView zoom:sender.value];
+}
 @end

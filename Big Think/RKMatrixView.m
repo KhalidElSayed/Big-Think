@@ -10,6 +10,9 @@
 #import "RKMatrixViewCell.h"
 
 #define DEBUG_LAYOUT_SUBVIEWS NO
+#define DEBUG_CELL_LOAD NO
+#define DEBUG_DRAGGING_DIRECTION NO    
+
 static inline RK2DLocation RK2DLocationMake(NSInteger row, NSInteger column)
 {
     RK2DLocation location;
@@ -26,8 +29,8 @@ static inline NSString* NSStringFromRK2DLocation(RK2DLocation location)
 static inline RK2DLocation RK2DLocationFromString(NSString *string)
 {
     RK2DLocation location;
-    location.row = [[string substringWithRange:NSMakeRange(2, 1)] integerValue];
-    location.column = [[string substringWithRange:NSMakeRange(4, 1)] integerValue];   
+    location.row = [[string substringWithRange:NSMakeRange(1, 1)] integerValue];
+    location.column = [[string substringWithRange:NSMakeRange(3, 1)] integerValue];   
     return location;
 }
 
@@ -44,7 +47,7 @@ static inline bool RK2DLocationEqualToLocation(RK2DLocation loc1, RK2DLocation l
     CGFloat     _pagePadding;
     CGPoint     _contentOffsetMarker;   // Used to determine the direction a user wants to scroll
 }
--(void)initForDevice:(UIUserInterfaceIdiom)idiom;
+-(void)setup;
 -(void)reloadData;
 -(void)unloadUneccesaryCells:(int)level;
 -(void)loadPageForLocation:(RK2DLocation)location;
@@ -52,6 +55,7 @@ static inline bool RK2DLocationEqualToLocation(RK2DLocation loc1, RK2DLocation l
 -(RKMatrixViewCell *)cellForLocation:(RK2DLocation)location;
 -(NSArray *)cellLocationsForPageAtLocation:(RK2DLocation)location;
 -(CGRect)cellFrameForLocation:(RK2DLocation)location;
+-(void)loadCellForLocation:(RK2DLocation)location;
 @end
 
 
@@ -60,17 +64,17 @@ static inline bool RK2DLocationEqualToLocation(RK2DLocation loc1, RK2DLocation l
 @synthesize datasource = _datasource;
 @synthesize currentLocation = _currentLocation;
 @synthesize numberOfCells = _numberOfCells;
-@synthesize layout;
+@synthesize layout = _layout;
 
 
--(void)initForDevice:(UIUserInterfaceIdiom)idiom
+-(void)setup
 {
+    UIUserInterfaceIdiom idiom = [[UIDevice currentDevice] userInterfaceIdiom];
     if (idiom == UIUserInterfaceIdiomPad) 
     {
         _cellPaddingWidth = 50.0f;
         _cellPaddingHeight = 50.0f;
         _pagePadding = 50.0f;
-        
     }
     else 
     {
@@ -93,6 +97,10 @@ static inline bool RK2DLocationEqualToLocation(RK2DLocation loc1, RK2DLocation l
     _scrollView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"portraitBackround.png"]];
     _scrollView.autoresizingMask =  UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     
+    [_scrollView setMinimumZoomScale:0.5f];
+    [_scrollView setMaximumZoomScale:2.0f];
+    
+
     [self addSubview:_scrollView];
     
     _layout = RKGridViewLayoutLarge;
@@ -107,7 +115,7 @@ static inline bool RK2DLocationEqualToLocation(RK2DLocation loc1, RK2DLocation l
 {
     self = [super initWithCoder:aDecoder];
     if (self) {
-        [self initForDevice:[[UIDevice currentDevice] userInterfaceIdiom]];
+        [self setup];
     }
     return self;
 }
@@ -117,7 +125,7 @@ static inline bool RK2DLocationEqualToLocation(RK2DLocation loc1, RK2DLocation l
 {
     self = [super initWithFrame:frame];
     if (self) {
-        [self initForDevice:[[UIDevice currentDevice] userInterfaceIdiom]];
+        [self setup];
     }
     return self;
 }
@@ -180,8 +188,8 @@ static inline bool RK2DLocationEqualToLocation(RK2DLocation loc1, RK2DLocation l
     if(DEBUG_DRAGGING)
     {
         NSLog(@"_scrollView.contentOffset : %f, %f\n\n ", _scrollView.contentOffset.x, _scrollView.contentOffset.y);
-        _contentOffsetMarker = _scrollView.contentOffset;
     }
+            _contentOffsetMarker = _scrollView.contentOffset;
 }
 
 
@@ -230,14 +238,14 @@ static inline bool RK2DLocationEqualToLocation(RK2DLocation loc1, RK2DLocation l
             locationUserIsMovingTo.column += 1;
             direction = @"swiping left";
         }
-        else if(_contentOffsetMarker.x > _scrollView.contentOffset.y)   // swiping right
+        else if(_contentOffsetMarker.x > _scrollView.contentOffset.x)   // swiping right
         {
             locationUserIsMovingTo.column -= 1;
             direction = @"swiping right";
         }
     }
     
-#define DEBUG_DRAGGING_DIRECTION NO    
+
     if(DEBUG_DRAGGING_DIRECTION)
         NSLog(@"%@",direction);
     
@@ -254,7 +262,7 @@ static inline bool RK2DLocationEqualToLocation(RK2DLocation loc1, RK2DLocation l
 
 #pragma mark - Memory Management 
 
-#define DEBUG_UNLOADING_CELL NO
+
 -(void)unloadUneccesaryCells:(int)level
 {
     RK2DLocation currentLocation = [self currentLocation];
@@ -283,7 +291,6 @@ static inline bool RK2DLocationEqualToLocation(RK2DLocation loc1, RK2DLocation l
         [_resusableCells removeObject:cell]; 
         
     }
-    
     return cell;
 }
 
@@ -323,11 +330,21 @@ static inline bool RK2DLocationEqualToLocation(RK2DLocation loc1, RK2DLocation l
         self.numberOfCells = [_datasource numberOfCellsInMatrix:self];
     else
         NSLog(@"Delegate Does not respond to numberOfCellsInMatrix:");
+}
 
+
+-(void)setLayout:(RKGridViewLayoutType)layout
+{
+    if (_layout == layout)  // Don't waste time if the layout isn't being changed
+        return;
+    
+    
+    
+    
+    
 }
 
 #pragma mark - Data Management 
-
 
 
 -(void)loadPageForLocation:(RK2DLocation)location
@@ -339,69 +356,42 @@ static inline bool RK2DLocationEqualToLocation(RK2DLocation loc1, RK2DLocation l
     //  Determine which cells should be on this page 
     for (NSString *locationString in [self cellLocationsForPageAtLocation:location])
     {
-        RKMatrixViewCell* cell = [self cellForLocation:RK2DLocationFromString(locationString)];
-        [_scrollView addSubview:cell];
-        if (DEBUG_PAGE_LOAD) 
-        {
-            NSLog(@"Loaded Cell at Location : %@", NSStringFromRK2DLocation(cell.location));
-        }
+        [self loadCellForLocation:RK2DLocationFromString(locationString)];
     }
 }
 
 
 -(void)unloadPageForLocation:(RK2DLocation)location
 {
-    for (UIView *view in [_scrollView subviews]) 
-    {
-        if([view class] == [RKMatrixViewCell class])
-        {
-            RKMatrixViewCell *cell = (RKMatrixViewCell*)view;
-            if(RK2DLocationEqualToLocation(location,cell.page))
-            {
-                [cell prepareForReuse];
-                [_resusableCells addObject:cell];
-            }
-            
-        }
-        
-    }
+    NSArray *locationsForThisPage = [self cellLocationsForPageAtLocation:location];
     
+    for (NSString *locationString in locationsForThisPage)
+    {   
+        RKMatrixViewCell* cell = [self cellForLocation:RK2DLocationFromString(locationString)];
+        if(cell)
+        {
+        if(DEBUG_CELL_LOAD)
+            NSLog(@"UnLoaded Cell at Location : %@", NSStringFromRK2DLocation(cell.location));
+        
+            [cell prepareForReuse];
+            [_resusableCells addObject:cell];
+        }
+    }
 }
 
 
--(RKMatrixViewCell *)cellForLocation:(RK2DLocation)location
+-(void)loadCellForLocation:(RK2DLocation)location
 {
+    RKMatrixViewCell *cell = [self cellForLocation:location];
 
-    RKMatrixViewCell *cell = [_visableCells objectForKey:NSStringFromRK2DLocation(location)];
-    
-    CGRect cellFrame;
-    if(_layout == RKGridViewLayoutLarge)
-    {
-        CGRect bounds = _scrollView.bounds;
-        cellFrame = bounds;
-        cellFrame.origin.x = (bounds.size.width * location.column) + _pagePadding + _cellPaddingWidth;
-        cellFrame.origin.y = (bounds.size.height * location.row) + _pagePadding + _cellPaddingHeight;              
-        cellFrame.size.width    -= (2 * (_pagePadding + _cellPaddingWidth));
-        cellFrame.size.height   -= (2 * (_pagePadding + _cellPaddingWidth));
-        
-        
-    }
-    else if (_layout == RKGridViewLayoutMedium)
-    {
-        
-    }
-    else if (_layout == RKGridViewLayoutSmall)
-    {
-        
-    }
-    else
-        cellFrame =  CGRectZero;
-    
     if(!cell)
     {
+        CGRect cellFrame = [self cellFrameForLocation:location];
+        
         if([self.datasource respondsToSelector:@selector(matrixView:cellForLocation:)])
         {
             cell = [self.datasource matrixView:self cellForLocation:location];
+            cell.frame = cellFrame;
         }
         else if([self.datasource respondsToSelector:@selector(matrixView:viewForLocation:withFrame:)])
         {
@@ -414,12 +404,35 @@ static inline bool RK2DLocationEqualToLocation(RK2DLocation loc1, RK2DLocation l
             NSLog(@"Does not respond to selector!!");
         
         cell.location = location;
-        [_visableCells setObject:cell forKey:NSStringFromRK2DLocation(location)];
+        [_scrollView addSubview:cell];
         
-        
+      
+        if (DEBUG_CELL_LOAD) 
+        {
+            NSLog(@"Loaded Cell at Location : %@", NSStringFromRK2DLocation(cell.location));
+        }
+
     }
     
-    cell.frame = cellFrame;
+    
+}
+
+
+-(RKMatrixViewCell *)cellForLocation:(RK2DLocation)location
+{
+    __block RKMatrixViewCell *cell = nil;
+    
+    [[_scrollView subviews] enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop){
+    
+        if ([obj class] == [RKMatrixViewCell class]) 
+        {   
+            if (RK2DLocationEqualToLocation([(RKMatrixViewCell*)obj location], location))
+            {
+                cell  = (RKMatrixViewCell*)obj;
+                *stop = YES;
+            }
+        }
+    }];
     
     return cell;
 }
@@ -427,12 +440,26 @@ static inline bool RK2DLocationEqualToLocation(RK2DLocation loc1, RK2DLocation l
 -(CGRect)cellFrameForLocation:(RK2DLocation)location
 {
     CGRect cellFrame;
-    CGRect bounds = _scrollView.bounds;
-    cellFrame = bounds;
-    cellFrame.origin.x = (bounds.size.width * location.column) + _pagePadding + _cellPaddingWidth;
-    cellFrame.origin.y = (bounds.size.height * location.row) + _pagePadding + _cellPaddingHeight;              
-    cellFrame.size.width    -= (2 * (_pagePadding + _cellPaddingWidth));
-    cellFrame.size.height   -= (2 * (_pagePadding + _cellPaddingWidth));
+    if(_layout == RKGridViewLayoutLarge)
+    {
+        CGRect bounds = _scrollView.bounds;
+        cellFrame = bounds;
+        cellFrame.origin.x = (bounds.size.width * location.column) + _pagePadding + _cellPaddingWidth;
+        cellFrame.origin.y = (bounds.size.height * location.row) + _pagePadding + _cellPaddingHeight;              
+        cellFrame.size.width    -= (2 * (_pagePadding + _cellPaddingWidth));
+        cellFrame.size.height   -= (2 * (_pagePadding + _cellPaddingWidth));
+    }
+    else if (_layout == RKGridViewLayoutMedium)
+    {
+        
+    }
+    else if (_layout == RKGridViewLayoutSmall)
+    {
+        
+    }
+    else
+        cellFrame =  CGRectZero;
+
     return cellFrame;
 }
 
@@ -551,17 +578,10 @@ static inline bool RK2DLocationEqualToLocation(RK2DLocation loc1, RK2DLocation l
 }
 
 
--(void)setLayout:(RKGridViewLayoutType)newLayout
+-(void)zoom:(float)scale
 {
-    if (self.layout != newLayout)
-    {
-        // [self layoutCellsWithStrategy:(RKGridViewLayoutType)newLayout];
-        
-    }
-    
-    
+    [_scrollView setZoomScale:scale animated:YES];
 }
-
 
 
 -(void)willRotate:(NSNotification *)notification

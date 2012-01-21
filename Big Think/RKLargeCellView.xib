@@ -98,14 +98,14 @@
 									<object class="IBUILabel" id="583346317">
 										<reference key="NSNextResponder" ref="382635721"/>
 										<int key="NSvFlags">319</int>
-										<string key="NSFrame">{{69, 21}, {519, 382}}</string>
+										<string key="NSFrame">{{69, 276}, {519, 127}}</string>
 										<reference key="NSSuperview" ref="382635721"/>
 										<reference key="NSWindow"/>
 										<reference key="NSNextKeyView" ref="1047740740"/>
 										<string key="NSReuseIdentifierKey">_NS:345</string>
 										<bool key="IBUIOpaque">NO</bool>
 										<bool key="IBUIAutoresizesSubviews">NO</bool>
-										<int key="IBUIContentMode">7</int>
+										<int key="IBUIContentMode">6</int>
 										<bool key="IBUIUserInteractionEnabled">NO</bool>
 										<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 										<string key="IBUIText">Why Tolerance is Condescending</string>
@@ -226,22 +226,6 @@
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">header</string>
-						<reference key="source" ref="372490531"/>
-						<reference key="destination" ref="252770291"/>
-					</object>
-					<int key="connectionID">12</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchOutletConnection" key="connection">
-						<string key="label">title</string>
-						<reference key="source" ref="372490531"/>
-						<reference key="destination" ref="583346317"/>
-					</object>
-					<int key="connectionID">13</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchOutletConnection" key="connection">
-						<string key="label">header</string>
 						<reference key="source" ref="191373211"/>
 						<reference key="destination" ref="252770291"/>
 					</object>
@@ -269,7 +253,7 @@
 						<reference key="source" ref="191373211"/>
 						<reference key="destination" ref="583346317"/>
 					</object>
-					<int key="connectionID">17</int>
+					<int key="connectionID">22</int>
 				</object>
 			</array>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -366,7 +350,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">20</int>
+			<int key="maxID">22</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
