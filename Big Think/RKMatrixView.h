@@ -11,8 +11,8 @@
 @class RKMatrixViewCell;
 
 struct RK2DLocation{
-    NSInteger row;
-    NSInteger column;
+    NSUInteger row;
+    NSUInteger column;
 };
 typedef struct RK2DLocation RK2DLocation;
 
@@ -30,7 +30,7 @@ typedef NSUInteger RKGridViewLayoutType;
 @interface RKMatrixView : UIView <UIScrollViewDelegate>
 {
     UIScrollView*           _scrollView;
-    RK2DLocation            _currentLocation;
+    RK2DLocation            _currentPage;
     id                      delegate;
     id                      datasource;
     NSMutableSet*           _resusableCells;
@@ -47,13 +47,18 @@ typedef NSUInteger RKGridViewLayoutType;
 }
 @property (nonatomic,assign) id<RKMatrixViewDelegate> delegate;                       // default nil. weak reference
 @property (nonatomic,assign) id<RKMatrixViewDatasource> datasource;                       // default nil. weak reference
-@property (nonatomic) RK2DLocation currentLocation;
+@property (nonatomic) RK2DLocation currentPage;
 @property (nonatomic) RKGridViewLayoutType layout;
 @property (nonatomic) int numberOfCells;
+@property (nonatomic) NSUInteger maxColumns;
+@property (nonatomic) NSUInteger maxRows;
 
 -(void)demoo;
--(void)willRotate:(NSNotification *)notification;
+
 -(RKMatrixViewCell *)dequeResuableCell;
+-(void)unloadUneccesaryCells:(int)level;
+-(void)scrollToPageAtRow:(NSUInteger)row Column:(NSUInteger)column Animated:(BOOL)animate;
+
 @end
 
 
@@ -64,6 +69,8 @@ typedef NSUInteger RKGridViewLayoutType;
 
 @optional 
 -(UIView *) matrixView:(RKMatrixView *)matrixView viewForLocation:(RK2DLocation)location withFrame:(CGRect)frame;
+-(NSUInteger)maximumRowsInMatrixView:(RKMatrixView *)matrix;
+-(NSUInteger)maximumColumnsInMatrixView:(RKMatrixView *)matrix;
 @end
 
 

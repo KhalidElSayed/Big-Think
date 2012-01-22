@@ -90,5 +90,9 @@
     
 }
 
+-(NSString*)description
+{
+    return [[super description] stringByAppendingFormat:@"{%i,%i}",location.row, location.column];
+}
 
 @end

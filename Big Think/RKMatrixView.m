@@ -14,7 +14,7 @@
 #define DEBUG_DRAGGING_DIRECTION NO
 #define DEBUG_CELL_FRAME NO
 
-static inline RK2DLocation RK2DLocationMake(NSInteger row, NSInteger column)
+static inline RK2DLocation RK2DLocationMake(NSUInteger row, NSUInteger column)
 {
     RK2DLocation location;
     location.row = row;
@@ -43,31 +43,34 @@ static inline bool RK2DLocationEqualToLocation(RK2DLocation loc1, RK2DLocation l
 
 @interface RKMatrixView () 
 {
-    CGFloat     _cellMarginWidth;
-    CGFloat     _cellMarginHeight;
-    CGFloat     _pagePadding;
-    CGPoint     _contentOffsetMarker;   // Used to determine the direction a user wants to scroll
-    UIView*     _zoomingView;
+    CGFloat         _cellMarginWidth;
+    CGFloat         _cellMarginHeight;
+    CGFloat         _pagePadding;
+    CGPoint         _contentOffsetMarker;   // Used to determine the direction a user wants to scroll
+    UIView*         _zoomingView;
+    RK2DLocation    _visablePageBeforeRotation;
 }
 -(void)setup;
 -(void)reloadData;
--(void)unloadUneccesaryCells:(int)level;
--(void)loadPageForLocation:(RK2DLocation)location;
--(void)unloadPageForLocation:(RK2DLocation)location;
+
+-(void)loadPageForLocation:(RK2DLocation)page;
+-(void)unloadPageForLocation:(RK2DLocation)page;
 -(RKMatrixViewCell *)cellForLocation:(RK2DLocation)location;
--(NSArray *)cellLocationsForPageAtLocation:(RK2DLocation)location;
+-(NSArray *)cellLocationsForPageAtLocation:(RK2DLocation)page;
 -(CGRect)cellFrameForLocation:(RK2DLocation)location;
 -(RKMatrixViewCell *)loadCellForLocation:(RK2DLocation)location;
+-(void)willRotate:(NSNotification *)notification;
+-(NSSet*)cellsForPage:(RK2DLocation)page;
 @end
 
 
 @implementation RKMatrixView
 @synthesize delegate = _delegate;
 @synthesize datasource = _datasource;
-@synthesize currentLocation = _currentLocation;
+@synthesize currentPage = _currentPage;
 @synthesize numberOfCells = _numberOfCells;
 @synthesize layout = _layout;
-
+@synthesize maxRows, maxColumns;
 
 -(void)setup
 {
@@ -84,6 +87,9 @@ static inline bool RK2DLocationEqualToLocation(RK2DLocation loc1, RK2DLocation l
         _cellMarginHeight = 15.0f;
         _pagePadding = 10.0f;        
     }
+
+    
+    
     
     
     CGRect frame = self.bounds;
@@ -141,14 +147,18 @@ static inline bool RK2DLocationEqualToLocation(RK2DLocation loc1, RK2DLocation l
 
 -(void)layoutSubviews
 {
+    [super layoutSubviews];
     CGRect bounds = _scrollView.bounds;
     _scrollView.contentSize = CGSizeMake(bounds.size.width * sqrtf(_numberOfCells), bounds.size.height * sqrtf(_numberOfCells));
+    [self scrollToPageAtRow:_visablePageBeforeRotation.row Column:_visablePageBeforeRotation.column Animated:YES];
     
     if(DEBUG_LAYOUT_SUBVIEWS)
     {
+            NSLog(@"Layout SubViews Called");
         UIDeviceOrientation orientation = [[UIDevice currentDevice]orientation];
         if(UIDeviceOrientationIsLandscape(orientation))
         {
+
             CGRect correctSelfFrame = CGRectMake(0, 44, 1024, 704);
             if(!CGRectEqualToRect(correctSelfFrame, self.frame))
                 NSLog(@"!ERROR!self.frame : %@", NSStringFromCGRect(self.frame));
@@ -210,7 +220,7 @@ static inline bool RK2DLocationEqualToLocation(RK2DLocation loc1, RK2DLocation l
 
     if(DEBUG_DRAGGING)
     {
-        RK2DLocation location = [self currentLocation];
+        RK2DLocation location = [self currentPage];
         NSLog(@"CurrentLocation row :%i, column :%i", location.row, location.column);
         NSLog(@"_scrollView.contentOffset : %f, %f\n\n ", _scrollView.contentOffset.x, _scrollView.contentOffset.y);
         NSLog(@"_scrollView.bounds : %@", NSStringFromCGRect(_scrollView.bounds) );
@@ -218,7 +228,7 @@ static inline bool RK2DLocationEqualToLocation(RK2DLocation loc1, RK2DLocation l
     
     
     NSString *direction;
-    RK2DLocation locationUserIsMovingTo = self.currentLocation;
+    RK2DLocation locationUserIsMovingTo = self.currentPage;
     
     if (_contentOffsetMarker.x == _scrollView.contentOffset.x)   // scrolling Vertically
     {
@@ -258,7 +268,7 @@ static inline bool RK2DLocationEqualToLocation(RK2DLocation loc1, RK2DLocation l
 
 -(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
-    [self unloadUneccesaryCells:2];
+    [self unloadUneccesaryCells:1];
 }
 
 
@@ -267,23 +277,70 @@ static inline bool RK2DLocationEqualToLocation(RK2DLocation loc1, RK2DLocation l
 
 -(void)unloadUneccesaryCells:(int)level
 {
-    RK2DLocation currentLocation = [self currentLocation];
-    RK2DLocation left = RK2DLocationMake(currentLocation.row, currentLocation.column - level);
-    RK2DLocation top = RK2DLocationMake(currentLocation.row - level, currentLocation.column);
-    RK2DLocation bottom = RK2DLocationMake(currentLocation.row + level, currentLocation.column);
-    RK2DLocation right = RK2DLocationMake(currentLocation.row , currentLocation.column + level );
-    
-    if(left.column >=0)
-    [self unloadPageForLocation:left];
-    
-
-    [self unloadPageForLocation:bottom];
-    [self unloadPageForLocation:right];
-    
-    if(top.row >= 0)
-    [self unloadPageForLocation:top];
+    void(^cleanupBlock)(int level) = ^(int level){    
+        
+        NSMutableSet *cellsToKeep = [[NSMutableSet alloc]init];
+        RK2DLocation currentLocation = [self currentPage];
+        
+        [cellsToKeep unionSet:[self cellsForPage:currentLocation]];
+        // Determine which cells are within the level depth
+        for (int i = level; i > 0; i--) 
+        {
+            if((int)currentLocation.column - level >=0) // Since Dealing with NSUInteger check if past 0
+            {
+                RK2DLocation left = RK2DLocationMake(currentLocation.row, currentLocation.column - level);
+                [cellsToKeep unionSet:[self cellsForPage:left]];
+            }
+            if((int)currentLocation.row - level >=0)
+            {
+                RK2DLocation top = RK2DLocationMake(currentLocation.row - level, currentLocation.column);
+                [cellsToKeep unionSet:[self cellsForPage:top]];
+            }
+            if((int)currentLocation.column + level <= self.maxColumns)  // Check if trying to save cells outside of matrix bounds
+            {
+                RK2DLocation bottom = RK2DLocationMake(currentLocation.row + level, currentLocation.column);
+                [cellsToKeep unionSet:[self cellsForPage:bottom]];
+            }
+            if((int)currentLocation.column + level <= self.maxRows)
+            {
+                RK2DLocation right = RK2DLocationMake(currentLocation.row , currentLocation.column + level );
+                [cellsToKeep unionSet:[self cellsForPage:right]];
+            }
+        }
+        //  Get a set of all the cells which are currently a subview of _scrollView
+        NSMutableSet* visableCells = [[NSMutableSet alloc]init ];
+        for (UIView* view in [_scrollView subviews] ) 
+        {
+            if([view class] == [RKMatrixViewCell class])
+                [visableCells addObject:(RKMatrixViewCell *)view];
+        }
+        // Subtract the cells we want to keep and unload the remaining cells
+        [visableCells minusSet:cellsToKeep];
+        for (RKMatrixViewCell *cellToUnload in visableCells)
+        {
+            if(DEBUG_CELL_LOAD)
+                NSLog(@"UnLoaded Cell at Location : %@", NSStringFromRK2DLocation(cellToUnload.location));
+            [cellToUnload prepareForReuse];
+            [_resusableCells addObject:cellToUnload];
+        }
+    };
+    cleanupBlock(level);    
 }
 
+
+-(NSSet*)cellsForPage:(RK2DLocation)page
+{
+    NSMutableSet *setOfCells = [[NSMutableSet alloc]initWithCapacity:6];
+    for (NSString *locationString in [self cellLocationsForPageAtLocation:page])
+    {
+        RKMatrixViewCell* cell = [self cellForLocation:RK2DLocationFromString(locationString)];
+        if(cell)
+        {
+            [setOfCells addObject:cell];
+        }
+    }
+    return ([setOfCells count] == 0) ? nil : [setOfCells copy];
+}
 
 -(RKMatrixViewCell *)dequeResuableCell
 {
@@ -301,15 +358,15 @@ static inline bool RK2DLocationEqualToLocation(RK2DLocation loc1, RK2DLocation l
 
 #pragma mark - Setters/Getters
 
--(RK2DLocation)currentLocation
+-(RK2DLocation)currentPage
 {
     CGFloat pageWidth = _scrollView.bounds.size.width;
-    _currentLocation.column = floor((_scrollView.contentOffset.x - pageWidth / 2) / pageWidth) + 1;
+    _currentPage.column = floor((_scrollView.contentOffset.x - pageWidth / 2) / pageWidth) + 1;
     
     CGFloat pageHeight = _scrollView.bounds.size.height;
-    _currentLocation.row = floor((_scrollView.contentOffset.y - pageHeight / 2) / pageHeight) + 1;
+    _currentPage.row = floor((_scrollView.contentOffset.y - pageHeight / 2) / pageHeight) + 1;
     
-    return _currentLocation;
+    return _currentPage;
 }
 
 -(void)setDatasource:(id<RKMatrixViewDatasource>)aDatasource
@@ -323,6 +380,23 @@ static inline bool RK2DLocationEqualToLocation(RK2DLocation loc1, RK2DLocation l
     _numberOfCells = newNumberOfCells;
     CGRect bounds = _scrollView.bounds;
     _scrollView.contentSize = CGSizeMake(bounds.size.width * sqrtf(_numberOfCells), bounds.size.height * sqrtf(_numberOfCells));
+}
+
+-(NSUInteger)maxRows
+{
+    if([self.datasource respondsToSelector:@selector(maximumRowsInMatrixView:)])       
+       return [_datasource maximumRowsInMatrixView:self]; 
+    else
+        return NSUIntegerMax;
+}
+
+
+-(NSUInteger)maxColumns
+{
+    if([self.datasource respondsToSelector:@selector(maximumColumnsInMatrixView:)])       
+        return [_datasource maximumColumnsInMatrixView:self]; 
+    else
+        return NSUIntegerMax;
 }
 
 
@@ -342,15 +416,16 @@ static inline bool RK2DLocationEqualToLocation(RK2DLocation loc1, RK2DLocation l
        
     if(_layout == RKGridViewLayoutLarge)
     {
+        RK2DLocation currentPage = [self currentPage];
+        RKMatrixViewCell *A = [self cellForLocation:currentPage];
+        RKMatrixViewCell *B = [self loadCellForLocation:RK2DLocationMake(currentPage.column + 1,currentPage.row)];
+        RKMatrixViewCell *C = [self loadCellForLocation:RK2DLocationMake(currentPage.column,currentPage.row + 1)];            
+        RKMatrixViewCell *D = [self loadCellForLocation:RK2DLocationMake(currentPage.column + 1,currentPage.row + 1)];            
+        
+        
         if(layout == RKGridViewLayoutMedium)
         {
-            RK2DLocation currentPage = [self currentLocation];
-            RKMatrixViewCell *A = [self cellForLocation:currentPage];
-            RKMatrixViewCell *B = [self loadCellForLocation:RK2DLocationMake(currentPage.column + 1,currentPage.row)];
-            RKMatrixViewCell *C = [self loadCellForLocation:RK2DLocationMake(currentPage.column,currentPage.row + 1)];            
-            RKMatrixViewCell *D = [self loadCellForLocation:RK2DLocationMake(currentPage.column + 1,currentPage.row + 1)];            
-            
-            _layout = layout;
+                        _layout = layout;
             
             [UIView animateWithDuration:1.0f delay:0.0f options:UIViewAnimationCurveEaseInOut animations:^{
                 A.frame = [self cellFrameForLocation:A.location];
@@ -372,14 +447,14 @@ static inline bool RK2DLocationEqualToLocation(RK2DLocation loc1, RK2DLocation l
 #pragma mark - Data Management 
 
 
--(void)loadPageForLocation:(RK2DLocation)location
+-(void)loadPageForLocation:(RK2DLocation)page
 {
 #define DEBUG_PAGE_LOAD NO
     if(DEBUG_PAGE_LOAD)
-        NSLog(@"Loading Page : %@", NSStringFromRK2DLocation(location));
+        NSLog(@"Loading Page : %@", NSStringFromRK2DLocation(page));
     
     //  Determine which cells should be on this page 
-    for (NSString *locationString in [self cellLocationsForPageAtLocation:location])
+    for (NSString *locationString in [self cellLocationsForPageAtLocation:page])
     {
         RKMatrixViewCell* cell = [self cellForLocation:RK2DLocationFromString(locationString)];
         if(cell)
@@ -391,9 +466,9 @@ static inline bool RK2DLocationEqualToLocation(RK2DLocation loc1, RK2DLocation l
 }
 
 
--(void)unloadPageForLocation:(RK2DLocation)location
+-(void)unloadPageForLocation:(RK2DLocation)page
 {
-    NSArray *locationsForThisPage = [self cellLocationsForPageAtLocation:location];
+    NSArray *locationsForThisPage = [self cellLocationsForPageAtLocation:page];
     
     for (NSString *locationString in locationsForThisPage)
     {   
@@ -535,13 +610,13 @@ if(DEBUG_CELL_FRAME)
 }
 
 
--(NSArray *)cellLocationsForPageAtLocation:(RK2DLocation)location
+-(NSArray *)cellLocationsForPageAtLocation:(RK2DLocation)page
 {
     NSMutableArray *cellLocations = [[NSMutableArray alloc]initWithCapacity:6];
     
     if(_layout == RKGridViewLayoutLarge)    // 1 Large Cell
     {
-        [cellLocations addObject:NSStringFromRK2DLocation(location)];    
+        [cellLocations addObject:NSStringFromRK2DLocation(page)];    
     }
     else if (_layout == RKGridViewLayoutMedium) // 4 Medium Cells
     {
@@ -550,10 +625,10 @@ if(DEBUG_CELL_FRAME)
         //---------------
         //   C  |   D   |
         //---------------
-        RK2DLocation A = RK2DLocationMake(location.row * 2, location.column * 2); 
-        RK2DLocation B = RK2DLocationMake(location.row * 2, (location.column * 2) +1);
-        RK2DLocation C = RK2DLocationMake((location.row * 2) + 1, location.column * 2);
-        RK2DLocation D = RK2DLocationMake((location.row * 2) + 1, (location.column * 2) +1);
+        RK2DLocation A = RK2DLocationMake(page.row * 2, page.column * 2); 
+        RK2DLocation B = RK2DLocationMake(page.row * 2, (page.column * 2) +1);
+        RK2DLocation C = RK2DLocationMake((page.row * 2) + 1, page.column * 2);
+        RK2DLocation D = RK2DLocationMake((page.row * 2) + 1, (page.column * 2) +1);
         
         [cellLocations addObject:NSStringFromRK2DLocation(A)];
         [cellLocations addObject:NSStringFromRK2DLocation(B)];
@@ -578,7 +653,7 @@ if(DEBUG_CELL_FRAME)
         RK2DLocation F;
         if(UIDeviceOrientationIsPortrait(orientation))
         {
-            A = RK2DLocationMake(location.row * 3, location.column * 2); 
+            A = RK2DLocationMake(page.row * 3, page.column * 2); 
             B = RK2DLocationMake(A.row, A.column + 1);
             C = RK2DLocationMake(A.row, A.column + 2);
             D = RK2DLocationMake(A.row + 1, A.column);
@@ -588,7 +663,7 @@ if(DEBUG_CELL_FRAME)
         }
         else if(UIDeviceOrientationIsLandscape(orientation))
         {
-            A = RK2DLocationMake(location.row * 2, location.column * 3); 
+            A = RK2DLocationMake(page.row * 2, page.column * 3); 
             B = RK2DLocationMake(A.row, A.column + 1);
             C = RK2DLocationMake(A.row, A.column + 2);
             D = RK2DLocationMake(A.row + 1, A.column);
@@ -606,6 +681,24 @@ if(DEBUG_CELL_FRAME)
     return [NSArray arrayWithArray:cellLocations];
 }
 
+
+-(void)scrollToPageAtRow:(NSUInteger)row Column:(NSUInteger)column Animated:(BOOL)animate
+{   
+    CGRect pageFrame;
+    CGRect bounds = _scrollView.bounds;
+    pageFrame = bounds;
+    pageFrame.origin.x = (bounds.size.width * column) ;
+    pageFrame.origin.y = (bounds.size.height * row);;             
+    pageFrame.size.width    -= (2 * _pagePadding);
+    pageFrame.size.height   -= (2 * _pagePadding);      
+    RK2DLocation oldPage = self.currentPage;
+  //[_scrollView scrollRectToVisible:pageFrame animated:animate];
+    [_scrollView setContentOffset:pageFrame.origin];
+
+    
+    
+    
+}
 
 //---------------------Havent used anything below just yet-----------------------------
 
@@ -654,7 +747,7 @@ if(DEBUG_CELL_FRAME)
 -(void)willRotate:(NSNotification *)notification
 {
     NSNumber *num = [notification.userInfo objectForKey:@"UIApplicationStatusBarOrientationUserInfoKey"];
-    
+    _visablePageBeforeRotation = [self currentPage];
     switch ([num intValue]) 
     {
         case 1:
