@@ -35,6 +35,7 @@
 
     
     self.backgroundColor = [UIColor clearColor];
+    [self setClipsToBounds:YES];
 }
 
 - (id)initWithFrame:(CGRect)frame

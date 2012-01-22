@@ -61,11 +61,15 @@
         cell = [[RKMatrixViewCell alloc]init];
        
     }
-    //RKLargeCellView *view = [[RKLargeCellView alloc]initWithFrame:CGRectZero];
-    UIView *view = [[UIView alloc]initWithFrame:CGRectZero];
-    view.backgroundColor = [UIColor randomColor];
+    RKLargeCellView *view = [[RKLargeCellView alloc]initWithFrame:CGRectZero];
+    //UIView *view = [[UIView alloc]initWithFrame:CGRectZero];
+    //UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(50, 50, 100, 100)];
+    //label.text = [NSString stringWithFormat:@"{%i,%i}",location.row, location.column];
+    //[view addSubview:label];
+    //label.backgroundColor = [UIColor clearColor];
+    //view.backgroundColor = [UIColor randomColor];
 
-   // view.title.text = [NSString stringWithFormat:@"{%i,%i}",location.row, location.column];
+   view.title.text = [NSString stringWithFormat:@"{%i,%i}",location.row, location.column];
     cell.contentView = view;
 
     return cell;
