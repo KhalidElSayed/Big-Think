@@ -11,7 +11,8 @@
 
 #define DEBUG_LAYOUT_SUBVIEWS NO
 #define DEBUG_CELL_LOAD NO
-#define DEBUG_DRAGGING_DIRECTION NO    
+#define DEBUG_DRAGGING_DIRECTION NO
+#define DEBUG_CELL_FRAME YES
 
 static inline RK2DLocation RK2DLocationMake(NSInteger row, NSInteger column)
 {
@@ -42,10 +43,11 @@ static inline bool RK2DLocationEqualToLocation(RK2DLocation loc1, RK2DLocation l
 
 @interface RKMatrixView () 
 {
-    CGFloat     _cellPaddingWidth;
-    CGFloat     _cellPaddingHeight;
+    CGFloat     _cellMarginWidth;
+    CGFloat     _cellMarginHeight;
     CGFloat     _pagePadding;
     CGPoint     _contentOffsetMarker;   // Used to determine the direction a user wants to scroll
+    UIView*     _zoomingView;
 }
 -(void)setup;
 -(void)reloadData;
@@ -72,14 +74,14 @@ static inline bool RK2DLocationEqualToLocation(RK2DLocation loc1, RK2DLocation l
     UIUserInterfaceIdiom idiom = [[UIDevice currentDevice] userInterfaceIdiom];
     if (idiom == UIUserInterfaceIdiomPad) 
     {
-        _cellPaddingWidth = 50.0f;
-        _cellPaddingHeight = 50.0f;
+        _cellMarginWidth = 50.0f;
+        _cellMarginHeight = 50.0f;
         _pagePadding = 50.0f;
     }
     else 
     {
-        _cellPaddingWidth = 15.0f;
-        _cellPaddingHeight = 15.0f;
+        _cellMarginWidth = 15.0f;
+        _cellMarginHeight = 15.0f;
         _pagePadding = 10.0f;        
     }
     
@@ -97,13 +99,12 @@ static inline bool RK2DLocationEqualToLocation(RK2DLocation loc1, RK2DLocation l
     _scrollView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"portraitBackround.png"]];
     _scrollView.autoresizingMask =  UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     
-    [_scrollView setMinimumZoomScale:0.5f];
-    [_scrollView setMaximumZoomScale:2.0f];
-    
-
     [self addSubview:_scrollView];
     
-    _layout = RKGridViewLayoutLarge;
+    _zoomingView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, frame.size.width, frame.size.height)];
+    [_scrollView addSubview:_zoomingView];
+    
+    _layout = RKGridViewLayoutMedium;
     _resusableCells = [[NSMutableSet alloc]init];
     _visableCells = [[NSMutableDictionary alloc]init];
     
@@ -341,7 +342,6 @@ static inline bool RK2DLocationEqualToLocation(RK2DLocation loc1, RK2DLocation l
     
     
     
-    
 }
 
 #pragma mark - Data Management 
@@ -404,7 +404,7 @@ static inline bool RK2DLocationEqualToLocation(RK2DLocation loc1, RK2DLocation l
             NSLog(@"Does not respond to selector!!");
         
         cell.location = location;
-        [_scrollView addSubview:cell];
+        [_zoomingView addSubview:cell];
         
       
         if (DEBUG_CELL_LOAD) 
@@ -422,7 +422,7 @@ static inline bool RK2DLocationEqualToLocation(RK2DLocation loc1, RK2DLocation l
 {
     __block RKMatrixViewCell *cell = nil;
     
-    [[_scrollView subviews] enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop){
+    [[_zoomingView subviews] enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop){
     
         if ([obj class] == [RKMatrixViewCell class]) 
         {   
@@ -444,13 +444,48 @@ static inline bool RK2DLocationEqualToLocation(RK2DLocation loc1, RK2DLocation l
     {
         CGRect bounds = _scrollView.bounds;
         cellFrame = bounds;
-        cellFrame.origin.x = (bounds.size.width * location.column) + _pagePadding + _cellPaddingWidth;
-        cellFrame.origin.y = (bounds.size.height * location.row) + _pagePadding + _cellPaddingHeight;              
-        cellFrame.size.width    -= (2 * (_pagePadding + _cellPaddingWidth));
-        cellFrame.size.height   -= (2 * (_pagePadding + _cellPaddingWidth));
+        cellFrame.origin.x = (bounds.size.width * location.column) + _pagePadding + _cellMarginWidth;
+        cellFrame.origin.y = (bounds.size.height * location.row) + _pagePadding + _cellMarginHeight;              
+        cellFrame.size.width    -= (2 * (_pagePadding + _cellMarginWidth));
+        cellFrame.size.height   -= (2 * (_pagePadding + _cellMarginWidth));
     }
     else if (_layout == RKGridViewLayoutMedium)
     {
+        CGFloat cellPadding = 5.0f;
+        CGRect bounds = _scrollView.bounds;
+        cellFrame = bounds;
+        cellFrame.size.width    -= (2 * (_pagePadding + _cellMarginWidth));
+        cellFrame.size.width     = (cellFrame.size.width / 2) - cellPadding;
+        cellFrame.size.height   -= (2 * (_pagePadding + _cellMarginWidth));
+        cellFrame.size.height    = (cellFrame.size.height / 2) - cellPadding;
+        
+        
+        cellFrame.origin.x = (cellFrame.size.width  * location.column) + _pagePadding + _cellMarginWidth ;
+        cellFrame.origin.y = (cellFrame.size.height * location.row) + _pagePadding + _cellMarginHeight;              
+        
+        if(0 == location.row % 2) // row is even
+        {
+            cellFrame.origin.y += ((_pagePadding + _cellMarginHeight) * location.row);            
+
+        }
+        else
+        {
+            cellFrame.origin.y += ((_pagePadding + _cellMarginHeight) * (location.row - 1));            
+            cellFrame.origin.y += (cellPadding * 2);            
+        }
+        
+        
+        if(0 == location.column % 2) // column is even
+        {
+            cellFrame.origin.x += ((_pagePadding + _cellMarginWidth) * location.column);    
+        }
+        else
+        {
+            cellFrame.origin.x += ((_pagePadding + _cellMarginWidth) * (location.column - 1));    
+            cellFrame.origin.x += (cellPadding * 2);
+        }
+
+        
         
     }
     else if (_layout == RKGridViewLayoutSmall)
@@ -459,7 +494,8 @@ static inline bool RK2DLocationEqualToLocation(RK2DLocation loc1, RK2DLocation l
     }
     else
         cellFrame =  CGRectZero;
-
+if(DEBUG_CELL_FRAME)
+    NSLog(@"Location : %@ CellFrame : %@",NSStringFromRK2DLocation(location), NSStringFromCGRect(cellFrame) );
     return cellFrame;
 }
 
@@ -578,10 +614,6 @@ static inline bool RK2DLocationEqualToLocation(RK2DLocation loc1, RK2DLocation l
 }
 
 
--(void)zoom:(float)scale
-{
-    [_scrollView setZoomScale:scale animated:YES];
-}
 
 
 -(void)willRotate:(NSNotification *)notification

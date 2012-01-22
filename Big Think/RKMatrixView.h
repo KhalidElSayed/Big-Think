@@ -54,7 +54,6 @@ typedef NSUInteger RKGridViewLayoutType;
 -(void)demoo;
 -(void)willRotate:(NSNotification *)notification;
 -(RKMatrixViewCell *)dequeResuableCell;
--(void)zoom:(float)scale;
 @end
 
 

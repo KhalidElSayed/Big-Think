@@ -61,8 +61,11 @@
         cell = [[RKMatrixViewCell alloc]init];
        
     }
-    RKLargeCellView *view = [[RKLargeCellView alloc]initWithFrame:CGRectZero];
-    view.title.text = [NSString stringWithFormat:@"{%i,%i}",location.row, location.column];
+    //RKLargeCellView *view = [[RKLargeCellView alloc]initWithFrame:CGRectZero];
+    UIView *view = [[UIView alloc]initWithFrame:CGRectZero];
+    view.backgroundColor = [UIColor randomColor];
+
+   // view.title.text = [NSString stringWithFormat:@"{%i,%i}",location.row, location.column];
     cell.contentView = view;
 
     return cell;
@@ -84,6 +87,12 @@
 - (IBAction)sliderChanged:(UISlider *)sender 
 {
    
-    [self.matrixView zoom:sender.value];
+   
 }
+
+- (IBAction)layoutSegmentChanged:(UISegmentedControl *)sender 
+{
+    [self.matrixView setLayout:sender.selectedSegmentIndex];
+}
+
 @end
