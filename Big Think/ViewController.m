@@ -69,7 +69,7 @@
     //label.backgroundColor = [UIColor clearColor];
     //view.backgroundColor = [UIColor randomColor];
 
-   view.title.text = [NSString stringWithFormat:@"{%i,%i}",location.row, location.column];
+   view.header.text = [NSString stringWithFormat:@"{%i,%i}",location.row, location.column];
     cell.contentView = view;
 
     return cell;

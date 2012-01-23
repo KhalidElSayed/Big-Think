@@ -407,56 +407,74 @@ static inline bool RK2DLocationEqualToLocation(RK2DLocation loc1, RK2DLocation l
 {
     if (_layout == layout)  // Don't waste time if the layout isn't being changed
         return;
-       
-    if(_layout == RKGridViewLayoutMedium)
+
+    // Get top left most cell, expand,
+    RK2DLocation currentPage = [self currentPage];
+    
+    int focus;
+    if (_layout == RKGridViewLayoutSmall) {
+        focus = 5;
+    }
+    else 
+        focus = 0;
+    
+    NSString* cellToFocusOnLocationString = [[self cellLocationsForPageAtLocation:currentPage withLayout:_layout] objectAtIndex:focus];
+    
+    
+    RK2DLocation cellToFocusOnLocation = RK2DLocationFromString(cellToFocusOnLocationString);
+    RK2DLocation newPage = [self pageForCellLocation:cellToFocusOnLocation withLayout:layout];
+    
+    //RK2DLocation currentCell = [self currentPage];
+    //RK2DLocation newPage = [self pageForCellLocation:currentCell withLayout:layout];
+    NSArray *neededCellLocations = [self cellLocationsForPageAtLocation:newPage withLayout:layout];
+    NSMutableSet *neededCells = [[NSMutableSet alloc]initWithCapacity:14];
+    [neededCells unionSet:[self cellsForPage:currentPage]];
+    
+    for (NSString *location in neededCellLocations) 
     {
-        if(layout == RKGridViewLayoutLarge)
-        {
-            // Get top left most cell, expand,
-            
-        }
-        else if(layout == RKGridViewLayoutSmall)
-        {
-            // find out cells to add to the left right , epand
-        }
-        
+        RKMatrixViewCell *cell = [self loadCellForLocation:RK2DLocationFromString(location)];
+        if (![cell superview]) 
+            [_scrollView addSubview:cell];
+        [neededCells addObject:cell];
     }
     
-    if(_layout == RKGridViewLayoutLarge)
+    //  Get a set of all the cells which are currently a subview of _scrollView
+    NSMutableSet* visableCells = [[NSMutableSet alloc]init ];
+    for (UIView* view in [_scrollView subviews] ) 
     {
-        RK2DLocation currentCell = [self currentPage];
-        RK2DLocation newPage = [self pageForCellLocation:currentCell withLayout:layout];
-        NSArray *neededCellLocations = [self cellLocationsForPageAtLocation:newPage withLayout:layout];
-        NSMutableSet *neededCells = [[NSMutableSet alloc]initWithCapacity:6];
-        
-        for (NSString *location in neededCellLocations) 
-        {
-            RKMatrixViewCell *cell = [self loadCellForLocation:RK2DLocationFromString(location)];
-            if (![cell superview]) 
-                [_scrollView addSubview:cell];
-            [neededCells addObject:cell];
-        }
-        
-        [UIView animateWithDuration:1.0f delay:0.0f options:UIViewAnimationCurveEaseInOut animations:^{
-            for (RKMatrixViewCell *cell in neededCells) 
-            {
-                cell.frame = [self cellFrameForLocation:cell.location withLayout:layout];
-               [self scrollToPageAtRow:newPage.row Column:newPage.column Animated:NO];
-            }
-            
-        } completion:^(BOOL finished){
-            if (finished) {
-            _layout = layout;
-                [self unloadUneccesaryCells:3];
-
-            }
-        }];
-
+        if([view class] == [RKMatrixViewCell class])
+            [visableCells addObject:(RKMatrixViewCell *)view];
     }
+    //[visableCells minusSet:neededCells];
     
+    //for (RKMatrixViewCell *cell in visableCells) {
+      //  cell.alpha = 0;
+    //}
     
-
+    [UIView animateWithDuration:1.0f delay:0.0f options:UIViewAnimationCurveEaseInOut | UIViewAnimationOptionBeginFromCurrentState animations:^{
+        for (RKMatrixViewCell *cell in visableCells) {
+            cell.frame = [self cellFrameForLocation:cell.location withLayout:layout];
+        }
+        [self scrollToPageAtRow:newPage.row Column:newPage.column Animated:NO];
+    }
+     
+                     completion:^(BOOL finished){
+                         if (finished) {
+                             _layout = layout;
+        
+                             [self unloadUneccesaryCells:3];
+                            // for (RKMatrixViewCell *cell in visableCells) {
+                              //   cell.alpha = 1;
+                             //}
+                             
+                         }
+                     }];
+    
 }
+
+
+
+
 
 #pragma mark - Data Management 
 
