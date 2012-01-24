@@ -8,24 +8,38 @@
 
 #import "AppDelegate.h"
 
-#import "ViewController.h"
-
+#import "ExploreViewController.h"
+#import "SpeakerViewController.h"
+#import "JMTabViewController.h"
 @implementation AppDelegate
 
 @synthesize window = _window;
-@synthesize viewController = _viewController;
+@synthesize tabBarController = _tabBarController;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
-    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
-        self.viewController = [[ViewController alloc] initWithNibName:@"ViewController_iPhone" bundle:nil];
-        
+    ExploreViewController *tab1;
+    SpeakerViewController *tab2;
+    
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
+        tab1 = [[ExploreViewController alloc] initWithNibName:@"ExploreViewController_iPad" bundle:nil];
+        tab2 = [[SpeakerViewController alloc] initWithNibName:@"SpeakerViewController_iPad" bundle:nil];
     } else {
-        self.viewController = [[ViewController alloc] initWithNibName:@"ViewController_iPad" bundle:nil];
+        tab1 = [[ExploreViewController alloc] initWithNibName:@"ExploreViewController_iPhone" bundle:nil];
+        tab2 = [[SpeakerViewController alloc] initWithNibName:@"SpeakerViewController_iPhone" bundle:nil];
     }
-    self.window.rootViewController = self.viewController;
+    tab1.tabBarItem = [[UITabBarItem alloc]initWithTitle:@"Explore" image:[UIImage imageNamed:@"world.png"] tag:0];
+    tab2.tabBarItem = [[UITabBarItem alloc]initWithTitle:@"Speakers" image:[UIImage imageNamed:@"games.png"] tag:1];
+    
+    
+    
+    self.tabBarController = [[JMTabViewController alloc]init];
+    self.tabBarController.viewControllers = [NSArray arrayWithObjects:tab1, tab2, nil];
+
+    
+    self.window.rootViewController = self.tabBarController;
     [self.window makeKeyAndVisible];
     return YES;
 }

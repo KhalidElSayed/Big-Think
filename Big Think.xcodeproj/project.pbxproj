@@ -8,6 +8,33 @@
 
 /* Begin PBXBuildFile section */
 		FA038E8C14C4EF3F00FB1142 /* RKLargeCellViewiPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA038E8B14C4EF3F00FB1142 /* RKLargeCellViewiPhone.xib */; };
+		FA1538B214CDF7540083A68B /* landscapeBackround-iPhone.png in Resources */ = {isa = PBXBuildFile; fileRef = FA1538B014CDF7540083A68B /* landscapeBackround-iPhone.png */; };
+		FA1538B314CDF7540083A68B /* portraitBackround-iPhone.png in Resources */ = {isa = PBXBuildFile; fileRef = FA1538B114CDF7540083A68B /* portraitBackround-iPhone.png */; };
+		FA1538FF14CDFCC60083A68B /* SpeakerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA1538FD14CDFCC60083A68B /* SpeakerViewController.m */; };
+		FA15390014CDFCC60083A68B /* SpeakerViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA1538FE14CDFCC60083A68B /* SpeakerViewController_iPad.xib */; };
+		FA15390214CDFCF30083A68B /* SpeakerViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA15390114CDFCF30083A68B /* SpeakerViewController_iPhone.xib */; };
+		FA15390414CDFFF60083A68B /* world@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA15390314CDFFF60083A68B /* world@2x.png */; };
+		FA15390614CE01890083A68B /* games@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA15390514CE01890083A68B /* games@2x.png */; };
+		FA15390A14CE02150083A68B /* games.png in Resources */ = {isa = PBXBuildFile; fileRef = FA15390814CE02150083A68B /* games.png */; };
+		FA15390B14CE02150083A68B /* world.png in Resources */ = {isa = PBXBuildFile; fileRef = FA15390914CE02150083A68B /* world.png */; };
+		FA15392714CE07950083A68B /* UIColor+Hex.m in Sources */ = {isa = PBXBuildFile; fileRef = FA15391314CE07940083A68B /* UIColor+Hex.m */; };
+		FA15392814CE07950083A68B /* UIView+InnerShadow.m in Sources */ = {isa = PBXBuildFile; fileRef = FA15391514CE07940083A68B /* UIView+InnerShadow.m */; };
+		FA15392914CE07950083A68B /* UIView+Positioning.m in Sources */ = {isa = PBXBuildFile; fileRef = FA15391714CE07950083A68B /* UIView+Positioning.m */; };
+		FA15392A14CE07950083A68B /* UIView+Size.m in Sources */ = {isa = PBXBuildFile; fileRef = FA15391914CE07950083A68B /* UIView+Size.m */; };
+		FA15392B14CE07950083A68B /* JMSelectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA15391C14CE07950083A68B /* JMSelectionView.m */; };
+		FA15392C14CE07950083A68B /* JMTabContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = FA15391F14CE07950083A68B /* JMTabContainer.m */; };
+		FA15392D14CE07950083A68B /* JMTabItem.m in Sources */ = {isa = PBXBuildFile; fileRef = FA15392114CE07950083A68B /* JMTabItem.m */; };
+		FA15392E14CE07950083A68B /* JMTabView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA15392314CE07950083A68B /* JMTabView.m */; };
+		FA15392F14CE07950083A68B /* BarBackgroundLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = FA15392614CE07950083A68B /* BarBackgroundLayer.m */; };
+		FA15393114CE07BE0083A68B /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA15393014CE07BE0083A68B /* QuartzCore.framework */; };
+		FA15393414CE0A090083A68B /* JMTabViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA15393314CE0A090083A68B /* JMTabViewController.m */; };
+		FA15393F14CE12F90083A68B /* CustomBackgroundLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = FA15393814CE12F90083A68B /* CustomBackgroundLayer.m */; };
+		FA15394014CE12F90083A68B /* CustomNoiseBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA15393A14CE12F90083A68B /* CustomNoiseBackgroundView.m */; };
+		FA15394114CE12F90083A68B /* CustomSelectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA15393C14CE12F90083A68B /* CustomSelectionView.m */; };
+		FA15394214CE12F90083A68B /* CustomTabItem.m in Sources */ = {isa = PBXBuildFile; fileRef = FA15393E14CE12F90083A68B /* CustomTabItem.m */; };
+		FA15394514CE1F680083A68B /* noise-tile.png in Resources */ = {isa = PBXBuildFile; fileRef = FA15394314CE1F670083A68B /* noise-tile.png */; };
+		FA15394614CE1F680083A68B /* noise-tile@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA15394414CE1F670083A68B /* noise-tile@2x.png */; };
+		FA15394A14CE2A720083A68B /* TabBarHeader.png in Resources */ = {isa = PBXBuildFile; fileRef = FA15394914CE2A710083A68B /* TabBarHeader.png */; };
 		FA288DF414C8C69800F470BE /* View.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA288DF314C8C69800F470BE /* View.xib */; };
 		FA288DF814C8EB2300F470BE /* landscapeBackround.png in Resources */ = {isa = PBXBuildFile; fileRef = FA288DF614C8EB2300F470BE /* landscapeBackround.png */; };
 		FA288DFD14C8EDE300F470BE /* portraitBackround.png in Resources */ = {isa = PBXBuildFile; fileRef = FA288DFC14C8EDE300F470BE /* portraitBackround.png */; };
@@ -22,9 +49,9 @@
 		FAFBEB0E14C37BD100235178 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = FAFBEB0C14C37BD100235178 /* InfoPlist.strings */; };
 		FAFBEB1014C37BD100235178 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FAFBEB0F14C37BD100235178 /* main.m */; };
 		FAFBEB1414C37BD100235178 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FAFBEB1314C37BD100235178 /* AppDelegate.m */; };
-		FAFBEB1714C37BD100235178 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAFBEB1614C37BD100235178 /* ViewController.m */; };
-		FAFBEB1A14C37BD100235178 /* ViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAFBEB1814C37BD100235178 /* ViewController_iPhone.xib */; };
-		FAFBEB1D14C37BD100235178 /* ViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAFBEB1B14C37BD100235178 /* ViewController_iPad.xib */; };
+		FAFBEB1714C37BD100235178 /* ExploreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAFBEB1614C37BD100235178 /* ExploreViewController.m */; };
+		FAFBEB1A14C37BD100235178 /* ExploreViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAFBEB1814C37BD100235178 /* ExploreViewController_iPhone.xib */; };
+		FAFBEB1D14C37BD100235178 /* ExploreViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAFBEB1B14C37BD100235178 /* ExploreViewController_iPad.xib */; };
 		FAFBEB2914C37C6B00235178 /* three.png in Resources */ = {isa = PBXBuildFile; fileRef = FAFBEB2314C37C6B00235178 /* three.png */; };
 		FAFBEB2A14C37C6B00235178 /* two.png in Resources */ = {isa = PBXBuildFile; fileRef = FAFBEB2414C37C6B00235178 /* two.png */; };
 		FAFBEB2B14C37C6B00235178 /* one.png in Resources */ = {isa = PBXBuildFile; fileRef = FAFBEB2514C37C6B00235178 /* one.png */; };
@@ -39,6 +66,49 @@
 
 /* Begin PBXFileReference section */
 		FA038E8B14C4EF3F00FB1142 /* RKLargeCellViewiPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RKLargeCellViewiPhone.xib; sourceTree = "<group>"; };
+		FA1538B014CDF7540083A68B /* landscapeBackround-iPhone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "landscapeBackround-iPhone.png"; sourceTree = "<group>"; };
+		FA1538B114CDF7540083A68B /* portraitBackround-iPhone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "portraitBackround-iPhone.png"; sourceTree = "<group>"; };
+		FA1538FC14CDFCC60083A68B /* SpeakerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpeakerViewController.h; sourceTree = "<group>"; };
+		FA1538FD14CDFCC60083A68B /* SpeakerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpeakerViewController.m; sourceTree = "<group>"; };
+		FA1538FE14CDFCC60083A68B /* SpeakerViewController_iPad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SpeakerViewController_iPad.xib; sourceTree = "<group>"; };
+		FA15390114CDFCF30083A68B /* SpeakerViewController_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SpeakerViewController_iPhone.xib; sourceTree = "<group>"; };
+		FA15390314CDFFF60083A68B /* world@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "world@2x.png"; sourceTree = "<group>"; };
+		FA15390514CE01890083A68B /* games@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "games@2x.png"; sourceTree = "<group>"; };
+		FA15390814CE02150083A68B /* games.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = games.png; sourceTree = "<group>"; };
+		FA15390914CE02150083A68B /* world.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = world.png; sourceTree = "<group>"; };
+		FA15391214CE07940083A68B /* UIColor+Hex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Hex.h"; sourceTree = "<group>"; };
+		FA15391314CE07940083A68B /* UIColor+Hex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Hex.m"; sourceTree = "<group>"; };
+		FA15391414CE07940083A68B /* UIView+InnerShadow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+InnerShadow.h"; sourceTree = "<group>"; };
+		FA15391514CE07940083A68B /* UIView+InnerShadow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+InnerShadow.m"; sourceTree = "<group>"; };
+		FA15391614CE07940083A68B /* UIView+Positioning.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Positioning.h"; sourceTree = "<group>"; };
+		FA15391714CE07950083A68B /* UIView+Positioning.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Positioning.m"; sourceTree = "<group>"; };
+		FA15391814CE07950083A68B /* UIView+Size.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Size.h"; sourceTree = "<group>"; };
+		FA15391914CE07950083A68B /* UIView+Size.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Size.m"; sourceTree = "<group>"; };
+		FA15391B14CE07950083A68B /* JMSelectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JMSelectionView.h; sourceTree = "<group>"; };
+		FA15391C14CE07950083A68B /* JMSelectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JMSelectionView.m; sourceTree = "<group>"; };
+		FA15391D14CE07950083A68B /* JMTabConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JMTabConstants.h; sourceTree = "<group>"; };
+		FA15391E14CE07950083A68B /* JMTabContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JMTabContainer.h; sourceTree = "<group>"; };
+		FA15391F14CE07950083A68B /* JMTabContainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JMTabContainer.m; sourceTree = "<group>"; };
+		FA15392014CE07950083A68B /* JMTabItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JMTabItem.h; sourceTree = "<group>"; };
+		FA15392114CE07950083A68B /* JMTabItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JMTabItem.m; sourceTree = "<group>"; };
+		FA15392214CE07950083A68B /* JMTabView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JMTabView.h; sourceTree = "<group>"; };
+		FA15392314CE07950083A68B /* JMTabView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JMTabView.m; sourceTree = "<group>"; };
+		FA15392514CE07950083A68B /* BarBackgroundLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BarBackgroundLayer.h; sourceTree = "<group>"; };
+		FA15392614CE07950083A68B /* BarBackgroundLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BarBackgroundLayer.m; sourceTree = "<group>"; };
+		FA15393014CE07BE0083A68B /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		FA15393214CE0A090083A68B /* JMTabViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JMTabViewController.h; sourceTree = "<group>"; };
+		FA15393314CE0A090083A68B /* JMTabViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JMTabViewController.m; sourceTree = "<group>"; };
+		FA15393714CE12F90083A68B /* CustomBackgroundLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomBackgroundLayer.h; sourceTree = "<group>"; };
+		FA15393814CE12F90083A68B /* CustomBackgroundLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomBackgroundLayer.m; sourceTree = "<group>"; };
+		FA15393914CE12F90083A68B /* CustomNoiseBackgroundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomNoiseBackgroundView.h; sourceTree = "<group>"; };
+		FA15393A14CE12F90083A68B /* CustomNoiseBackgroundView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomNoiseBackgroundView.m; sourceTree = "<group>"; };
+		FA15393B14CE12F90083A68B /* CustomSelectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomSelectionView.h; sourceTree = "<group>"; };
+		FA15393C14CE12F90083A68B /* CustomSelectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomSelectionView.m; sourceTree = "<group>"; };
+		FA15393D14CE12F90083A68B /* CustomTabItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomTabItem.h; sourceTree = "<group>"; };
+		FA15393E14CE12F90083A68B /* CustomTabItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTabItem.m; sourceTree = "<group>"; };
+		FA15394314CE1F670083A68B /* noise-tile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "noise-tile.png"; sourceTree = "<group>"; };
+		FA15394414CE1F670083A68B /* noise-tile@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "noise-tile@2x.png"; sourceTree = "<group>"; };
+		FA15394914CE2A710083A68B /* TabBarHeader.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TabBarHeader.png; sourceTree = "<group>"; };
 		FA288DF314C8C69800F470BE /* View.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = View.xib; sourceTree = "<group>"; };
 		FA288DF614C8EB2300F470BE /* landscapeBackround.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = landscapeBackround.png; sourceTree = "<group>"; };
 		FA288DFC14C8EDE300F470BE /* portraitBackround.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = portraitBackround.png; sourceTree = "<group>"; };
@@ -59,10 +129,10 @@
 		FAFBEB1114C37BD100235178 /* Big Think-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Big Think-Prefix.pch"; sourceTree = "<group>"; };
 		FAFBEB1214C37BD100235178 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		FAFBEB1314C37BD100235178 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		FAFBEB1514C37BD100235178 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		FAFBEB1614C37BD100235178 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		FAFBEB1914C37BD100235178 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController_iPhone.xib; sourceTree = "<group>"; };
-		FAFBEB1C14C37BD100235178 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController_iPad.xib; sourceTree = "<group>"; };
+		FAFBEB1514C37BD100235178 /* ExploreViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExploreViewController.h; sourceTree = "<group>"; };
+		FAFBEB1614C37BD100235178 /* ExploreViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ExploreViewController.m; sourceTree = "<group>"; };
+		FAFBEB1914C37BD100235178 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ExploreViewController_iPhone.xib; sourceTree = "<group>"; };
+		FAFBEB1C14C37BD100235178 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ExploreViewController_iPad.xib; sourceTree = "<group>"; };
 		FAFBEB2314C37C6B00235178 /* three.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = three.png; sourceTree = "<group>"; };
 		FAFBEB2414C37C6B00235178 /* two.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = two.png; sourceTree = "<group>"; };
 		FAFBEB2514C37C6B00235178 /* one.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = one.png; sourceTree = "<group>"; };
@@ -83,6 +153,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA15393114CE07BE0083A68B /* QuartzCore.framework in Frameworks */,
 				FAFBEB0414C37BD100235178 /* UIKit.framework in Frameworks */,
 				FAFBEB0614C37BD100235178 /* Foundation.framework in Frameworks */,
 				FAFBEB0814C37BD100235178 /* CoreGraphics.framework in Frameworks */,
@@ -114,11 +185,117 @@
 			name = Medium;
 			sourceTree = "<group>";
 		};
+		FA1538B514CDFB100083A68B /* ExploreViewController */ = {
+			isa = PBXGroup;
+			children = (
+				FAFBEB3E14C3872700235178 /* Cell Views */,
+				FAFBEB2F14C37C9800235178 /* RKMatrix */,
+				FAFBEB1514C37BD100235178 /* ExploreViewController.h */,
+				FAFBEB1614C37BD100235178 /* ExploreViewController.m */,
+				FAFBEB1B14C37BD100235178 /* ExploreViewController_iPad.xib */,
+				FAFBEB1814C37BD100235178 /* ExploreViewController_iPhone.xib */,
+			);
+			name = ExploreViewController;
+			sourceTree = "<group>";
+		};
+		FA1538FB14CDFC9D0083A68B /* SpeakersViewController */ = {
+			isa = PBXGroup;
+			children = (
+				FA1538FC14CDFCC60083A68B /* SpeakerViewController.h */,
+				FA1538FD14CDFCC60083A68B /* SpeakerViewController.m */,
+				FA1538FE14CDFCC60083A68B /* SpeakerViewController_iPad.xib */,
+				FA15390114CDFCF30083A68B /* SpeakerViewController_iPhone.xib */,
+			);
+			name = SpeakersViewController;
+			sourceTree = "<group>";
+		};
+		FA15390714CE018C0083A68B /* TabBarIcons */ = {
+			isa = PBXGroup;
+			children = (
+				FA15394914CE2A710083A68B /* TabBarHeader.png */,
+				FA15390814CE02150083A68B /* games.png */,
+				FA15390914CE02150083A68B /* world.png */,
+				FA15390314CDFFF60083A68B /* world@2x.png */,
+				FA15390514CE01890083A68B /* games@2x.png */,
+			);
+			name = TabBarIcons;
+			sourceTree = "<group>";
+		};
+		FA15391014CE076C0083A68B /* JMTabView */ = {
+			isa = PBXGroup;
+			children = (
+				FA15393614CE12F80083A68B /* Custom */,
+				FA15391114CE07940083A68B /* Categories */,
+				FA15391A14CE07950083A68B /* Subviews */,
+				FA15393214CE0A090083A68B /* JMTabViewController.h */,
+				FA15393314CE0A090083A68B /* JMTabViewController.m */,
+			);
+			name = JMTabView;
+			sourceTree = "<group>";
+		};
+		FA15391114CE07940083A68B /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				FA15391214CE07940083A68B /* UIColor+Hex.h */,
+				FA15391314CE07940083A68B /* UIColor+Hex.m */,
+				FA15391414CE07940083A68B /* UIView+InnerShadow.h */,
+				FA15391514CE07940083A68B /* UIView+InnerShadow.m */,
+				FA15391614CE07940083A68B /* UIView+Positioning.h */,
+				FA15391714CE07950083A68B /* UIView+Positioning.m */,
+				FA15391814CE07950083A68B /* UIView+Size.h */,
+				FA15391914CE07950083A68B /* UIView+Size.m */,
+			);
+			path = Categories;
+			sourceTree = "<group>";
+		};
+		FA15391A14CE07950083A68B /* Subviews */ = {
+			isa = PBXGroup;
+			children = (
+				FA15391B14CE07950083A68B /* JMSelectionView.h */,
+				FA15391C14CE07950083A68B /* JMSelectionView.m */,
+				FA15391D14CE07950083A68B /* JMTabConstants.h */,
+				FA15391E14CE07950083A68B /* JMTabContainer.h */,
+				FA15391F14CE07950083A68B /* JMTabContainer.m */,
+				FA15392014CE07950083A68B /* JMTabItem.h */,
+				FA15392114CE07950083A68B /* JMTabItem.m */,
+				FA15392214CE07950083A68B /* JMTabView.h */,
+				FA15392314CE07950083A68B /* JMTabView.m */,
+				FA15392414CE07950083A68B /* Layers */,
+			);
+			path = Subviews;
+			sourceTree = "<group>";
+		};
+		FA15392414CE07950083A68B /* Layers */ = {
+			isa = PBXGroup;
+			children = (
+				FA15392514CE07950083A68B /* BarBackgroundLayer.h */,
+				FA15392614CE07950083A68B /* BarBackgroundLayer.m */,
+			);
+			path = Layers;
+			sourceTree = "<group>";
+		};
+		FA15393614CE12F80083A68B /* Custom */ = {
+			isa = PBXGroup;
+			children = (
+				FA15393714CE12F90083A68B /* CustomBackgroundLayer.h */,
+				FA15393814CE12F90083A68B /* CustomBackgroundLayer.m */,
+				FA15393914CE12F90083A68B /* CustomNoiseBackgroundView.h */,
+				FA15393A14CE12F90083A68B /* CustomNoiseBackgroundView.m */,
+				FA15393B14CE12F90083A68B /* CustomSelectionView.h */,
+				FA15393C14CE12F90083A68B /* CustomSelectionView.m */,
+				FA15393D14CE12F90083A68B /* CustomTabItem.h */,
+				FA15393E14CE12F90083A68B /* CustomTabItem.m */,
+			);
+			path = Custom;
+			sourceTree = "<group>";
+		};
 		FA288DFE14C8F1E300F470BE /* Images */ = {
 			isa = PBXGroup;
 			children = (
 				FA288DF614C8EB2300F470BE /* landscapeBackround.png */,
 				FA288DFC14C8EDE300F470BE /* portraitBackround.png */,
+				FA1538B014CDF7540083A68B /* landscapeBackround-iPhone.png */,
+				FA1538B114CDF7540083A68B /* portraitBackround-iPhone.png */,
 			);
 			name = Images;
 			sourceTree = "<group>";
@@ -143,6 +320,7 @@
 		FAFBEB0214C37BD100235178 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				FA15393014CE07BE0083A68B /* QuartzCore.framework */,
 				FAFBEB0314C37BD100235178 /* UIKit.framework */,
 				FAFBEB0514C37BD100235178 /* Foundation.framework */,
 				FAFBEB0714C37BD100235178 /* CoreGraphics.framework */,
@@ -153,14 +331,11 @@
 		FAFBEB0914C37BD100235178 /* Big Think */ = {
 			isa = PBXGroup;
 			children = (
-				FAFBEB3E14C3872700235178 /* Cell Views */,
-				FAFBEB2F14C37C9800235178 /* RKMatrix */,
+				FA15391014CE076C0083A68B /* JMTabView */,
+				FA1538FB14CDFC9D0083A68B /* SpeakersViewController */,
+				FA1538B514CDFB100083A68B /* ExploreViewController */,
 				FAFBEB1214C37BD100235178 /* AppDelegate.h */,
 				FAFBEB1314C37BD100235178 /* AppDelegate.m */,
-				FAFBEB1514C37BD100235178 /* ViewController.h */,
-				FAFBEB1614C37BD100235178 /* ViewController.m */,
-				FAFBEB1814C37BD100235178 /* ViewController_iPhone.xib */,
-				FAFBEB1B14C37BD100235178 /* ViewController_iPad.xib */,
 				FAFBEB0A14C37BD100235178 /* Supporting Files */,
 			);
 			path = "Big Think";
@@ -169,6 +344,9 @@
 		FAFBEB0A14C37BD100235178 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				FA15394314CE1F670083A68B /* noise-tile.png */,
+				FA15394414CE1F670083A68B /* noise-tile@2x.png */,
+				FA15390714CE018C0083A68B /* TabBarIcons */,
 				FA72ED7214C3DBB2001A7C25 /* 72Icon.png */,
 				FA72ED7414C3DBBC001A7C25 /* 57Icon.png */,
 				FAFBEB3614C37CB400235178 /* Categories */,
@@ -268,8 +446,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				FAFBEB0E14C37BD100235178 /* InfoPlist.strings in Resources */,
-				FAFBEB1A14C37BD100235178 /* ViewController_iPhone.xib in Resources */,
-				FAFBEB1D14C37BD100235178 /* ViewController_iPad.xib in Resources */,
+				FAFBEB1A14C37BD100235178 /* ExploreViewController_iPhone.xib in Resources */,
+				FAFBEB1D14C37BD100235178 /* ExploreViewController_iPad.xib in Resources */,
 				FAFBEB2914C37C6B00235178 /* three.png in Resources */,
 				FAFBEB2A14C37C6B00235178 /* two.png in Resources */,
 				FAFBEB2B14C37C6B00235178 /* one.png in Resources */,
@@ -284,6 +462,17 @@
 				FA288DF414C8C69800F470BE /* View.xib in Resources */,
 				FA288DF814C8EB2300F470BE /* landscapeBackround.png in Resources */,
 				FA288DFD14C8EDE300F470BE /* portraitBackround.png in Resources */,
+				FA1538B214CDF7540083A68B /* landscapeBackround-iPhone.png in Resources */,
+				FA1538B314CDF7540083A68B /* portraitBackround-iPhone.png in Resources */,
+				FA15390014CDFCC60083A68B /* SpeakerViewController_iPad.xib in Resources */,
+				FA15390214CDFCF30083A68B /* SpeakerViewController_iPhone.xib in Resources */,
+				FA15390414CDFFF60083A68B /* world@2x.png in Resources */,
+				FA15390614CE01890083A68B /* games@2x.png in Resources */,
+				FA15390A14CE02150083A68B /* games.png in Resources */,
+				FA15390B14CE02150083A68B /* world.png in Resources */,
+				FA15394514CE1F680083A68B /* noise-tile.png in Resources */,
+				FA15394614CE1F680083A68B /* noise-tile@2x.png in Resources */,
+				FA15394A14CE2A720083A68B /* TabBarHeader.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -296,12 +485,27 @@
 			files = (
 				FAFBEB1014C37BD100235178 /* main.m in Sources */,
 				FAFBEB1414C37BD100235178 /* AppDelegate.m in Sources */,
-				FAFBEB1714C37BD100235178 /* ViewController.m in Sources */,
+				FAFBEB1714C37BD100235178 /* ExploreViewController.m in Sources */,
 				FAFBEB3414C37CA900235178 /* RKMatrixView.m in Sources */,
 				FAFBEB3514C37CA900235178 /* RKMatrixViewCell.m in Sources */,
 				FAFBEB3914C37CC600235178 /* UIColor+RKColor.m in Sources */,
 				FA70B54F14C4BE9700DD3D3B /* RKMediumCellView.m in Sources */,
 				FA70B55214C4C46D00DD3D3B /* RKLargeCellView.m in Sources */,
+				FA1538FF14CDFCC60083A68B /* SpeakerViewController.m in Sources */,
+				FA15392714CE07950083A68B /* UIColor+Hex.m in Sources */,
+				FA15392814CE07950083A68B /* UIView+InnerShadow.m in Sources */,
+				FA15392914CE07950083A68B /* UIView+Positioning.m in Sources */,
+				FA15392A14CE07950083A68B /* UIView+Size.m in Sources */,
+				FA15392B14CE07950083A68B /* JMSelectionView.m in Sources */,
+				FA15392C14CE07950083A68B /* JMTabContainer.m in Sources */,
+				FA15392D14CE07950083A68B /* JMTabItem.m in Sources */,
+				FA15392E14CE07950083A68B /* JMTabView.m in Sources */,
+				FA15392F14CE07950083A68B /* BarBackgroundLayer.m in Sources */,
+				FA15393414CE0A090083A68B /* JMTabViewController.m in Sources */,
+				FA15393F14CE12F90083A68B /* CustomBackgroundLayer.m in Sources */,
+				FA15394014CE12F90083A68B /* CustomNoiseBackgroundView.m in Sources */,
+				FA15394114CE12F90083A68B /* CustomSelectionView.m in Sources */,
+				FA15394214CE12F90083A68B /* CustomTabItem.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -316,20 +520,20 @@
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
-		FAFBEB1814C37BD100235178 /* ViewController_iPhone.xib */ = {
+		FAFBEB1814C37BD100235178 /* ExploreViewController_iPhone.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
 				FAFBEB1914C37BD100235178 /* en */,
 			);
-			name = ViewController_iPhone.xib;
+			name = ExploreViewController_iPhone.xib;
 			sourceTree = "<group>";
 		};
-		FAFBEB1B14C37BD100235178 /* ViewController_iPad.xib */ = {
+		FAFBEB1B14C37BD100235178 /* ExploreViewController_iPad.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
 				FAFBEB1C14C37BD100235178 /* en */,
 			);
-			name = ViewController_iPad.xib;
+			name = ExploreViewController_iPad.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

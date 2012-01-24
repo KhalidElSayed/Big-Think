@@ -51,6 +51,7 @@ static inline bool RK2DLocationEqualToLocation(RK2DLocation loc1, RK2DLocation l
     CGPoint         _contentOffsetMarker;   // Used to determine the direction a user wants to scroll
     UIView*         _zoomingView;
     RK2DLocation    _visablePageBeforeRotation;
+    BOOL            _didRotate;
 }
 -(void)setup;
 -(void)reloadData;
@@ -73,6 +74,7 @@ static inline bool RK2DLocationEqualToLocation(RK2DLocation loc1, RK2DLocation l
 @synthesize currentPage = _currentPage;
 @synthesize numberOfCells = _numberOfCells;
 @synthesize layout = _layout;
+@synthesize visableCells = _visableCells;
 @synthesize maxRows, maxColumns;
 
 -(void)setup
@@ -83,12 +85,14 @@ static inline bool RK2DLocationEqualToLocation(RK2DLocation loc1, RK2DLocation l
         _cellMarginWidth = 50.0f;
         _cellMarginHeight = 50.0f;
         _pagePadding = 50.0f;
+        _scrollView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"portraitBackround.png"]];
     }
     else 
     {
         _cellMarginWidth = 15.0f;
         _cellMarginHeight = 15.0f;
         _pagePadding = 10.0f;        
+            _scrollView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"portraitBackround-iPhone.png"]];
     }
     
     CGRect frame = self.bounds;
@@ -101,9 +105,9 @@ static inline bool RK2DLocationEqualToLocation(RK2DLocation loc1, RK2DLocation l
     _scrollView.delegate = self;
     _scrollView.pagingEnabled = YES;
     _scrollView.directionalLockEnabled = YES;
-    _scrollView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"portraitBackround.png"]];
+
     _scrollView.autoresizingMask =  UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-    
+
     [self addSubview:_scrollView];
     
     //_zoomingView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, frame.size.width, frame.size.height)];
@@ -112,6 +116,7 @@ static inline bool RK2DLocationEqualToLocation(RK2DLocation loc1, RK2DLocation l
     
     _layout = RKGridViewLayoutLarge;
     _resusableCells = [[NSMutableSet alloc]init];
+    _visableCells = [[NSMutableSet alloc]init];
                 
 
     
@@ -152,7 +157,18 @@ static inline bool RK2DLocationEqualToLocation(RK2DLocation loc1, RK2DLocation l
     [super layoutSubviews];
     CGRect bounds = _scrollView.bounds;
     _scrollView.contentSize = CGSizeMake(bounds.size.width * sqrtf(_numberOfCells), bounds.size.height * sqrtf(_numberOfCells));
-    [self scrollToPageAtRow:_visablePageBeforeRotation.row Column:_visablePageBeforeRotation.column Animated:YES];
+    if(_didRotate)
+    {
+        [self scrollToPageAtRow:_visablePageBeforeRotation.row Column:_visablePageBeforeRotation.column Animated:YES];
+        _didRotate = NO;
+    }
+    
+    for (RKMatrixViewCell* cell in _visableCells) 
+    {
+        cell.frame = [self cellFrameForLocation:cell.location withLayout:_layout];
+    }
+    
+    
     
     if(DEBUG_LAYOUT_SUBVIEWS)
     {
@@ -303,21 +319,19 @@ static inline bool RK2DLocationEqualToLocation(RK2DLocation loc1, RK2DLocation l
             }
         }
         //  Get a set of all the cells which are currently a subview of _scrollView
-        NSMutableSet* visableCells = [[NSMutableSet alloc]init ];
-        for (UIView* view in [_scrollView subviews] ) 
-        {
-            if([view class] == [RKMatrixViewCell class])
-                [visableCells addObject:(RKMatrixViewCell *)view];
-        }
+        NSMutableSet* cellsToUnload = [NSMutableSet setWithSet:_visableCells];
         // Subtract the cells we want to keep and unload the remaining cells
-        [visableCells minusSet:cellsToKeep];
-        for (RKMatrixViewCell *cellToUnload in visableCells)
+        [cellsToUnload minusSet:cellsToKeep];
+    
+        for (RKMatrixViewCell *cellToUnload in cellsToUnload)
         {
             if(DEBUG_CELL_LOAD)
                 NSLog(@"UnLoaded Cell at Location : %@", NSStringFromRK2DLocation(cellToUnload.location));
             [cellToUnload prepareForReuse];
             [_resusableCells addObject:cellToUnload];
+
         }
+        [_visableCells minusSet:_resusableCells];
     };
     cleanupBlock(level);    
 }
@@ -435,24 +449,14 @@ static inline bool RK2DLocationEqualToLocation(RK2DLocation loc1, RK2DLocation l
         RKMatrixViewCell *cell = [self loadCellForLocation:RK2DLocationFromString(location)];
         if (![cell superview]) 
             [_scrollView addSubview:cell];
+        [_visableCells addObject:cell];
         [neededCells addObject:cell];
     }
     
-    //  Get a set of all the cells which are currently a subview of _scrollView
-    NSMutableSet* visableCells = [[NSMutableSet alloc]init ];
-    for (UIView* view in [_scrollView subviews] ) 
-    {
-        if([view class] == [RKMatrixViewCell class])
-            [visableCells addObject:(RKMatrixViewCell *)view];
-    }
-    //[visableCells minusSet:neededCells];
     
-    //for (RKMatrixViewCell *cell in visableCells) {
-      //  cell.alpha = 0;
-    //}
     
     [UIView animateWithDuration:1.0f delay:0.0f options:UIViewAnimationCurveEaseInOut | UIViewAnimationOptionBeginFromCurrentState animations:^{
-        for (RKMatrixViewCell *cell in visableCells) {
+        for (RKMatrixViewCell *cell in _visableCells) {
             cell.frame = [self cellFrameForLocation:cell.location withLayout:layout];
         }
         [self scrollToPageAtRow:newPage.row Column:newPage.column Animated:NO];
@@ -513,6 +517,7 @@ static inline bool RK2DLocationEqualToLocation(RK2DLocation loc1, RK2DLocation l
             [_resusableCells addObject:cell];
         }
     }
+    [_visableCells minusSet:_resusableCells];
 }
 
 
@@ -542,7 +547,7 @@ static inline bool RK2DLocationEqualToLocation(RK2DLocation loc1, RK2DLocation l
         
         cell.location = location;
         [_scrollView addSubview:cell];
-        
+        [_visableCells addObject:cell];
       
         if (DEBUG_CELL_LOAD) 
         {
@@ -557,19 +562,14 @@ static inline bool RK2DLocationEqualToLocation(RK2DLocation loc1, RK2DLocation l
 -(RKMatrixViewCell *)cellForLocation:(RK2DLocation)location
 {
     __block RKMatrixViewCell *cell = nil;
-    
-    [[_scrollView subviews] enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop){
-    
-        if ([obj class] == [RKMatrixViewCell class]) 
-        {   
-            if (RK2DLocationEqualToLocation([(RKMatrixViewCell*)obj location], location))
-            {
-                cell  = (RKMatrixViewCell*)obj;
-                *stop = YES;
-            }
+    [_visableCells enumerateObjectsUsingBlock:^(id obj, BOOL *stop)
+    {        
+        if (RK2DLocationEqualToLocation([(RKMatrixViewCell*)obj location], location))
+        {
+            cell  = (RKMatrixViewCell*)obj;
+            *stop = YES;
         }
     }];
-    
     return cell;
 }
 
@@ -799,22 +799,31 @@ if(DEBUG_CELL_FRAME)
 {
     NSNumber *num = [notification.userInfo objectForKey:@"UIApplicationStatusBarOrientationUserInfoKey"];
     _visablePageBeforeRotation = [self currentPage];
+    UIUserInterfaceIdiom idiom = [[UIDevice currentDevice] userInterfaceIdiom];
+
     switch ([num intValue]) 
     {
         case 1:
         case 2:
             NSLog(@"Orientation Changed to Portrait");
-            _scrollView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"landscapeBackround.png"]];
+            if (idiom == UIUserInterfaceIdiomPad) 
+                _scrollView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"landscapeBackround.png"]];
+            else
+                _scrollView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"landscapeBackround-iPhone.png"]];    
             break;
         case 3:
         case 4:
             NSLog(@"Orientation Changed to Landscape");
-            _scrollView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"portraitBackround.png"]];
+            
+            if (idiom == UIUserInterfaceIdiomPad) 
+                _scrollView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"portraitBackround.png"]];
+            else
+                _scrollView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"portraitBackround-iPhone.png"]];            
             break;
         default:
             break;
     }
-    
+    _didRotate = YES;
 }
 
 

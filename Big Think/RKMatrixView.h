@@ -33,6 +33,7 @@ typedef NSUInteger RKGridViewLayoutType;
     UIScrollView*           _scrollView;
     RK2DLocation            _currentPage;
     NSMutableSet*           _resusableCells;
+    NSMutableSet*           _visableCells;
     NSUInteger              _numberOfCells;
     RKGridViewLayoutType    _layout;    
 }
@@ -40,6 +41,7 @@ typedef NSUInteger RKGridViewLayoutType;
 @property (nonatomic,assign) id<RKMatrixViewDatasource> datasource;                       // default nil. weak reference
 @property (nonatomic) RK2DLocation currentPage;
 @property (nonatomic) RKGridViewLayoutType layout;
+@property (strong, nonatomic) NSMutableSet* visableCells;
 @property (nonatomic) NSUInteger numberOfCells;
 @property (nonatomic) NSUInteger maxColumns;
 @property (nonatomic) NSUInteger maxRows;
