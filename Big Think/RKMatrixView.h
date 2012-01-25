@@ -35,7 +35,7 @@ typedef NSUInteger RKGridViewLayoutType;
     id                      datasource;
     UIScrollView*           _scrollView;
     RK2DLocation            _currentPage;
-    NSMutableSet*           _resusableCells;
+    NSMutableSet*           _reusableCells;
     NSMutableSet*           _visableCells;
     NSUInteger              _numberOfCells;
     RKGridViewLayoutType    _layout;    
