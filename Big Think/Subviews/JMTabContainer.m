@@ -64,7 +64,7 @@
     containerSize_.height = itemHeight;
     
     [self sizeToFit];
-    //[self centerInSuperView];
+  [self centerVerticallyInRect:[[self superview] bounds]];
 }
 
 - (CGSize)sizeThatFits:(CGSize)size;

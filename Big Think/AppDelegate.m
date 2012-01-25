@@ -10,7 +10,7 @@
 
 #import "ExploreViewController.h"
 #import "SpeakerViewController.h"
-#import "JMTabViewController.h"
+#import "BTTabBarController.h"
 @implementation AppDelegate
 
 @synthesize window = _window;
@@ -30,12 +30,8 @@
         tab1 = [[ExploreViewController alloc] initWithNibName:@"ExploreViewController_iPhone" bundle:nil];
         tab2 = [[SpeakerViewController alloc] initWithNibName:@"SpeakerViewController_iPhone" bundle:nil];
     }
-    tab1.tabBarItem = [[UITabBarItem alloc]initWithTitle:@"Explore" image:[UIImage imageNamed:@"world.png"] tag:0];
-    tab2.tabBarItem = [[UITabBarItem alloc]initWithTitle:@"Speakers" image:[UIImage imageNamed:@"games.png"] tag:1];
     
-    
-    
-    self.tabBarController = [[JMTabViewController alloc]init];
+    self.tabBarController = [[BTTabBarController alloc]init];
     self.tabBarController.viewControllers = [NSArray arrayWithObjects:tab1, tab2, nil];
 
     

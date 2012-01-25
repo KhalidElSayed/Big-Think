@@ -85,6 +85,7 @@
 {
     _location.row = -1;
     _location.column = -1;
+    [_contentView removeFromSuperview];
     self.contentView = nil;
     [self removeFromSuperview];
     

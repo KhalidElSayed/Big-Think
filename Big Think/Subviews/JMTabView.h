@@ -4,6 +4,7 @@
 #import "JMTabConstants.h"
 #import "JMTabItem.h"
 #import "JMSelectionView.h"
+#import "JMTabContainer.h"
 
 @class JMTabView;
 
@@ -25,7 +26,7 @@
 - (void)addTabItemWithTitle:(NSString *)title icon:(UIImage *)icon;
 - (void)setSelectedIndex:(NSUInteger)itemIndex;
 @property (nonatomic,assign) id<JMTabViewDelegate> delegate;
-
+@property (nonatomic,strong) JMTabContainer * tabContainer;
 #if NS_BLOCKS_AVAILABLE
 - (void)addTabItemWithTitle:(NSString *)title icon:(UIImage *)icon executeBlock:(JMTabExecutionBlock)executeBlock;
 #endif
@@ -36,6 +37,6 @@
 - (void)setSelectionView:(JMSelectionView *)selectionView;
 - (void)setItemSpacing:(CGFloat)itemSpacing;
 - (void)setBackgroundLayer:(CALayer *)backgroundLayer;
--(void)alignRight;
+
 
 @end

@@ -8,12 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-@class JMTabViewController;
+@class BTTabBarController;
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 
-@property (strong, nonatomic) JMTabViewController *tabBarController;
+@property (strong, nonatomic) BTTabBarController *tabBarController;
 
 @end

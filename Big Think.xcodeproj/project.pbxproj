@@ -17,7 +17,6 @@
 		FA15390614CE01890083A68B /* games@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA15390514CE01890083A68B /* games@2x.png */; };
 		FA15390A14CE02150083A68B /* games.png in Resources */ = {isa = PBXBuildFile; fileRef = FA15390814CE02150083A68B /* games.png */; };
 		FA15390B14CE02150083A68B /* world.png in Resources */ = {isa = PBXBuildFile; fileRef = FA15390914CE02150083A68B /* world.png */; };
-		FA15392714CE07950083A68B /* UIColor+Hex.m in Sources */ = {isa = PBXBuildFile; fileRef = FA15391314CE07940083A68B /* UIColor+Hex.m */; };
 		FA15392814CE07950083A68B /* UIView+InnerShadow.m in Sources */ = {isa = PBXBuildFile; fileRef = FA15391514CE07940083A68B /* UIView+InnerShadow.m */; };
 		FA15392914CE07950083A68B /* UIView+Positioning.m in Sources */ = {isa = PBXBuildFile; fileRef = FA15391714CE07950083A68B /* UIView+Positioning.m */; };
 		FA15392A14CE07950083A68B /* UIView+Size.m in Sources */ = {isa = PBXBuildFile; fileRef = FA15391914CE07950083A68B /* UIView+Size.m */; };
@@ -27,11 +26,9 @@
 		FA15392E14CE07950083A68B /* JMTabView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA15392314CE07950083A68B /* JMTabView.m */; };
 		FA15392F14CE07950083A68B /* BarBackgroundLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = FA15392614CE07950083A68B /* BarBackgroundLayer.m */; };
 		FA15393114CE07BE0083A68B /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA15393014CE07BE0083A68B /* QuartzCore.framework */; };
-		FA15393414CE0A090083A68B /* JMTabViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA15393314CE0A090083A68B /* JMTabViewController.m */; };
-		FA15393F14CE12F90083A68B /* CustomBackgroundLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = FA15393814CE12F90083A68B /* CustomBackgroundLayer.m */; };
-		FA15394014CE12F90083A68B /* CustomNoiseBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA15393A14CE12F90083A68B /* CustomNoiseBackgroundView.m */; };
+		FA15393414CE0A090083A68B /* BTTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA15393314CE0A090083A68B /* BTTabBarController.m */; };
+		FA15393F14CE12F90083A68B /* BTTabBarBackroundLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = FA15393814CE12F90083A68B /* BTTabBarBackroundLayer.m */; };
 		FA15394114CE12F90083A68B /* CustomSelectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA15393C14CE12F90083A68B /* CustomSelectionView.m */; };
-		FA15394214CE12F90083A68B /* CustomTabItem.m in Sources */ = {isa = PBXBuildFile; fileRef = FA15393E14CE12F90083A68B /* CustomTabItem.m */; };
 		FA15394514CE1F680083A68B /* noise-tile.png in Resources */ = {isa = PBXBuildFile; fileRef = FA15394314CE1F670083A68B /* noise-tile.png */; };
 		FA15394614CE1F680083A68B /* noise-tile@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA15394414CE1F670083A68B /* noise-tile@2x.png */; };
 		FA15394A14CE2A720083A68B /* TabBarHeader.png in Resources */ = {isa = PBXBuildFile; fileRef = FA15394914CE2A710083A68B /* TabBarHeader.png */; };
@@ -43,6 +40,11 @@
 		FA70B55214C4C46D00DD3D3B /* RKLargeCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA70B55114C4C46D00DD3D3B /* RKLargeCellView.m */; };
 		FA72ED7314C3DBB2001A7C25 /* 72Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = FA72ED7214C3DBB2001A7C25 /* 72Icon.png */; };
 		FA72ED7514C3DBBC001A7C25 /* 57Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = FA72ED7414C3DBBC001A7C25 /* 57Icon.png */; };
+		FA80768014CF452E0081A55A /* BTTabBarItem.m in Sources */ = {isa = PBXBuildFile; fileRef = FA80767F14CF452E0081A55A /* BTTabBarItem.m */; };
+		FA80768314CF49E10081A55A /* gamesSelected.png in Resources */ = {isa = PBXBuildFile; fileRef = FA80768114CF49E10081A55A /* gamesSelected.png */; };
+		FA80768414CF49E10081A55A /* worldSelected.png in Resources */ = {isa = PBXBuildFile; fileRef = FA80768214CF49E10081A55A /* worldSelected.png */; };
+		FA80768C14CF50FC0081A55A /* BTTabView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA80768B14CF50FC0081A55A /* BTTabView.m */; };
+		FA80769814CF6F270081A55A /* FXLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = FA80769714CF6F270081A55A /* FXLabel.m */; };
 		FAFBEB0414C37BD100235178 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAFBEB0314C37BD100235178 /* UIKit.framework */; };
 		FAFBEB0614C37BD100235178 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAFBEB0514C37BD100235178 /* Foundation.framework */; };
 		FAFBEB0814C37BD100235178 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAFBEB0714C37BD100235178 /* CoreGraphics.framework */; };
@@ -76,8 +78,6 @@
 		FA15390514CE01890083A68B /* games@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "games@2x.png"; sourceTree = "<group>"; };
 		FA15390814CE02150083A68B /* games.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = games.png; sourceTree = "<group>"; };
 		FA15390914CE02150083A68B /* world.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = world.png; sourceTree = "<group>"; };
-		FA15391214CE07940083A68B /* UIColor+Hex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Hex.h"; sourceTree = "<group>"; };
-		FA15391314CE07940083A68B /* UIColor+Hex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Hex.m"; sourceTree = "<group>"; };
 		FA15391414CE07940083A68B /* UIView+InnerShadow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+InnerShadow.h"; sourceTree = "<group>"; };
 		FA15391514CE07940083A68B /* UIView+InnerShadow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+InnerShadow.m"; sourceTree = "<group>"; };
 		FA15391614CE07940083A68B /* UIView+Positioning.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Positioning.h"; sourceTree = "<group>"; };
@@ -96,16 +96,12 @@
 		FA15392514CE07950083A68B /* BarBackgroundLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BarBackgroundLayer.h; sourceTree = "<group>"; };
 		FA15392614CE07950083A68B /* BarBackgroundLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BarBackgroundLayer.m; sourceTree = "<group>"; };
 		FA15393014CE07BE0083A68B /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		FA15393214CE0A090083A68B /* JMTabViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JMTabViewController.h; sourceTree = "<group>"; };
-		FA15393314CE0A090083A68B /* JMTabViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JMTabViewController.m; sourceTree = "<group>"; };
-		FA15393714CE12F90083A68B /* CustomBackgroundLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomBackgroundLayer.h; sourceTree = "<group>"; };
-		FA15393814CE12F90083A68B /* CustomBackgroundLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomBackgroundLayer.m; sourceTree = "<group>"; };
-		FA15393914CE12F90083A68B /* CustomNoiseBackgroundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomNoiseBackgroundView.h; sourceTree = "<group>"; };
-		FA15393A14CE12F90083A68B /* CustomNoiseBackgroundView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomNoiseBackgroundView.m; sourceTree = "<group>"; };
-		FA15393B14CE12F90083A68B /* CustomSelectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomSelectionView.h; sourceTree = "<group>"; };
-		FA15393C14CE12F90083A68B /* CustomSelectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomSelectionView.m; sourceTree = "<group>"; };
-		FA15393D14CE12F90083A68B /* CustomTabItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomTabItem.h; sourceTree = "<group>"; };
-		FA15393E14CE12F90083A68B /* CustomTabItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTabItem.m; sourceTree = "<group>"; };
+		FA15393214CE0A090083A68B /* BTTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BTTabBarController.h; path = "Big Think/BTTabBarController.h"; sourceTree = "<group>"; };
+		FA15393314CE0A090083A68B /* BTTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BTTabBarController.m; path = "Big Think/BTTabBarController.m"; sourceTree = "<group>"; };
+		FA15393714CE12F90083A68B /* BTTabBarBackroundLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BTTabBarBackroundLayer.h; path = Custom/BTTabBarBackroundLayer.h; sourceTree = "<group>"; };
+		FA15393814CE12F90083A68B /* BTTabBarBackroundLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BTTabBarBackroundLayer.m; path = Custom/BTTabBarBackroundLayer.m; sourceTree = "<group>"; };
+		FA15393B14CE12F90083A68B /* CustomSelectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CustomSelectionView.h; path = Custom/CustomSelectionView.h; sourceTree = "<group>"; };
+		FA15393C14CE12F90083A68B /* CustomSelectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CustomSelectionView.m; path = Custom/CustomSelectionView.m; sourceTree = "<group>"; };
 		FA15394314CE1F670083A68B /* noise-tile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "noise-tile.png"; sourceTree = "<group>"; };
 		FA15394414CE1F670083A68B /* noise-tile@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "noise-tile@2x.png"; sourceTree = "<group>"; };
 		FA15394914CE2A710083A68B /* TabBarHeader.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TabBarHeader.png; sourceTree = "<group>"; };
@@ -119,6 +115,14 @@
 		FA70B55114C4C46D00DD3D3B /* RKLargeCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RKLargeCellView.m; sourceTree = "<group>"; };
 		FA72ED7214C3DBB2001A7C25 /* 72Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 72Icon.png; path = ../72Icon.png; sourceTree = "<group>"; };
 		FA72ED7414C3DBBC001A7C25 /* 57Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 57Icon.png; path = ../57Icon.png; sourceTree = "<group>"; };
+		FA80767E14CF452E0081A55A /* BTTabBarItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BTTabBarItem.h; sourceTree = "<group>"; };
+		FA80767F14CF452E0081A55A /* BTTabBarItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BTTabBarItem.m; sourceTree = "<group>"; };
+		FA80768114CF49E10081A55A /* gamesSelected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gamesSelected.png; sourceTree = "<group>"; };
+		FA80768214CF49E10081A55A /* worldSelected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = worldSelected.png; sourceTree = "<group>"; };
+		FA80768A14CF50FC0081A55A /* BTTabView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BTTabView.h; sourceTree = "<group>"; };
+		FA80768B14CF50FC0081A55A /* BTTabView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BTTabView.m; sourceTree = "<group>"; };
+		FA80769614CF6F270081A55A /* FXLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FXLabel.h; sourceTree = "<group>"; };
+		FA80769714CF6F270081A55A /* FXLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FXLabel.m; sourceTree = "<group>"; };
 		FAFBEAFF14C37BD100235178 /* Big Think.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Big Think.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAFBEB0314C37BD100235178 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		FAFBEB0514C37BD100235178 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -188,6 +192,7 @@
 		FA1538B514CDFB100083A68B /* ExploreViewController */ = {
 			isa = PBXGroup;
 			children = (
+				FA80768914CF50080081A55A /* JMtabViewCustomization */,
 				FAFBEB3E14C3872700235178 /* Cell Views */,
 				FAFBEB2F14C37C9800235178 /* RKMatrix */,
 				FAFBEB1514C37BD100235178 /* ExploreViewController.h */,
@@ -212,11 +217,6 @@
 		FA15390714CE018C0083A68B /* TabBarIcons */ = {
 			isa = PBXGroup;
 			children = (
-				FA15394914CE2A710083A68B /* TabBarHeader.png */,
-				FA15390814CE02150083A68B /* games.png */,
-				FA15390914CE02150083A68B /* world.png */,
-				FA15390314CDFFF60083A68B /* world@2x.png */,
-				FA15390514CE01890083A68B /* games@2x.png */,
 			);
 			name = TabBarIcons;
 			sourceTree = "<group>";
@@ -224,11 +224,8 @@
 		FA15391014CE076C0083A68B /* JMTabView */ = {
 			isa = PBXGroup;
 			children = (
-				FA15393614CE12F80083A68B /* Custom */,
 				FA15391114CE07940083A68B /* Categories */,
 				FA15391A14CE07950083A68B /* Subviews */,
-				FA15393214CE0A090083A68B /* JMTabViewController.h */,
-				FA15393314CE0A090083A68B /* JMTabViewController.m */,
 			);
 			name = JMTabView;
 			sourceTree = "<group>";
@@ -236,8 +233,6 @@
 		FA15391114CE07940083A68B /* Categories */ = {
 			isa = PBXGroup;
 			children = (
-				FA15391214CE07940083A68B /* UIColor+Hex.h */,
-				FA15391314CE07940083A68B /* UIColor+Hex.m */,
 				FA15391414CE07940083A68B /* UIView+InnerShadow.h */,
 				FA15391514CE07940083A68B /* UIView+InnerShadow.m */,
 				FA15391614CE07940083A68B /* UIView+Positioning.h */,
@@ -274,21 +269,6 @@
 			path = Layers;
 			sourceTree = "<group>";
 		};
-		FA15393614CE12F80083A68B /* Custom */ = {
-			isa = PBXGroup;
-			children = (
-				FA15393714CE12F90083A68B /* CustomBackgroundLayer.h */,
-				FA15393814CE12F90083A68B /* CustomBackgroundLayer.m */,
-				FA15393914CE12F90083A68B /* CustomNoiseBackgroundView.h */,
-				FA15393A14CE12F90083A68B /* CustomNoiseBackgroundView.m */,
-				FA15393B14CE12F90083A68B /* CustomSelectionView.h */,
-				FA15393C14CE12F90083A68B /* CustomSelectionView.m */,
-				FA15393D14CE12F90083A68B /* CustomTabItem.h */,
-				FA15393E14CE12F90083A68B /* CustomTabItem.m */,
-			);
-			path = Custom;
-			sourceTree = "<group>";
-		};
 		FA288DFE14C8F1E300F470BE /* Images */ = {
 			isa = PBXGroup;
 			children = (
@@ -298,6 +278,89 @@
 				FA1538B114CDF7540083A68B /* portraitBackround-iPhone.png */,
 			);
 			name = Images;
+			sourceTree = "<group>";
+		};
+		FA80767D14CF44E90081A55A /* JMTabView Customization */ = {
+			isa = PBXGroup;
+			children = (
+				FA80768714CF4ED50081A55A /* Bar Items */,
+				FA80768614CF4ECA0081A55A /* Bar */,
+			);
+			name = "JMTabView Customization";
+			path = "Big Think";
+			sourceTree = "<group>";
+		};
+		FA80768514CF4D590081A55A /* BTTabBarController */ = {
+			isa = PBXGroup;
+			children = (
+				FA80767D14CF44E90081A55A /* JMTabView Customization */,
+				FA15393214CE0A090083A68B /* BTTabBarController.h */,
+				FA15393314CE0A090083A68B /* BTTabBarController.m */,
+			);
+			name = BTTabBarController;
+			path = ..;
+			sourceTree = "<group>";
+		};
+		FA80768614CF4ECA0081A55A /* Bar */ = {
+			isa = PBXGroup;
+			children = (
+				FA15393714CE12F90083A68B /* BTTabBarBackroundLayer.h */,
+				FA15393814CE12F90083A68B /* BTTabBarBackroundLayer.m */,
+			);
+			name = Bar;
+			sourceTree = "<group>";
+		};
+		FA80768714CF4ED50081A55A /* Bar Items */ = {
+			isa = PBXGroup;
+			children = (
+				FA80768814CF4EF40081A55A /* Images */,
+				FA15393C14CE12F90083A68B /* CustomSelectionView.m */,
+				FA15393B14CE12F90083A68B /* CustomSelectionView.h */,
+				FA80767E14CF452E0081A55A /* BTTabBarItem.h */,
+				FA80767F14CF452E0081A55A /* BTTabBarItem.m */,
+			);
+			name = "Bar Items";
+			sourceTree = "<group>";
+		};
+		FA80768814CF4EF40081A55A /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				FA15390514CE01890083A68B /* games@2x.png */,
+				FA80768114CF49E10081A55A /* gamesSelected.png */,
+				FA80768214CF49E10081A55A /* worldSelected.png */,
+				FA15390814CE02150083A68B /* games.png */,
+				FA15390914CE02150083A68B /* world.png */,
+				FA15390314CDFFF60083A68B /* world@2x.png */,
+			);
+			name = Images;
+			sourceTree = "<group>";
+		};
+		FA80768914CF50080081A55A /* JMtabViewCustomization */ = {
+			isa = PBXGroup;
+			children = (
+				FA15394914CE2A710083A68B /* TabBarHeader.png */,
+				FA80768A14CF50FC0081A55A /* BTTabView.h */,
+				FA80768B14CF50FC0081A55A /* BTTabView.m */,
+			);
+			name = JMtabViewCustomization;
+			sourceTree = "<group>";
+		};
+		FA80768D14CF6D1E0081A55A /* Open Source Projects */ = {
+			isa = PBXGroup;
+			children = (
+				FA80769514CF6EAB0081A55A /* FXLabel */,
+				FA15391014CE076C0083A68B /* JMTabView */,
+			);
+			name = "Open Source Projects";
+			sourceTree = "<group>";
+		};
+		FA80769514CF6EAB0081A55A /* FXLabel */ = {
+			isa = PBXGroup;
+			children = (
+				FA80769614CF6F270081A55A /* FXLabel.h */,
+				FA80769714CF6F270081A55A /* FXLabel.m */,
+			);
+			name = FXLabel;
 			sourceTree = "<group>";
 		};
 		FAFBEAF414C37BD100235178 = {
@@ -331,7 +394,7 @@
 		FAFBEB0914C37BD100235178 /* Big Think */ = {
 			isa = PBXGroup;
 			children = (
-				FA15391014CE076C0083A68B /* JMTabView */,
+				FA80768514CF4D590081A55A /* BTTabBarController */,
 				FA1538FB14CDFC9D0083A68B /* SpeakersViewController */,
 				FA1538B514CDFB100083A68B /* ExploreViewController */,
 				FAFBEB1214C37BD100235178 /* AppDelegate.h */,
@@ -344,6 +407,7 @@
 		FAFBEB0A14C37BD100235178 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				FA80768D14CF6D1E0081A55A /* Open Source Projects */,
 				FA15394314CE1F670083A68B /* noise-tile.png */,
 				FA15394414CE1F670083A68B /* noise-tile@2x.png */,
 				FA15390714CE018C0083A68B /* TabBarIcons */,
@@ -473,6 +537,8 @@
 				FA15394514CE1F680083A68B /* noise-tile.png in Resources */,
 				FA15394614CE1F680083A68B /* noise-tile@2x.png in Resources */,
 				FA15394A14CE2A720083A68B /* TabBarHeader.png in Resources */,
+				FA80768314CF49E10081A55A /* gamesSelected.png in Resources */,
+				FA80768414CF49E10081A55A /* worldSelected.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -492,7 +558,6 @@
 				FA70B54F14C4BE9700DD3D3B /* RKMediumCellView.m in Sources */,
 				FA70B55214C4C46D00DD3D3B /* RKLargeCellView.m in Sources */,
 				FA1538FF14CDFCC60083A68B /* SpeakerViewController.m in Sources */,
-				FA15392714CE07950083A68B /* UIColor+Hex.m in Sources */,
 				FA15392814CE07950083A68B /* UIView+InnerShadow.m in Sources */,
 				FA15392914CE07950083A68B /* UIView+Positioning.m in Sources */,
 				FA15392A14CE07950083A68B /* UIView+Size.m in Sources */,
@@ -501,11 +566,12 @@
 				FA15392D14CE07950083A68B /* JMTabItem.m in Sources */,
 				FA15392E14CE07950083A68B /* JMTabView.m in Sources */,
 				FA15392F14CE07950083A68B /* BarBackgroundLayer.m in Sources */,
-				FA15393414CE0A090083A68B /* JMTabViewController.m in Sources */,
-				FA15393F14CE12F90083A68B /* CustomBackgroundLayer.m in Sources */,
-				FA15394014CE12F90083A68B /* CustomNoiseBackgroundView.m in Sources */,
+				FA15393414CE0A090083A68B /* BTTabBarController.m in Sources */,
+				FA15393F14CE12F90083A68B /* BTTabBarBackroundLayer.m in Sources */,
 				FA15394114CE12F90083A68B /* CustomSelectionView.m in Sources */,
-				FA15394214CE12F90083A68B /* CustomTabItem.m in Sources */,
+				FA80768014CF452E0081A55A /* BTTabBarItem.m in Sources */,
+				FA80768C14CF50FC0081A55A /* BTTabView.m in Sources */,
+				FA80769814CF6F270081A55A /* FXLabel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

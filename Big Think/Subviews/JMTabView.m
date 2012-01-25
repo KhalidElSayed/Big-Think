@@ -4,13 +4,11 @@
 #import "JMTabContainer.h"
 #import "BarBackgroundLayer.h"
 #import "UIView+Positioning.h"
-#import "CustomNoiseBackgroundView.h"
+
 
 @interface JMTabView()
-{
-    BOOL _alignRight;
-}
-@property (nonatomic,retain) JMTabContainer * tabContainer;
+
+
 @end
 
 @implementation JMTabView
@@ -38,13 +36,6 @@
     return self;
 }
 
--(void)alignRight
-{
-    CGRect bounds = self.bounds;
-    self.tabContainer.frame = CGRectMake(bounds.size.width - self.tabContainer.containerSize.width - 20 ,10, self.tabContainer.containerSize.width,self.tabContainer.containerSize.height);
-    _alignRight = YES;   
-}
-
 - (void)setBackgroundLayer:(CALayer *)backgroundLayer;
 {
     CALayer * oldBackground = [[self.layer sublayers] objectAtIndex:0];
@@ -60,9 +51,7 @@
 
 - (void)layoutSubviews;
 {
-    if (!_alignRight) {
      [self.tabContainer centerInSuperView];
-    }
 }
 
 #pragma Mark -

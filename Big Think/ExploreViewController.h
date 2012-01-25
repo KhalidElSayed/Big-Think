@@ -8,12 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import "RKMatrixView.h"
-#import "JMTabView.h"
+#import "BTTabView.h"
 
 @interface ExploreViewController : UIViewController <RKMatrixViewDelegate, RKMatrixViewDatasource, JMTabViewDelegate>
 {
     RKMatrixView*   _matrixView;
-    JMTabView*      _tabView;
+    BTTabView*      _tabView;
 }
 
 @property (strong, nonatomic) IBOutlet RKMatrixView *matrixView;

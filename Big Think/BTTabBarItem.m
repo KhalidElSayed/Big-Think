@@ -1,39 +1,51 @@
-#import "CustomTabItem.h"
-
-#define kTabDemoVerticalItemPaddingSize CGSizeMake(18., 5.)
+//
+//  BTTabBarItem.m
+//  Big Think
+//
+//  Created by Richard Kirk on 1/24/12.
+//  Copyright (c) 2012 Home. All rights reserved.
+//
+//#define kTabDemoVerticalItemPaddingSize CGSizeMake(18., 5.)
 #define kTabDemoVerticalItemFont [UIFont boldSystemFontOfSize:11.]
 
-@implementation CustomTabItem
+#import "BTTabBarItem.h"
 
-@synthesize alternateIcon = alternateIcon_;
+@implementation BTTabBarItem
+@synthesize alternateIcon, itemWidth;
 
-- (void) dealloc;
+
+-(id)initWithTitle:(NSString *)title icon:(UIImage *)icon alternateIcon:(UIImage *)altIcon
 {
-    self.alternateIcon = nil;
-
+    self = [super initWithTitle:title icon:icon];
+    if(self)
+    {
+        self.alternateIcon = altIcon;
+        self.fixedWidth = 200.0f;
+    }
+    return self;
 }
 
 - (CGSize) sizeThatFits:(CGSize)size;
 {
     CGSize titleSize = [self.title sizeWithFont:kTabDemoVerticalItemFont];
     
-    CGFloat titleWidth = titleSize.width;
     
-    CGFloat iconWidth = [self.icon size].width;
+    if(self.fixedWidth == 0){
+        CGFloat titleWidth = titleSize.width;
+        CGFloat iconWidth = [self.icon size].width;
+        CGFloat width = (iconWidth > titleWidth) ? iconWidth : titleWidth;
+        width += (18 * 6);
+    }
     
-    CGFloat width = (iconWidth > titleWidth) ? iconWidth : titleWidth;
-    
-    width += (kTabDemoVerticalItemPaddingSize.width * 2);
     
     CGFloat height = 56.;
-    
-    return CGSizeMake(width, height);
+    return CGSizeMake(self.fixedWidth, height);
 }
 
 - (void)drawRect:(CGRect)rect;
 {
     CGRect bounds = rect;
-    CGFloat yOffset = kTabDemoVerticalItemPaddingSize.height + 10.;
+    CGFloat yOffset = 15;
     
     UIImage * iconImage = (self.highlighted || [self isSelectedTabItem]) ? self.alternateIcon : self.icon;
     
@@ -52,11 +64,6 @@
     [self.title drawAtPoint:CGPointMake(titleMarginWidth, yOffset + 22.) withFont:kTabDemoVerticalItemFont];
 }
 
-+ (CustomTabItem *)tabItemWithTitle:(NSString *)title icon:(UIImage *)icon alternateIcon:(UIImage *)alternativeIcon;
-{
-    CustomTabItem * tabItem = [[CustomTabItem alloc] initWithTitle:title icon:icon];
-    tabItem.alternateIcon = alternativeIcon;
-    return tabItem;
-}
+
 
 @end

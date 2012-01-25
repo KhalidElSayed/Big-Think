@@ -1,8 +1,8 @@
 //  Created by Jason Morrissey
 
 #import "CustomSelectionView.h"
-#import "UIView+InnerShadow.h"
-#import "UIColor+Hex.h"
+
+
 
 #define kTriangleHeight 8.
 
@@ -10,7 +10,8 @@
 
 - (void)drawRect:(CGRect)rect
 {
-    [[UIColor colorWithHex:0x252525] set];
+   // [[UIColor rgbColorWithRed:205.0f green:199.0f blue:44.0f alpha:1.0f] set]; // BigThinkOrange
+    [[UIColor rgbColorWithRed:37.0f green:37.0f blue:37.0f alpha:1.0f] set]; // dark
     CGRect squareRect = CGRectOffset(rect, 0, kTriangleHeight);
     squareRect.size.height -= kTriangleHeight;
     UIBezierPath * squarePath = [UIBezierPath bezierPathWithRoundedRect:squareRect cornerRadius:4.];
