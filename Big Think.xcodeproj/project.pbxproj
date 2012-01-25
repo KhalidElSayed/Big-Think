@@ -35,6 +35,7 @@
 		FA288DF414C8C69800F470BE /* View.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA288DF314C8C69800F470BE /* View.xib */; };
 		FA288DF814C8EB2300F470BE /* landscapeBackround.png in Resources */ = {isa = PBXBuildFile; fileRef = FA288DF614C8EB2300F470BE /* landscapeBackround.png */; };
 		FA288DFD14C8EDE300F470BE /* portraitBackround.png in Resources */ = {isa = PBXBuildFile; fileRef = FA288DFC14C8EDE300F470BE /* portraitBackround.png */; };
+		FA34227F14D0A4D500D82961 /* UIImage+RKImage.m in Sources */ = {isa = PBXBuildFile; fileRef = FA34227E14D0A4D500D82961 /* UIImage+RKImage.m */; };
 		FA70B54B14C4B5FE00DD3D3B /* RKMediumCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA70B54A14C4B5FE00DD3D3B /* RKMediumCellView.xib */; };
 		FA70B54F14C4BE9700DD3D3B /* RKMediumCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA70B54E14C4BE9700DD3D3B /* RKMediumCellView.m */; };
 		FA70B55214C4C46D00DD3D3B /* RKLargeCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA70B55114C4C46D00DD3D3B /* RKLargeCellView.m */; };
@@ -108,6 +109,8 @@
 		FA288DF314C8C69800F470BE /* View.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = View.xib; sourceTree = "<group>"; };
 		FA288DF614C8EB2300F470BE /* landscapeBackround.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = landscapeBackround.png; sourceTree = "<group>"; };
 		FA288DFC14C8EDE300F470BE /* portraitBackround.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = portraitBackround.png; sourceTree = "<group>"; };
+		FA34227D14D0A4D500D82961 /* UIImage+RKImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+RKImage.h"; sourceTree = "<group>"; };
+		FA34227E14D0A4D500D82961 /* UIImage+RKImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+RKImage.m"; sourceTree = "<group>"; };
 		FA70B54A14C4B5FE00DD3D3B /* RKMediumCellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RKMediumCellView.xib; sourceTree = "<group>"; };
 		FA70B54D14C4BE9700DD3D3B /* RKMediumCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RKMediumCellView.h; sourceTree = "<group>"; };
 		FA70B54E14C4BE9700DD3D3B /* RKMediumCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RKMediumCellView.m; sourceTree = "<group>"; };
@@ -195,8 +198,8 @@
 				FA80768914CF50080081A55A /* JMtabViewCustomization */,
 				FAFBEB3E14C3872700235178 /* Cell Views */,
 				FAFBEB2F14C37C9800235178 /* RKMatrix */,
-				FAFBEB1514C37BD100235178 /* ExploreViewController.h */,
 				FAFBEB1614C37BD100235178 /* ExploreViewController.m */,
+				FAFBEB1514C37BD100235178 /* ExploreViewController.h */,
 				FAFBEB1B14C37BD100235178 /* ExploreViewController_iPad.xib */,
 				FAFBEB1814C37BD100235178 /* ExploreViewController_iPhone.xib */,
 			);
@@ -445,6 +448,8 @@
 			children = (
 				FAFBEB3714C37CC600235178 /* UIColor+RKColor.h */,
 				FAFBEB3814C37CC600235178 /* UIColor+RKColor.m */,
+				FA34227D14D0A4D500D82961 /* UIImage+RKImage.h */,
+				FA34227E14D0A4D500D82961 /* UIImage+RKImage.m */,
 			);
 			name = Categories;
 			sourceTree = "<group>";
@@ -572,6 +577,7 @@
 				FA80768014CF452E0081A55A /* BTTabBarItem.m in Sources */,
 				FA80768C14CF50FC0081A55A /* BTTabView.m in Sources */,
 				FA80769814CF6F270081A55A /* FXLabel.m in Sources */,
+				FA34227F14D0A4D500D82961 /* UIImage+RKImage.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

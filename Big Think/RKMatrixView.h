@@ -1,9 +1,12 @@
 //
-//  RKGrid.h
+//  RKMatrix.h
 //  
 //
 //  Created by Richard Kirk on 1/9/12.
 //  Copyright (c) 2012 Home. All rights reserved.
+//   This view is a view for two way paging with memory management built in. 
+//  There is support for 3 layout Styles 
+ 
 
 #import <UIKit/UIKit.h>
 
@@ -37,14 +40,14 @@ typedef NSUInteger RKGridViewLayoutType;
     NSUInteger              _numberOfCells;
     RKGridViewLayoutType    _layout;    
 }
-@property (nonatomic,assign) id<RKMatrixViewDelegate> delegate;                       // default nil. weak reference
-@property (nonatomic,assign) id<RKMatrixViewDatasource> datasource;                       // default nil. weak reference
-@property (nonatomic) RK2DLocation currentPage;
-@property (nonatomic) RKGridViewLayoutType layout;
+@property (nonatomic,assign) id<RKMatrixViewDelegate> delegate;     // default nil. weak reference
+@property (nonatomic,assign) id<RKMatrixViewDatasource> datasource; // default nil. weak reference
+@property (nonatomic) RK2DLocation currentPage;     
+@property (nonatomic) RKGridViewLayoutType layout;                  // current Layout
 @property (strong, nonatomic) NSMutableSet* visableCells;
 @property (nonatomic) NSUInteger numberOfCells;
-@property (nonatomic) NSUInteger maxColumns;
-@property (nonatomic) NSUInteger maxRows;
+@property (nonatomic) NSUInteger maxColumns;                        // default is NSUINTEGER_MAX
+@property (nonatomic) NSUInteger maxRows;                           // default is NSUINTEGER_MAX
 
 -(RKMatrixViewCell *)dequeResuableCell;
 -(void)unloadUneccesaryCells:(int)level;
@@ -52,6 +55,7 @@ typedef NSUInteger RKGridViewLayoutType;
 
 -(void)demoo;
 @end
+
 
 @protocol RKMatrixViewDatasource<NSObject>
 -(RKMatrixViewCell*) matrixView:(RKMatrixView *)matrixView cellForLocation:(RK2DLocation)location;

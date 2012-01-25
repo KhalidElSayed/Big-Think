@@ -1,6 +1,6 @@
 //
-//  RKGrid.m
-//  Major grid
+//  RKMatrix.m
+//
 //
 //  Created by Richard Kirk on 1/9/12.
 //  Copyright (c) 2012 Home. All rights reserved.
@@ -8,6 +8,7 @@
 
 #import "RKMatrixView.h"
 #import "RKMatrixViewCell.h"
+#import "UIImage+RKImage.h"
 
 #define DEBUG_LAYOUT_SUBVIEWS NO
 #define DEBUG_CELL_LOAD YES
@@ -57,15 +58,17 @@ static inline bool RK2DLocationEqualToLocation(RK2DLocation loc1, RK2DLocation l
 -(void)setup;
 -(void)reloadData;
 
--(void)loadPageForLocation:(RK2DLocation)page;
--(void)unloadPageForLocation:(RK2DLocation)page;
+-(void)loadPageAtLocation:(RK2DLocation)page;
+-(void)unloadPageAtLocation:(RK2DLocation)page;
 -(RKMatrixViewCell *)cellForLocation:(RK2DLocation)location;
+-(RKMatrixViewCell *)loadCellForLocation:(RK2DLocation)location;
+-(NSSet*)cellsForPage:(RK2DLocation)page;
+
 -(NSArray *)cellLocationsForPageAtLocation:(RK2DLocation)page withLayout:(RKGridViewLayoutType)layout;
 -(CGRect)cellFrameForLocation:(RK2DLocation)location withLayout:(RKGridViewLayoutType)layout;
--(RKMatrixViewCell *)loadCellForLocation:(RK2DLocation)location;
--(void)willRotate:(NSNotification *)notification;
--(NSSet*)cellsForPage:(RK2DLocation)page;
 -(RK2DLocation)pageForCellLocation:(RK2DLocation)location withLayout:(RKGridViewLayoutType)layout;
+    
+-(void)willRotate:(NSNotification *)notification;
 @end
 
 
@@ -86,14 +89,12 @@ static inline bool RK2DLocationEqualToLocation(RK2DLocation loc1, RK2DLocation l
         _cellMarginWidth = 50.0f;
         _cellMarginHeight = 50.0f;
         _pagePadding = 50.0f;
-        _scrollView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"portraitBackround.png"]];
     }
     else 
     {
         _cellMarginWidth = 15.0f;
         _cellMarginHeight = 15.0f;
         _pagePadding = 10.0f;        
-            _scrollView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"portraitBackround-iPhone.png"]];
     }
     
     CGRect frame = self.bounds;
@@ -174,6 +175,14 @@ static inline bool RK2DLocationEqualToLocation(RK2DLocation loc1, RK2DLocation l
         cell.frame = [self cellFrameForLocation:cell.location withLayout:_layout];
     }
     
+    
+    UIDeviceOrientation orientation = [[UIDevice currentDevice]orientation];
+    if(UIDeviceOrientationIsLandscape(orientation)) 
+           _scrollView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageWithImage:[UIImage imageNamed:@"landscapeBackround.png"] scaledToSize:_scrollView.bounds.size]]; 
+    else if(UIDeviceOrientationIsPortrait(orientation))
+        _scrollView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageWithImage:[UIImage imageNamed:@"portraitBackround.png"] scaledToSize:_scrollView.bounds.size] ];     
+
+   
     
     
     if(DEBUG_LAYOUT_SUBVIEWS)
@@ -280,7 +289,7 @@ static inline bool RK2DLocationEqualToLocation(RK2DLocation loc1, RK2DLocation l
         NSLog(@"%@",direction);
     
     if(!_isAnimating)
-    [self loadPageForLocation:locationUserIsMovingTo];
+    [self loadPageAtLocation:locationUserIsMovingTo];
 
 }
 
@@ -296,7 +305,7 @@ static inline bool RK2DLocationEqualToLocation(RK2DLocation loc1, RK2DLocation l
     CGFloat pageHeight = _scrollView.bounds.size.height;
     movingTo.row = floor((targetContentOffset->y - pageHeight / 2) / pageHeight) + 1;
     
-    [self loadPageForLocation:movingTo];
+    [self loadPageAtLocation:movingTo];
 
 }
 // called on finger up if the user dragged. decelerate is true if it will continue moving afterwards
@@ -344,8 +353,8 @@ static inline bool RK2DLocationEqualToLocation(RK2DLocation loc1, RK2DLocation l
             }
         }
         //  Get a set of all the cells which are currently a subview of _scrollView
-        NSMutableSet* cellsToUnload = [NSMutableSet setWithSet:_visableCells];
         // Subtract the cells we want to keep and unload the remaining cells
+        NSMutableSet* cellsToUnload = [NSMutableSet setWithSet:_visableCells];
         [cellsToUnload minusSet:cellsToKeep];
     
         for (RKMatrixViewCell *cellToUnload in cellsToUnload)
@@ -508,7 +517,7 @@ static inline bool RK2DLocationEqualToLocation(RK2DLocation loc1, RK2DLocation l
 #pragma mark - Data Management 
 
 
--(void)loadPageForLocation:(RK2DLocation)page
+-(void)loadPageAtLocation:(RK2DLocation)page
 {
     if(DEBUG_PAGE_LOAD)
         NSLog(@"Loading Page : %@", NSStringFromRK2DLocation(page));
@@ -526,7 +535,7 @@ static inline bool RK2DLocationEqualToLocation(RK2DLocation loc1, RK2DLocation l
 }
 
 
--(void)unloadPageForLocation:(RK2DLocation)page
+-(void)unloadPageAtLocation:(RK2DLocation)page
 {
     NSArray *locationsForThisPage = [self cellLocationsForPageAtLocation:page withLayout:_layout];
     
@@ -598,9 +607,6 @@ static inline bool RK2DLocationEqualToLocation(RK2DLocation loc1, RK2DLocation l
     return cell;
 }
 
-     
-     
-     
      
 -(CGRect)cellFrameForLocation:(RK2DLocation)location withLayout:(RKGridViewLayoutType)layout
 {
@@ -696,30 +702,19 @@ if(DEBUG_CELL_FRAME)
         [cellLocations addObject:NSStringFromRK2DLocation(D)];
     }
     else if (layout == RKGridViewLayoutSmall)  // 6 Small Cells
-    {   //       Landscape          |    Portrait
-        //------------------------  |---------------
-        //   A  |   B   |   C    |  |   A   |   D  |
-        //------------------------  |---------------
-        //   D  |   E   |   F    |  |   B   |   E  |
-        //------------------------  |---------------
-        //                          |   C   |   F  |  
-        //                          |---------------
-      
-        RK2DLocation A;
-        RK2DLocation B;
-        RK2DLocation C;
-        RK2DLocation D;
-        RK2DLocation E;
-        RK2DLocation F;
-            
-       
-            A = RK2DLocationMake(page.row * 2, page.column * 3); 
-            B = RK2DLocationMake(A.row, A.column + 1);
-            C = RK2DLocationMake(A.row, A.column + 2);
-            D = RK2DLocationMake(A.row + 1, A.column);
-            E = RK2DLocationMake(A.row + 1, A.column + 1);
-            F = RK2DLocationMake(A.row + 1, A.column + 2);
-              
+    {   //       Landscape         
+        //------------------------ 
+        //   A  |   B   |   C    | 
+        //------------------------ 
+        //   D  |   E   |   F    | 
+        //------------------------ 
+        RK2DLocation A = RK2DLocationMake(page.row * 2, page.column * 3); 
+        RK2DLocation B = RK2DLocationMake(A.row, A.column + 1);
+        RK2DLocation C = RK2DLocationMake(A.row, A.column + 2);
+        RK2DLocation D = RK2DLocationMake(A.row + 1, A.column);
+        RK2DLocation E = RK2DLocationMake(A.row + 1, A.column + 1);
+        RK2DLocation F = RK2DLocationMake(A.row + 1, A.column + 2);
+        
         [cellLocations addObject:NSStringFromRK2DLocation(A)];
         [cellLocations addObject:NSStringFromRK2DLocation(B)];
         [cellLocations addObject:NSStringFromRK2DLocation(C)];
@@ -729,6 +724,7 @@ if(DEBUG_CELL_FRAME)
     }
     return [NSArray arrayWithArray:cellLocations];
 }
+
 
 -(RK2DLocation)pageForCellLocation:(RK2DLocation)location withLayout:(RKGridViewLayoutType)layout
 {
@@ -751,6 +747,7 @@ if(DEBUG_CELL_FRAME)
     return page;
 }
 
+
 -(void)scrollToPageAtRow:(NSUInteger)row Column:(NSUInteger)column Animated:(BOOL)animate
 {   
     CGRect pageFrame;
@@ -768,80 +765,25 @@ if(DEBUG_CELL_FRAME)
     else
         [_scrollView setContentOffset:pageFrame.origin];
 }
-//---------------------Havent used anything below just yet-----------------------------
 
--(void)layoutCellsWithStrategy:(RKGridViewLayoutType)newLayout
-{   
-    UIDeviceOrientation orientation = [[UIDevice currentDevice]orientation];
-    
-    if(UIDeviceOrientationIsLandscape(orientation))
-    {
-        
-        switch (newLayout) {
-            case RKGridViewLayoutLarge:
-                
-                break;
-            case RKGridViewLayoutMedium:
-                
-                break;
-                
-            case RKGridViewLayoutSmall:
-                
-                break;
-            default:
-                break;
-        }
-        
-    }
-    else
-    {
-        
-    }
-    
+
+-(void)willRotate:(NSNotification *)notification
+{
+    _visablePageBeforeRotation = [self currentPage];
+    _didRotate = YES;
 }
 
+//---------------------Havent used anything below just yet-----------------------------
 
 -(void)demoo
 {
     RK2DLocation loc;
     loc.row = 0;
     loc.column = 0;
-    [self loadPageForLocation:loc];
+    [self loadPageAtLocation:loc];
 }
 
 
-
-
--(void)willRotate:(NSNotification *)notification
-{
-    NSNumber *num = [notification.userInfo objectForKey:@"UIApplicationStatusBarOrientationUserInfoKey"];
-    _visablePageBeforeRotation = [self currentPage];
-    UIUserInterfaceIdiom idiom = [[UIDevice currentDevice] userInterfaceIdiom];
-
-    switch ([num intValue]) 
-    {
-        case 1:
-        case 2:
-            NSLog(@"Orientation Changed to Portrait");
-            if (idiom == UIUserInterfaceIdiomPad) 
-                _scrollView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"landscapeBackround.png"]];
-            else
-                _scrollView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"landscapeBackround-iPhone.png"]];    
-            break;
-        case 3:
-        case 4:
-            NSLog(@"Orientation Changed to Landscape");
-            
-            if (idiom == UIUserInterfaceIdiomPad) 
-                _scrollView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"portraitBackround.png"]];
-            else
-                _scrollView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"portraitBackround-iPhone.png"]];            
-            break;
-        default:
-            break;
-    }
-    _didRotate = YES;
-}
 
 
 @end
