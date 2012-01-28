@@ -7,6 +7,9 @@
 //
 
 #import "BTTabBarController.h"
+#import "ExploreViewController.h"
+#import "SpeakerViewController.h"
+
 #import "CustomSelectionView.h"
 #import "BTTabBarBackroundLayer.h"
 #import "BTTabBarItem.h"
@@ -30,7 +33,16 @@
     self = [super init];
     if(self){
         _currentTab = 0;  
-
+        
+        if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
+            _tab1 = [[ExploreViewController alloc] initWithNibName:@"ExploreViewController_iPad" bundle:nil];
+            _tab2 = [[SpeakerViewController alloc] initWithNibName:@"SpeakerViewController_iPad" bundle:nil];
+        } else {
+            _tab1 = [[ExploreViewController alloc] initWithNibName:@"ExploreViewController_iPhone" bundle:nil];
+            _tab2 = [[SpeakerViewController alloc] initWithNibName:@"SpeakerViewController_iPhone" bundle:nil];
+        }
+        
+        self.viewControllers = [NSArray arrayWithObjects:_tab1,_tab2 ,nil];
     }
     return self;
 }
@@ -68,7 +80,10 @@
 {  
     [self setupTabView];
     self.view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    [self addChildViewController:_tab1];
+    [self addChildViewController:_tab2];
 
+    
     UIViewController *viewController = (UIViewController*)[viewControllers objectAtIndex:0]; 
     viewController.view.frame = CGRectMake(0,0,self.view.frame.size.width, 10 + self.view.frame.size.height - _tabBarSize.height);
     [self.view insertSubview:viewController.view belowSubview:_tabBarView];
@@ -85,7 +100,7 @@
     [currentViewController.view removeFromSuperview];
         
     UIViewController* selectedViewController = [viewControllers objectAtIndex:itemIndex];
-    selectedViewController.view.frame = CGRectMake(0,0,self.view.frame.size.width, 10 + self.view.frame.size.height - _tabBarSize.height);
+    selectedViewController.view.frame = CGRectMake(0,0,self.view.bounds.size.width, 10 + self.view.bounds.size.height - _tabBarSize.height);
 
     [self.view insertSubview:selectedViewController.view belowSubview:_tabBarView];
     _currentTab = itemIndex;
@@ -93,8 +108,19 @@
     
 }
 
+
+-(void)addTabWithViewController:(UIViewController *)viewController
+{
+    
+    [self addChildViewController:viewController];
+
+}
 -(BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation;
 {
+    for (UIViewController* vc in [self childViewControllers])
+    {
+
+    }
     return YES;
 }
 

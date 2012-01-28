@@ -17,8 +17,8 @@
 }
 
 @property (strong, nonatomic) IBOutlet RKMatrixView *matrixView;
+@property (strong, nonatomic) IBOutlet UINavigationController *filterNavController;
 
-- (IBAction)sliderChanged:(UISlider *)sender;
-- (IBAction)layoutSegmentChanged:(UISegmentedControl *)sender;
+-(void)filterButtonPressed;
 
 @end

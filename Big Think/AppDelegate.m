@@ -8,8 +8,7 @@
 
 #import "AppDelegate.h"
 
-#import "ExploreViewController.h"
-#import "SpeakerViewController.h"
+
 #import "BTTabBarController.h"
 @implementation AppDelegate
 
@@ -20,21 +19,8 @@
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
-    ExploreViewController *tab1;
-    SpeakerViewController *tab2;
-    
-    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
-        tab1 = [[ExploreViewController alloc] initWithNibName:@"ExploreViewController_iPad" bundle:nil];
-        tab2 = [[SpeakerViewController alloc] initWithNibName:@"SpeakerViewController_iPad" bundle:nil];
-    } else {
-        tab1 = [[ExploreViewController alloc] initWithNibName:@"ExploreViewController_iPhone" bundle:nil];
-        tab2 = [[SpeakerViewController alloc] initWithNibName:@"SpeakerViewController_iPhone" bundle:nil];
-    }
     
     self.tabBarController = [[BTTabBarController alloc]init];
-    self.tabBarController.viewControllers = [NSArray arrayWithObjects:tab1, tab2, nil];
-
-    
     self.window.rootViewController = self.tabBarController;
     [self.window makeKeyAndVisible];
     return YES;

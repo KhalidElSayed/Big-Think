@@ -7,17 +7,25 @@
 //
 
 #import "ExploreViewController.h"
+#import "FilterTableViewController.h"
 #import "RKMatrixViewCell.h"
 #import "RKMediumCellView.h"
 #import "RKLargeCellView.h"
 #import "BTTabView.h"
 #import "FXLabel.h"
 
+#define TAB_VIEW_HEIGHT 60.0f
+
 @interface ExploreViewController()
+{
+    BOOL _showingFilter;
+    UINavigationController* filterTable;
+}
 -(void)setupTabView;
 @end
 @implementation ExploreViewController
 @synthesize matrixView = _matrixView;
+@synthesize filterNavController = _filterNavController;
 
 - (void)didReceiveMemoryWarning
 {
@@ -35,12 +43,21 @@
     _matrixView.datasource = self;
     _matrixView.delegate = self;
     [self setupTabView];
+    
+    [self addChildViewController:_filterNavController];
+    [self.view addSubview:_filterNavController.view];
+
+    
     [_matrixView demoo];
+    
+    
+
 }
 
 - (void)viewDidUnload
 {
     [self setMatrixView:nil];
+    [self setFilterNavController:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -48,7 +65,7 @@
 
 -(void)setupTabView
 {
-    BTTabView * tabView = [[BTTabView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 60.0f)];
+    BTTabView * tabView = [[BTTabView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, TAB_VIEW_HEIGHT)];
     [tabView setDelegate:self];
     
     [tabView addTabItemWithTitle:@"One" icon:[UIImage imageNamed:@"icon1.png"]];
@@ -57,9 +74,11 @@
     tabView.clipsToBounds = YES;    
     
     [tabView setBackgroundLayer:nil];
+
+
     tabView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"TabBarHeader.png"]];
   
-    FXLabel *bigThinkLabel = [[FXLabel alloc]initWithFrame:CGRectMake(0, 0, 400, 60)];
+    FXLabel *bigThinkLabel = [[FXLabel alloc]initWithFrame:CGRectMake(0, 0, 400, TAB_VIEW_HEIGHT)];
 
     bigThinkLabel.shadowColor = nil;
     bigThinkLabel.shadowOffset = CGSizeMake(0.0f, 2.0f);
@@ -69,7 +88,11 @@
     bigThinkLabel.text = @"BIG THINK";
     bigThinkLabel.textColor = [UIColor whiteColor];
     bigThinkLabel.backgroundColor = [UIColor clearColor];
-    
+    bigThinkLabel.userInteractionEnabled = YES;
+    UITapGestureRecognizer *touch = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(filterButtonPressed)];
+    [touch setNumberOfTapsRequired:2];
+    [bigThinkLabel addGestureRecognizer:touch];
+   
     tabView.leftView = bigThinkLabel;
     
     [tabView setSelectedIndex:0];
@@ -125,13 +148,61 @@
         return YES;
 }
 
-
-
-
 -(void)tabView:(JMTabView *)tabView didSelectTabAtIndex:(NSUInteger)itemIndex
 {
         [self.matrixView setLayout:itemIndex];
 }
+
+
+
+-(void)filterButtonPressed
+{
+    CGRect filterFrame = _filterNavController.view.frame;
+    CGRect matrixFrame = _matrixView.frame;
+    if (_showingFilter)
+    {
+        filterFrame.origin.x = -filterFrame.size.width;
+        matrixFrame.origin.x = 0;
+        
+    }
+    else 
+    {
+        filterFrame.origin.x = 0;
+        matrixFrame.origin.x = filterFrame.size.width;
+    }
+    
+    
+    [UIView animateWithDuration:0.5f delay:0.0f options:UIViewAnimationCurveEaseInOut animations:^{
+        _filterNavController.view.frame = filterFrame;
+        _matrixView.frame = matrixFrame;
+    } completion:^(BOOL finished){
+    
+        _showingFilter = !_showingFilter;
+    } ];
+    
+    
+    
+    
+}
+-(void)viewWillLayoutSubviews
+{
+    [super viewWillLayoutSubviews];
+    
+    CGRect filterFrame = self.view.bounds;
+    filterFrame.origin.y = TAB_VIEW_HEIGHT;
+    filterFrame.size.height -= TAB_VIEW_HEIGHT;
+    filterFrame.size.width = 320.0f;
+    if (!_showingFilter)
+        filterFrame.origin.x = -320.f;
+    
+    _filterNavController.view.frame = filterFrame;
+    
+    
+    
+}
+
+
+
 
 
 

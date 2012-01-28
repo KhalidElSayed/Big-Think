@@ -41,6 +41,12 @@
 		FA70B55214C4C46D00DD3D3B /* RKLargeCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA70B55114C4C46D00DD3D3B /* RKLargeCellView.m */; };
 		FA72ED7314C3DBB2001A7C25 /* 72Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = FA72ED7214C3DBB2001A7C25 /* 72Icon.png */; };
 		FA72ED7514C3DBBC001A7C25 /* 57Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = FA72ED7414C3DBBC001A7C25 /* 57Icon.png */; };
+		FA79E5B114D4875400282817 /* FilterTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA79E5AF14D4875400282817 /* FilterTableViewController.m */; };
+		FA79E5BD14D48C2100282817 /* BTFilterTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FA79E5BC14D48C2100282817 /* BTFilterTableViewCell.m */; };
+		FA79E5BF14D48C3900282817 /* BTFilterTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA79E5BE14D48C3900282817 /* BTFilterTableViewCell.xib */; };
+		FA79E5C514D48EEE00282817 /* FilterTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA79E5C414D48EED00282817 /* FilterTableViewController.xib */; };
+		FA79E5CA14D4AB0800282817 /* DetailTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA79E5C814D4AB0800282817 /* DetailTableViewController.m */; };
+		FA79E5CB14D4AB0800282817 /* DetailTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA79E5C914D4AB0800282817 /* DetailTableViewController.xib */; };
 		FA80768014CF452E0081A55A /* BTTabBarItem.m in Sources */ = {isa = PBXBuildFile; fileRef = FA80767F14CF452E0081A55A /* BTTabBarItem.m */; };
 		FA80768314CF49E10081A55A /* gamesSelected.png in Resources */ = {isa = PBXBuildFile; fileRef = FA80768114CF49E10081A55A /* gamesSelected.png */; };
 		FA80768414CF49E10081A55A /* worldSelected.png in Resources */ = {isa = PBXBuildFile; fileRef = FA80768214CF49E10081A55A /* worldSelected.png */; };
@@ -118,6 +124,15 @@
 		FA70B55114C4C46D00DD3D3B /* RKLargeCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RKLargeCellView.m; sourceTree = "<group>"; };
 		FA72ED7214C3DBB2001A7C25 /* 72Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 72Icon.png; path = ../72Icon.png; sourceTree = "<group>"; };
 		FA72ED7414C3DBBC001A7C25 /* 57Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 57Icon.png; path = ../57Icon.png; sourceTree = "<group>"; };
+		FA79E5AE14D4875400282817 /* FilterTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilterTableViewController.h; sourceTree = "<group>"; };
+		FA79E5AF14D4875400282817 /* FilterTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilterTableViewController.m; sourceTree = "<group>"; };
+		FA79E5BB14D48C2100282817 /* BTFilterTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BTFilterTableViewCell.h; sourceTree = "<group>"; };
+		FA79E5BC14D48C2100282817 /* BTFilterTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BTFilterTableViewCell.m; sourceTree = "<group>"; };
+		FA79E5BE14D48C3900282817 /* BTFilterTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BTFilterTableViewCell.xib; sourceTree = "<group>"; };
+		FA79E5C414D48EED00282817 /* FilterTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FilterTableViewController.xib; sourceTree = "<group>"; };
+		FA79E5C714D4AB0800282817 /* DetailTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; path = DetailTableViewController.h; sourceTree = "<group>"; };
+		FA79E5C814D4AB0800282817 /* DetailTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailTableViewController.m; sourceTree = "<group>"; };
+		FA79E5C914D4AB0800282817 /* DetailTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailTableViewController.xib; sourceTree = "<group>"; };
 		FA80767E14CF452E0081A55A /* BTTabBarItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BTTabBarItem.h; sourceTree = "<group>"; };
 		FA80767F14CF452E0081A55A /* BTTabBarItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BTTabBarItem.m; sourceTree = "<group>"; };
 		FA80768114CF49E10081A55A /* gamesSelected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gamesSelected.png; sourceTree = "<group>"; };
@@ -195,11 +210,12 @@
 		FA1538B514CDFB100083A68B /* ExploreViewController */ = {
 			isa = PBXGroup;
 			children = (
+				FA96E99514D23B19005AC28F /* Filter Tables */,
 				FA80768914CF50080081A55A /* JMtabViewCustomization */,
 				FAFBEB3E14C3872700235178 /* Cell Views */,
 				FAFBEB2F14C37C9800235178 /* RKMatrix */,
-				FAFBEB1614C37BD100235178 /* ExploreViewController.m */,
 				FAFBEB1514C37BD100235178 /* ExploreViewController.h */,
+				FAFBEB1614C37BD100235178 /* ExploreViewController.m */,
 				FAFBEB1B14C37BD100235178 /* ExploreViewController_iPad.xib */,
 				FAFBEB1814C37BD100235178 /* ExploreViewController_iPhone.xib */,
 			);
@@ -283,6 +299,26 @@
 			name = Images;
 			sourceTree = "<group>";
 		};
+		FA79E5B314D48AF700282817 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				FA79E5BB14D48C2100282817 /* BTFilterTableViewCell.h */,
+				FA79E5BC14D48C2100282817 /* BTFilterTableViewCell.m */,
+				FA79E5BE14D48C3900282817 /* BTFilterTableViewCell.xib */,
+			);
+			name = Cells;
+			sourceTree = "<group>";
+		};
+		FA79E5C614D4AAA100282817 /* Speakers */ = {
+			isa = PBXGroup;
+			children = (
+				FA79E5C714D4AB0800282817 /* DetailTableViewController.h */,
+				FA79E5C814D4AB0800282817 /* DetailTableViewController.m */,
+				FA79E5C914D4AB0800282817 /* DetailTableViewController.xib */,
+			);
+			name = Speakers;
+			sourceTree = "<group>";
+		};
 		FA80767D14CF44E90081A55A /* JMTabView Customization */ = {
 			isa = PBXGroup;
 			children = (
@@ -364,6 +400,18 @@
 				FA80769714CF6F270081A55A /* FXLabel.m */,
 			);
 			name = FXLabel;
+			sourceTree = "<group>";
+		};
+		FA96E99514D23B19005AC28F /* Filter Tables */ = {
+			isa = PBXGroup;
+			children = (
+				FA79E5C614D4AAA100282817 /* Speakers */,
+				FA79E5B314D48AF700282817 /* Cells */,
+				FA79E5AE14D4875400282817 /* FilterTableViewController.h */,
+				FA79E5AF14D4875400282817 /* FilterTableViewController.m */,
+				FA79E5C414D48EED00282817 /* FilterTableViewController.xib */,
+			);
+			name = "Filter Tables";
 			sourceTree = "<group>";
 		};
 		FAFBEAF414C37BD100235178 = {
@@ -544,6 +592,9 @@
 				FA15394A14CE2A720083A68B /* TabBarHeader.png in Resources */,
 				FA80768314CF49E10081A55A /* gamesSelected.png in Resources */,
 				FA80768414CF49E10081A55A /* worldSelected.png in Resources */,
+				FA79E5BF14D48C3900282817 /* BTFilterTableViewCell.xib in Resources */,
+				FA79E5C514D48EEE00282817 /* FilterTableViewController.xib in Resources */,
+				FA79E5CB14D4AB0800282817 /* DetailTableViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -578,6 +629,9 @@
 				FA80768C14CF50FC0081A55A /* BTTabView.m in Sources */,
 				FA80769814CF6F270081A55A /* FXLabel.m in Sources */,
 				FA34227F14D0A4D500D82961 /* UIImage+RKImage.m in Sources */,
+				FA79E5B114D4875400282817 /* FilterTableViewController.m in Sources */,
+				FA79E5BD14D48C2100282817 /* BTFilterTableViewCell.m in Sources */,
+				FA79E5CA14D4AB0800282817 /* DetailTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

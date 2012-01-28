@@ -23,4 +23,6 @@
 @property (strong,nonatomic) SpeakerViewController* tab2;
 @property (copy,nonatomic) NSArray* viewControllers;
 
+-(void)addTabWithViewController:(UIViewController *)viewController;
+
 @end
