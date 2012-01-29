@@ -7,7 +7,7 @@
 //
 
 #import "DetailTableViewController.h"
-#import "BTFilterTableViewCell.h"
+#import "CustomCell.h"
 
 @implementation DetailTableViewController
 @synthesize values = _values;
@@ -42,10 +42,8 @@
     }
     
     
-    NSString *myIdentifier = @"FilterCell";
-    [self.tableView registerNib:[UINib nibWithNibName:@"BTFilterTableViewCell" bundle:nil]
-         forCellReuseIdentifier:myIdentifier];
-
+   
+  
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -113,9 +111,13 @@
 {  
     
     static NSString *CellIdentifier = @"FilterCell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    
-    [[(BTFilterTableViewCell *)cell myLabel] setText:[_values objectAtIndex:indexPath.row]];
+    CustomCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if(!cell)
+    {
+        cell = [[CustomCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        
+    }
+    [cell setLabelText:[_values objectAtIndex:indexPath.row]];
     
     return cell;
 }

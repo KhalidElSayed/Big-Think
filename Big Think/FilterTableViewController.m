@@ -7,9 +7,10 @@
 //
 
 #import "FilterTableViewController.h"
-#import "BTFilterTableViewCell.h"
+#import "CustomCell.h"
 #import "DetailTableViewController.h"
 #import "DataBank.h"
+
 
 @implementation FilterTableViewController
 @synthesize tableValues = _tableValues;
@@ -63,11 +64,8 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     _tableValues = [[[DataBank sharedManager] filterCategories] allKeys];
     
-    NSString *myIdentifier = @"FilterCell";
-    [self.tableView registerNib:[UINib nibWithNibName:@"BTFilterTableViewCell" bundle:nil]
-                  forCellReuseIdentifier:myIdentifier];
-    
-}
+
+  }
 
 - (void)viewDidUnload
 {
@@ -116,6 +114,8 @@
 
 #pragma mark - Table view data source
 
+
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     // Return the number of sections.
@@ -132,9 +132,14 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"FilterCell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-   
-    [[(BTFilterTableViewCell *)cell myLabel] setText:[_tableValues objectAtIndex:indexPath.row]];
+    CustomCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if(!cell)
+    {
+        cell = [[CustomCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        
+    }
+    
+    [cell setLabelText:[_tableValues objectAtIndex:indexPath.row]];
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     
     return cell;
@@ -186,7 +191,7 @@
 {
     
      DetailTableViewController *detailViewController = [[DetailTableViewController alloc] initWithNibName:@"DetailTableViewController" bundle:nil];
-    detailViewController.delegate = (NSObject*)[self.navigationController parentViewController];
+    detailViewController.delegate = (id)[self.navigationController parentViewController];
     NSString* chosenCategory = [_tableValues objectAtIndex:indexPath.row];
     detailViewController.values = [[[DataBank sharedManager] filterCategories] objectForKey:chosenCategory];
     [self.navigationController pushViewController:detailViewController animated:YES];

@@ -13,7 +13,7 @@
 #import "RKLargeCellView.h"
 #import "BTTabView.h"
 #import "FXLabel.h"
-
+#import "RKTagButton.h"
 #import "DataBank.h"
 #define TAB_VIEW_HEIGHT 60.0f
 
@@ -23,6 +23,7 @@
     UINavigationController* filterTable;
 }
 -(void)setupTabView;
+-(void)animateTagTableIfNecessary;
 @end
 @implementation ExploreViewController
 @synthesize matrixView = _matrixView;
@@ -49,6 +50,14 @@
     [self.view addSubview:_filterNavController.view];
     
     _chosenFilters = [[NSMutableArray alloc]init];
+    
+    
+    //_tagTable = [[RKTagBankView alloc] initWithFrame:CGRectMake(50.0f, -48.0f, self.view.bounds.size.width - 100, 48.0f)];
+    //_tagTable.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+    //_tagTable.backgroundColor = [UIColor orangeColor];
+    
+   // [self.view insertSubview:_tagTable belowSubview:_tabView];
+    
     [_matrixView demoo];
 }
 
@@ -202,24 +211,58 @@
     
     _filterNavController.view.frame = filterFrame;
     
-    
+     
     
 }
 
 #pragma mark - DetailTableDelegate
 -(void)didSelectObject:(id)obj
 {
-    [_chosenFilters addObject:obj];
+    RKTagButton *button = [[RKTagButton alloc]initWithTag:(NSString*)obj];
+    [button addTarget:self action:@selector(removeTagButton:) forControlEvents:UIControlEventTouchUpInside];
+    
+   // [_tagTable addRKTag:button];
+   // [self animateTagTableIfNecessary];
 }
 
 
 -(void)didDeselectObject:(id)obj
 {
-    [_chosenFilters removeObject:obj];
+   
+    //[_tagTable removeTagWithString:(NSString*)obj];
+    //[self animateTagTableIfNecessary];
 }
 
 
+-(void)removeTagButton:(id)sender
+{
+   
+    //[_tagTable removeRKTag:(RKTagButton*)sender];
+    //[self animateTagTableIfNecessary];
+}
 
+-(void)animateTagTableIfNecessary
+{
+    
+    if([_tagTable.tags count] > 0 && _tagTable.frame.origin.y < 0) // First tag chosen, animate tagtable into view;
+    {
+        CGRect tagTableFrame = _tagTable.frame;
+        tagTableFrame.origin.y = 60.0f;
+        [UIView animateWithDuration:0.5f delay:0.0f options:UIViewAnimationCurveEaseInOut animations:^{
+            _tagTable.frame = tagTableFrame;
+        } completion:^(BOOL finished){  }];
+    }
+    else if([_tagTable.tags count] == 0)
+    {
+        CGRect tagTableFrame = _tagTable.frame;
+        tagTableFrame.origin.y = -tagTableFrame.size.height;
+        [UIView animateWithDuration:0.5f delay:0.0f options:UIViewAnimationCurveEaseInOut animations:^{
+            _tagTable.frame = tagTableFrame;
+        } completion:^(BOOL finished){  }];
+
+    }
+
+}
 
 
 

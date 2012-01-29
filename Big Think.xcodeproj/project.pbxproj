@@ -32,6 +32,10 @@
 		FA15394514CE1F680083A68B /* noise-tile.png in Resources */ = {isa = PBXBuildFile; fileRef = FA15394314CE1F670083A68B /* noise-tile.png */; };
 		FA15394614CE1F680083A68B /* noise-tile@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA15394414CE1F670083A68B /* noise-tile@2x.png */; };
 		FA15394A14CE2A720083A68B /* TabBarHeader.png in Resources */ = {isa = PBXBuildFile; fileRef = FA15394914CE2A710083A68B /* TabBarHeader.png */; };
+		FA16BD6114D5FE4E00CAF6BE /* BTCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA16BD6014D5FE4E00CAF6BE /* BTCellView.m */; };
+		FA26EF1814D5C870009C7E26 /* RKTagBankView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA26EF1714D5C870009C7E26 /* RKTagBankView.m */; };
+		FA26EF1F14D5E6FB009C7E26 /* cellBackround.png in Resources */ = {isa = PBXBuildFile; fileRef = FA26EF1E14D5E6FB009C7E26 /* cellBackround.png */; };
+		FA26EF2214D5F63E009C7E26 /* UIView+JMNoise.m in Sources */ = {isa = PBXBuildFile; fileRef = FA26EF2114D5F63E009C7E26 /* UIView+JMNoise.m */; };
 		FA288DF414C8C69800F470BE /* View.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA288DF314C8C69800F470BE /* View.xib */; };
 		FA288DF814C8EB2300F470BE /* landscapeBackround.png in Resources */ = {isa = PBXBuildFile; fileRef = FA288DF614C8EB2300F470BE /* landscapeBackround.png */; };
 		FA288DFD14C8EDE300F470BE /* portraitBackround.png in Resources */ = {isa = PBXBuildFile; fileRef = FA288DFC14C8EDE300F470BE /* portraitBackround.png */; };
@@ -42,19 +46,19 @@
 		FA72ED7314C3DBB2001A7C25 /* 72Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = FA72ED7214C3DBB2001A7C25 /* 72Icon.png */; };
 		FA72ED7514C3DBBC001A7C25 /* 57Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = FA72ED7414C3DBBC001A7C25 /* 57Icon.png */; };
 		FA79E5B114D4875400282817 /* FilterTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA79E5AF14D4875400282817 /* FilterTableViewController.m */; };
-		FA79E5BD14D48C2100282817 /* BTFilterTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FA79E5BC14D48C2100282817 /* BTFilterTableViewCell.m */; };
-		FA79E5BF14D48C3900282817 /* BTFilterTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA79E5BE14D48C3900282817 /* BTFilterTableViewCell.xib */; };
+		FA79E5BD14D48C2100282817 /* CustomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FA79E5BC14D48C2100282817 /* CustomCell.m */; };
+		FA79E5BF14D48C3900282817 /* CustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA79E5BE14D48C3900282817 /* CustomCell.xib */; };
 		FA79E5C514D48EEE00282817 /* FilterTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA79E5C414D48EED00282817 /* FilterTableViewController.xib */; };
 		FA79E5CA14D4AB0800282817 /* DetailTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA79E5C814D4AB0800282817 /* DetailTableViewController.m */; };
 		FA79E5CB14D4AB0800282817 /* DetailTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA79E5C914D4AB0800282817 /* DetailTableViewController.xib */; };
 		FA79E5CF14D4B07400282817 /* DataBank.m in Sources */ = {isa = PBXBuildFile; fileRef = FA79E5CE14D4B07400282817 /* DataBank.m */; };
-		FA79E5D214D4C3AB00282817 /* RKTagsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA79E5D114D4C3AB00282817 /* RKTagsView.xib */; };
-		FA79E5D514D4C3CB00282817 /* RKTagsView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA79E5D414D4C3CB00282817 /* RKTagsView.m */; };
 		FA80768014CF452E0081A55A /* BTTabBarItem.m in Sources */ = {isa = PBXBuildFile; fileRef = FA80767F14CF452E0081A55A /* BTTabBarItem.m */; };
 		FA80768314CF49E10081A55A /* gamesSelected.png in Resources */ = {isa = PBXBuildFile; fileRef = FA80768114CF49E10081A55A /* gamesSelected.png */; };
 		FA80768414CF49E10081A55A /* worldSelected.png in Resources */ = {isa = PBXBuildFile; fileRef = FA80768214CF49E10081A55A /* worldSelected.png */; };
 		FA80768C14CF50FC0081A55A /* BTTabView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA80768B14CF50FC0081A55A /* BTTabView.m */; };
 		FA80769814CF6F270081A55A /* FXLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = FA80769714CF6F270081A55A /* FXLabel.m */; };
+		FAAA217614D4F1530079ACE8 /* RKTagButton.m in Sources */ = {isa = PBXBuildFile; fileRef = FAAA217514D4F1530079ACE8 /* RKTagButton.m */; };
+		FAAA217D14D4FA830079ACE8 /* tagImage.png in Resources */ = {isa = PBXBuildFile; fileRef = FAAA217C14D4FA820079ACE8 /* tagImage.png */; };
 		FAFBEB0414C37BD100235178 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAFBEB0314C37BD100235178 /* UIKit.framework */; };
 		FAFBEB0614C37BD100235178 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAFBEB0514C37BD100235178 /* Foundation.framework */; };
 		FAFBEB0814C37BD100235178 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAFBEB0714C37BD100235178 /* CoreGraphics.framework */; };
@@ -115,6 +119,13 @@
 		FA15394314CE1F670083A68B /* noise-tile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "noise-tile.png"; sourceTree = "<group>"; };
 		FA15394414CE1F670083A68B /* noise-tile@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "noise-tile@2x.png"; sourceTree = "<group>"; };
 		FA15394914CE2A710083A68B /* TabBarHeader.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TabBarHeader.png; sourceTree = "<group>"; };
+		FA16BD5F14D5FE4E00CAF6BE /* BTCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BTCellView.h; sourceTree = "<group>"; };
+		FA16BD6014D5FE4E00CAF6BE /* BTCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BTCellView.m; sourceTree = "<group>"; };
+		FA26EF1614D5C870009C7E26 /* RKTagBankView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RKTagBankView.h; sourceTree = "<group>"; };
+		FA26EF1714D5C870009C7E26 /* RKTagBankView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RKTagBankView.m; sourceTree = "<group>"; };
+		FA26EF1E14D5E6FB009C7E26 /* cellBackround.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cellBackround.png; sourceTree = "<group>"; };
+		FA26EF2014D5F63E009C7E26 /* UIView+JMNoise.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+JMNoise.h"; sourceTree = "<group>"; };
+		FA26EF2114D5F63E009C7E26 /* UIView+JMNoise.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+JMNoise.m"; sourceTree = "<group>"; };
 		FA288DF314C8C69800F470BE /* View.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = View.xib; sourceTree = "<group>"; };
 		FA288DF614C8EB2300F470BE /* landscapeBackround.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = landscapeBackround.png; sourceTree = "<group>"; };
 		FA288DFC14C8EDE300F470BE /* portraitBackround.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = portraitBackround.png; sourceTree = "<group>"; };
@@ -129,18 +140,15 @@
 		FA72ED7414C3DBBC001A7C25 /* 57Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 57Icon.png; path = ../57Icon.png; sourceTree = "<group>"; };
 		FA79E5AE14D4875400282817 /* FilterTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilterTableViewController.h; sourceTree = "<group>"; };
 		FA79E5AF14D4875400282817 /* FilterTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilterTableViewController.m; sourceTree = "<group>"; };
-		FA79E5BB14D48C2100282817 /* BTFilterTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BTFilterTableViewCell.h; sourceTree = "<group>"; };
-		FA79E5BC14D48C2100282817 /* BTFilterTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BTFilterTableViewCell.m; sourceTree = "<group>"; };
-		FA79E5BE14D48C3900282817 /* BTFilterTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BTFilterTableViewCell.xib; sourceTree = "<group>"; };
+		FA79E5BB14D48C2100282817 /* CustomCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomCell.h; sourceTree = "<group>"; };
+		FA79E5BC14D48C2100282817 /* CustomCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomCell.m; sourceTree = "<group>"; };
+		FA79E5BE14D48C3900282817 /* CustomCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomCell.xib; sourceTree = "<group>"; };
 		FA79E5C414D48EED00282817 /* FilterTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FilterTableViewController.xib; sourceTree = "<group>"; };
 		FA79E5C714D4AB0800282817 /* DetailTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailTableViewController.h; sourceTree = "<group>"; };
 		FA79E5C814D4AB0800282817 /* DetailTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailTableViewController.m; sourceTree = "<group>"; };
 		FA79E5C914D4AB0800282817 /* DetailTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailTableViewController.xib; sourceTree = "<group>"; };
 		FA79E5CD14D4B07400282817 /* DataBank.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataBank.h; sourceTree = "<group>"; };
 		FA79E5CE14D4B07400282817 /* DataBank.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataBank.m; sourceTree = "<group>"; };
-		FA79E5D114D4C3AB00282817 /* RKTagsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RKTagsView.xib; sourceTree = "<group>"; };
-		FA79E5D314D4C3CB00282817 /* RKTagsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RKTagsView.h; sourceTree = "<group>"; };
-		FA79E5D414D4C3CB00282817 /* RKTagsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RKTagsView.m; sourceTree = "<group>"; };
 		FA80767E14CF452E0081A55A /* BTTabBarItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BTTabBarItem.h; sourceTree = "<group>"; };
 		FA80767F14CF452E0081A55A /* BTTabBarItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BTTabBarItem.m; sourceTree = "<group>"; };
 		FA80768114CF49E10081A55A /* gamesSelected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gamesSelected.png; sourceTree = "<group>"; };
@@ -149,6 +157,9 @@
 		FA80768B14CF50FC0081A55A /* BTTabView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BTTabView.m; sourceTree = "<group>"; };
 		FA80769614CF6F270081A55A /* FXLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FXLabel.h; sourceTree = "<group>"; };
 		FA80769714CF6F270081A55A /* FXLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FXLabel.m; sourceTree = "<group>"; };
+		FAAA217414D4F1530079ACE8 /* RKTagButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RKTagButton.h; sourceTree = "<group>"; };
+		FAAA217514D4F1530079ACE8 /* RKTagButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RKTagButton.m; sourceTree = "<group>"; };
+		FAAA217C14D4FA820079ACE8 /* tagImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tagImage.png; sourceTree = "<group>"; };
 		FAFBEAFF14C37BD100235178 /* Big Think.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Big Think.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAFBEB0314C37BD100235178 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		FAFBEB0514C37BD100235178 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -218,10 +229,9 @@
 		FA1538B514CDFB100083A68B /* ExploreViewController */ = {
 			isa = PBXGroup;
 			children = (
-				FA79E5D014D4C37600282817 /* Chosen Filters View */,
+				FA79E5D014D4C37600282817 /* RKTags */,
 				FA96E99514D23B19005AC28F /* Filter Tables */,
 				FA80768914CF50080081A55A /* JMtabViewCustomization */,
-				FAFBEB3E14C3872700235178 /* Cell Views */,
 				FAFBEB2F14C37C9800235178 /* RKMatrix */,
 				FAFBEB1514C37BD100235178 /* ExploreViewController.h */,
 				FAFBEB1614C37BD100235178 /* ExploreViewController.m */,
@@ -261,6 +271,8 @@
 		FA15391114CE07940083A68B /* Categories */ = {
 			isa = PBXGroup;
 			children = (
+				FA26EF2014D5F63E009C7E26 /* UIView+JMNoise.h */,
+				FA26EF2114D5F63E009C7E26 /* UIView+JMNoise.m */,
 				FA15391414CE07940083A68B /* UIView+InnerShadow.h */,
 				FA15391514CE07940083A68B /* UIView+InnerShadow.m */,
 				FA15391614CE07940083A68B /* UIView+Positioning.h */,
@@ -311,9 +323,12 @@
 		FA79E5B314D48AF700282817 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				FA79E5BB14D48C2100282817 /* BTFilterTableViewCell.h */,
-				FA79E5BC14D48C2100282817 /* BTFilterTableViewCell.m */,
-				FA79E5BE14D48C3900282817 /* BTFilterTableViewCell.xib */,
+				FA26EF1E14D5E6FB009C7E26 /* cellBackround.png */,
+				FA79E5BB14D48C2100282817 /* CustomCell.h */,
+				FA79E5BC14D48C2100282817 /* CustomCell.m */,
+				FA79E5BE14D48C3900282817 /* CustomCell.xib */,
+				FA16BD5F14D5FE4E00CAF6BE /* BTCellView.h */,
+				FA16BD6014D5FE4E00CAF6BE /* BTCellView.m */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -337,14 +352,16 @@
 			name = "Data - For Testing";
 			sourceTree = "<group>";
 		};
-		FA79E5D014D4C37600282817 /* Chosen Filters View */ = {
+		FA79E5D014D4C37600282817 /* RKTags */ = {
 			isa = PBXGroup;
 			children = (
-				FA79E5D114D4C3AB00282817 /* RKTagsView.xib */,
-				FA79E5D314D4C3CB00282817 /* RKTagsView.h */,
-				FA79E5D414D4C3CB00282817 /* RKTagsView.m */,
+				FAAA217C14D4FA820079ACE8 /* tagImage.png */,
+				FAAA217414D4F1530079ACE8 /* RKTagButton.h */,
+				FAAA217514D4F1530079ACE8 /* RKTagButton.m */,
+				FA26EF1614D5C870009C7E26 /* RKTagBankView.h */,
+				FA26EF1714D5C870009C7E26 /* RKTagBankView.m */,
 			);
-			name = "Chosen Filters View";
+			name = RKTags;
 			sourceTree = "<group>";
 		};
 		FA80767D14CF44E90081A55A /* JMTabView Customization */ = {
@@ -511,6 +528,7 @@
 		FAFBEB2F14C37C9800235178 /* RKMatrix */ = {
 			isa = PBXGroup;
 			children = (
+				FAFBEB3E14C3872700235178 /* Cell Views */,
 				FA288DFE14C8F1E300F470BE /* Images */,
 				FAFBEB3014C37CA900235178 /* RKMatrixView.h */,
 				FAFBEB3114C37CA900235178 /* RKMatrixView.m */,
@@ -621,10 +639,11 @@
 				FA15394A14CE2A720083A68B /* TabBarHeader.png in Resources */,
 				FA80768314CF49E10081A55A /* gamesSelected.png in Resources */,
 				FA80768414CF49E10081A55A /* worldSelected.png in Resources */,
-				FA79E5BF14D48C3900282817 /* BTFilterTableViewCell.xib in Resources */,
+				FA79E5BF14D48C3900282817 /* CustomCell.xib in Resources */,
 				FA79E5C514D48EEE00282817 /* FilterTableViewController.xib in Resources */,
 				FA79E5CB14D4AB0800282817 /* DetailTableViewController.xib in Resources */,
-				FA79E5D214D4C3AB00282817 /* RKTagsView.xib in Resources */,
+				FAAA217D14D4FA830079ACE8 /* tagImage.png in Resources */,
+				FA26EF1F14D5E6FB009C7E26 /* cellBackround.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -660,10 +679,13 @@
 				FA80769814CF6F270081A55A /* FXLabel.m in Sources */,
 				FA34227F14D0A4D500D82961 /* UIImage+RKImage.m in Sources */,
 				FA79E5B114D4875400282817 /* FilterTableViewController.m in Sources */,
-				FA79E5BD14D48C2100282817 /* BTFilterTableViewCell.m in Sources */,
+				FA79E5BD14D48C2100282817 /* CustomCell.m in Sources */,
 				FA79E5CA14D4AB0800282817 /* DetailTableViewController.m in Sources */,
 				FA79E5CF14D4B07400282817 /* DataBank.m in Sources */,
-				FA79E5D514D4C3CB00282817 /* RKTagsView.m in Sources */,
+				FAAA217614D4F1530079ACE8 /* RKTagButton.m in Sources */,
+				FA26EF1814D5C870009C7E26 /* RKTagBankView.m in Sources */,
+				FA26EF2214D5F63E009C7E26 /* UIView+JMNoise.m in Sources */,
+				FA16BD6114D5FE4E00CAF6BE /* BTCellView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
