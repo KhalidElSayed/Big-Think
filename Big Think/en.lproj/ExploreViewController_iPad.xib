@@ -73,7 +73,7 @@
 				</object>
 				<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 			</object>
-			<object class="IBUINavigationController" id="371453619">
+			<object class="IBUINavigationController" id="82028134">
 				<object class="IBUISimulatedNavigationBarMetrics" key="IBUISimulatedTopBarMetrics">
 					<int key="IBUIBarStyle">1</int>
 					<bool key="IBUIPrompted">NO</bool>
@@ -88,7 +88,7 @@
 				<bool key="IBUIDefinesPresentationContext">YES</bool>
 				<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 				<bool key="IBUIHorizontal">NO</bool>
-				<object class="IBUINavigationBar" key="IBUINavigationBar" id="810243668">
+				<object class="IBUINavigationBar" key="IBUINavigationBar" id="382428813">
 					<nil key="NSNextResponder"/>
 					<int key="NSvFlags">256</int>
 					<string key="NSFrame">{{0, -44}, {0, 44}}</string>
@@ -96,16 +96,16 @@
 					<bool key="IBUIClipsSubviews">YES</bool>
 					<bool key="IBUIMultipleTouchEnabled">YES</bool>
 					<string key="targetRuntimeIdentifier">IBIPadFramework</string>
-					<int key="IBUIBarStyle">2</int>
+					<int key="IBUIBarStyle">1</int>
 				</object>
 				<array class="NSMutableArray" key="IBUIViewControllers">
-					<object class="IBUIViewController" id="524800240">
+					<object class="IBUIViewController" id="866919085">
 						<string key="IBUITitle">Filter</string>
-						<object class="IBUINavigationItem" key="IBUINavigationItem" id="1019275716">
-							<string key="IBUITitle">Root View Controller</string>
+						<object class="IBUINavigationItem" key="IBUINavigationItem" id="319241612">
+							<string key="IBUITitle">Filters</string>
 							<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 						</object>
-						<reference key="IBUIParentViewController" ref="371453619"/>
+						<reference key="IBUIParentViewController" ref="82028134"/>
 						<string key="IBUINibName">FilterTableViewController</string>
 						<object class="IBUISimulatedOrientationMetrics" key="IBUISimulatedOrientationMetrics">
 							<int key="IBUIInterfaceOrientation">1</int>
@@ -139,7 +139,7 @@
 					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">filterNavController</string>
 						<reference key="source" ref="841351856"/>
-						<reference key="destination" ref="371453619"/>
+						<reference key="destination" ref="82028134"/>
 					</object>
 					<int key="connectionID">21</int>
 				</object>
@@ -174,34 +174,35 @@
 					<object class="IBObjectRecord">
 						<int key="objectID">10</int>
 						<reference key="object" ref="956580423"/>
+						<array class="NSMutableArray" key="children"/>
 						<reference key="parent" ref="766721923"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">17</int>
-						<reference key="object" ref="371453619"/>
+						<reference key="object" ref="82028134"/>
 						<array class="NSMutableArray" key="children">
-							<reference ref="810243668"/>
-							<reference ref="524800240"/>
+							<reference ref="382428813"/>
+							<reference ref="866919085"/>
 						</array>
 						<reference key="parent" ref="0"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">18</int>
-						<reference key="object" ref="810243668"/>
-						<reference key="parent" ref="371453619"/>
+						<reference key="object" ref="382428813"/>
+						<reference key="parent" ref="82028134"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">19</int>
-						<reference key="object" ref="524800240"/>
+						<reference key="object" ref="866919085"/>
 						<array class="NSMutableArray" key="children">
-							<reference ref="1019275716"/>
+							<reference ref="319241612"/>
 						</array>
-						<reference key="parent" ref="371453619"/>
+						<reference key="parent" ref="82028134"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">20</int>
-						<reference key="object" ref="1019275716"/>
-						<reference key="parent" ref="524800240"/>
+						<reference key="object" ref="319241612"/>
+						<reference key="parent" ref="866919085"/>
 					</object>
 				</array>
 			</object>
@@ -223,11 +224,15 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">21</int>
+			<int key="maxID">22</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes"/>
 		<int key="IBDocument.localizationMode">0</int>
 		<string key="IBDocument.TargetRuntimeIdentifier">IBIPadFramework</string>
+		<object class="NSMutableDictionary" key="IBDocument.PluginDeclaredDevelopmentDependencies">
+			<string key="NS.key.0">com.apple.InterfaceBuilder.CocoaTouchPlugin.InterfaceBuilder3</string>
+			<real value="4200" key="NS.object.0"/>
+		</object>
 		<bool key="IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion">YES</bool>
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
 		<string key="IBCocoaTouchPluginVersion">933</string>

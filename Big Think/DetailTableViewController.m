@@ -7,8 +7,11 @@
 //
 
 #import "DetailTableViewController.h"
+#import "BTFilterTableViewCell.h"
 
 @implementation DetailTableViewController
+@synthesize values = _values;
+@synthesize delegate = _delegate;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -33,6 +36,17 @@
 {
     [super viewDidLoad];
 
+    if (!_values)
+    {
+        _values = [[NSArray alloc]initWithObjects:@"No", @"Values", @"For", @"This", @"Table", nil];
+    }
+    
+    
+    NSString *myIdentifier = @"FilterCell";
+    [self.tableView registerNib:[UINib nibWithNibName:@"BTFilterTableViewCell" bundle:nil]
+         forCellReuseIdentifier:myIdentifier];
+
+    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
@@ -73,32 +87,35 @@
 	return YES;
 }
 
+-(void)setValues:(NSArray *)values
+{
+    _values = values;
+    [self.tableView reloadData];
+}
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-#warning Potentially incomplete method implementation.
+
     // Return the number of sections.
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-#warning Incomplete method implementation.
+
     // Return the number of rows in the section.
-    return 0;
+    return [_values count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    static NSString *CellIdentifier = @"Cell";
+{  
     
+    static NSString *CellIdentifier = @"FilterCell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-    }
     
-    // Configure the cell...
+    [[(BTFilterTableViewCell *)cell myLabel] setText:[_values objectAtIndex:indexPath.row]];
     
     return cell;
 }
@@ -142,17 +159,16 @@
 }
 */
 
+
+-(void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+        [self.delegate didDeselectObject:[_values objectAtIndex:indexPath.row]];        
+}
 #pragma mark - Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     */
+    [self.delegate didSelectObject:[_values objectAtIndex:indexPath.row]];
 }
 
 @end

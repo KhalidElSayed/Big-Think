@@ -31,19 +31,20 @@
 				<string key="IBProxiedObjectIdentifier">IBFirstResponder</string>
 				<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 			</object>
-			<object class="IBUITableViewCell" id="124172432">
+			<object class="IBUITableViewCell" id="828573358">
 				<reference key="NSNextResponder"/>
-				<int key="NSvFlags">274</int>
+				<int key="NSvFlags">292</int>
 				<array class="NSMutableArray" key="NSSubviews">
-					<object class="IBUIView" id="323912285">
-						<reference key="NSNextResponder" ref="124172432"/>
+					<object class="IBUIView" id="791309874">
+						<reference key="NSNextResponder" ref="828573358"/>
 						<int key="NSvFlags">256</int>
 						<array class="NSMutableArray" key="NSSubviews">
-							<object class="IBUILabel" id="527747736">
-								<reference key="NSNextResponder" ref="323912285"/>
-								<int key="NSvFlags">274</int>
-								<string key="NSFrameSize">{320, 50}</string>
-								<reference key="NSSuperview" ref="323912285"/>
+							<object class="IBUILabel" id="75320334">
+								<reference key="NSNextResponder" ref="791309874"/>
+								<int key="NSvFlags">292</int>
+								<string key="NSFrame">{{0, 10}, {320, 50}}</string>
+								<reference key="NSSuperview" ref="791309874"/>
+								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView"/>
 								<string key="NSReuseIdentifierKey">_NS:345</string>
 								<bool key="IBUIOpaque">NO</bool>
@@ -59,23 +60,23 @@
 								<nil key="IBUIHighlightedColor"/>
 								<int key="IBUIBaselineAdjustment">0</int>
 								<float key="IBUIMinimumFontSize">10</float>
-								<int key="IBUITextAlignment">1</int>
 								<object class="IBUIFontDescription" key="IBUIFontDescription">
 									<string key="name">Futura-CondensedExtraBold</string>
 									<string key="family">Futura</string>
 									<int key="traits">2</int>
-									<double key="pointSize">74</double>
+									<double key="pointSize">44</double>
 								</object>
 								<object class="NSFont" key="IBUIFont">
 									<string key="NSName">Futura-CondensedExtraBold</string>
-									<double key="NSSize">74</double>
+									<double key="NSSize">44</double>
 									<int key="NSfFlags">16</int>
 								</object>
 							</object>
 						</array>
-						<string key="NSFrameSize">{320, 49}</string>
-						<reference key="NSSuperview" ref="124172432"/>
-						<reference key="NSNextKeyView" ref="527747736"/>
+						<string key="NSFrameSize">{320, 69}</string>
+						<reference key="NSSuperview" ref="828573358"/>
+						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView" ref="75320334"/>
 						<string key="NSReuseIdentifierKey">_NS:396</string>
 						<object class="NSColor" key="IBUIBackgroundColor">
 							<int key="NSColorSpace">3</int>
@@ -88,15 +89,16 @@
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 					</object>
 				</array>
-				<string key="NSFrameSize">{320, 50}</string>
+				<string key="NSFrameSize">{320, 70}</string>
 				<reference key="NSSuperview"/>
-				<reference key="NSNextKeyView" ref="323912285"/>
+				<reference key="NSWindow"/>
+				<reference key="NSNextKeyView" ref="791309874"/>
 				<string key="NSReuseIdentifierKey">_NS:385</string>
 				<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 				<int key="IBUISelectionStyle">0</int>
-				<reference key="IBUIContentView" ref="323912285"/>
+				<reference key="IBUIContentView" ref="791309874"/>
 				<string key="IBUIReuseIdentifier">FilterCell</string>
-				<real value="50" key="IBUIRowHeight"/>
+				<real value="70" key="IBUIRowHeight"/>
 			</object>
 		</array>
 		<object class="IBObjectContainer" key="IBDocument.Objects">
@@ -104,8 +106,8 @@
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">myLabel</string>
-						<reference key="source" ref="124172432"/>
-						<reference key="destination" ref="527747736"/>
+						<reference key="source" ref="828573358"/>
+						<reference key="destination" ref="75320334"/>
 					</object>
 					<int key="connectionID">9</int>
 				</object>
@@ -131,16 +133,16 @@
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">3</int>
-						<reference key="object" ref="124172432"/>
+						<reference key="object" ref="828573358"/>
 						<array class="NSMutableArray" key="children">
-							<reference ref="527747736"/>
+							<reference ref="75320334"/>
 						</array>
 						<reference key="parent" ref="0"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">4</int>
-						<reference key="object" ref="527747736"/>
-						<reference key="parent" ref="124172432"/>
+						<reference key="object" ref="75320334"/>
+						<reference key="parent" ref="828573358"/>
 					</object>
 				</array>
 			</object>
@@ -158,7 +160,29 @@
 			<nil key="sourceID"/>
 			<int key="maxID">9</int>
 		</object>
-		<object class="IBClassDescriber" key="IBDocument.Classes"/>
+		<object class="IBClassDescriber" key="IBDocument.Classes">
+			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
+				<object class="IBPartialClassDescription">
+					<string key="className">BTFilterTableViewCell</string>
+					<string key="superclassName">UITableViewCell</string>
+					<object class="NSMutableDictionary" key="outlets">
+						<string key="NS.key.0">myLabel</string>
+						<string key="NS.object.0">UILabel</string>
+					</object>
+					<object class="NSMutableDictionary" key="toOneOutletInfosByName">
+						<string key="NS.key.0">myLabel</string>
+						<object class="IBToOneOutletInfo" key="NS.object.0">
+							<string key="name">myLabel</string>
+							<string key="candidateClassName">UILabel</string>
+						</object>
+					</object>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">./Classes/BTFilterTableViewCell.h</string>
+					</object>
+				</object>
+			</array>
+		</object>
 		<int key="IBDocument.localizationMode">0</int>
 		<string key="IBDocument.TargetRuntimeIdentifier">IBIPadFramework</string>
 		<bool key="IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion">YES</bool>

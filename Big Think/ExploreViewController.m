@@ -14,6 +14,7 @@
 #import "BTTabView.h"
 #import "FXLabel.h"
 
+#import "DataBank.h"
 #define TAB_VIEW_HEIGHT 60.0f
 
 @interface ExploreViewController()
@@ -46,12 +47,9 @@
     
     [self addChildViewController:_filterNavController];
     [self.view addSubview:_filterNavController.view];
-
     
+    _chosenFilters = [[NSMutableArray alloc]init];
     [_matrixView demoo];
-    
-    
-
 }
 
 - (void)viewDidUnload
@@ -75,7 +73,7 @@
     
     [tabView setBackgroundLayer:nil];
 
-
+    
     tabView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"TabBarHeader.png"]];
   
     FXLabel *bigThinkLabel = [[FXLabel alloc]initWithFrame:CGRectMake(0, 0, 400, TAB_VIEW_HEIGHT)];
@@ -89,11 +87,18 @@
     bigThinkLabel.textColor = [UIColor whiteColor];
     bigThinkLabel.backgroundColor = [UIColor clearColor];
     bigThinkLabel.userInteractionEnabled = YES;
-    UITapGestureRecognizer *touch = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(filterButtonPressed)];
-    [touch setNumberOfTapsRequired:2];
-    [bigThinkLabel addGestureRecognizer:touch];
+   // UITapGestureRecognizer *touch = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(filterButtonPressed)];
+    //[touch setNumberOfTapsRequired:2];
+    //[bigThinkLabel addGestureRecognizer:touch];
    
-    tabView.leftView = bigThinkLabel;
+    tabView.middleView = bigThinkLabel;
+
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+       button.frame = CGRectMake(0, 0, 100, 44);
+    button.titleLabel.text = @"Filter";
+
+    [button addTarget:self action:@selector(filterButtonPressed) forControlEvents:UIControlEventTouchUpInside];
+    tabView.leftView = button;
     
     [tabView setSelectedIndex:0];
 
@@ -199,6 +204,18 @@
     
     
     
+}
+
+#pragma mark - DetailTableDelegate
+-(void)didSelectObject:(id)obj
+{
+    [_chosenFilters addObject:obj];
+}
+
+
+-(void)didDeselectObject:(id)obj
+{
+    [_chosenFilters removeObject:obj];
 }
 
 

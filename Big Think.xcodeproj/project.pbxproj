@@ -47,6 +47,9 @@
 		FA79E5C514D48EEE00282817 /* FilterTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA79E5C414D48EED00282817 /* FilterTableViewController.xib */; };
 		FA79E5CA14D4AB0800282817 /* DetailTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA79E5C814D4AB0800282817 /* DetailTableViewController.m */; };
 		FA79E5CB14D4AB0800282817 /* DetailTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA79E5C914D4AB0800282817 /* DetailTableViewController.xib */; };
+		FA79E5CF14D4B07400282817 /* DataBank.m in Sources */ = {isa = PBXBuildFile; fileRef = FA79E5CE14D4B07400282817 /* DataBank.m */; };
+		FA79E5D214D4C3AB00282817 /* RKTagsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA79E5D114D4C3AB00282817 /* RKTagsView.xib */; };
+		FA79E5D514D4C3CB00282817 /* RKTagsView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA79E5D414D4C3CB00282817 /* RKTagsView.m */; };
 		FA80768014CF452E0081A55A /* BTTabBarItem.m in Sources */ = {isa = PBXBuildFile; fileRef = FA80767F14CF452E0081A55A /* BTTabBarItem.m */; };
 		FA80768314CF49E10081A55A /* gamesSelected.png in Resources */ = {isa = PBXBuildFile; fileRef = FA80768114CF49E10081A55A /* gamesSelected.png */; };
 		FA80768414CF49E10081A55A /* worldSelected.png in Resources */ = {isa = PBXBuildFile; fileRef = FA80768214CF49E10081A55A /* worldSelected.png */; };
@@ -130,9 +133,14 @@
 		FA79E5BC14D48C2100282817 /* BTFilterTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BTFilterTableViewCell.m; sourceTree = "<group>"; };
 		FA79E5BE14D48C3900282817 /* BTFilterTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BTFilterTableViewCell.xib; sourceTree = "<group>"; };
 		FA79E5C414D48EED00282817 /* FilterTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FilterTableViewController.xib; sourceTree = "<group>"; };
-		FA79E5C714D4AB0800282817 /* DetailTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; path = DetailTableViewController.h; sourceTree = "<group>"; };
+		FA79E5C714D4AB0800282817 /* DetailTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailTableViewController.h; sourceTree = "<group>"; };
 		FA79E5C814D4AB0800282817 /* DetailTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailTableViewController.m; sourceTree = "<group>"; };
 		FA79E5C914D4AB0800282817 /* DetailTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailTableViewController.xib; sourceTree = "<group>"; };
+		FA79E5CD14D4B07400282817 /* DataBank.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataBank.h; sourceTree = "<group>"; };
+		FA79E5CE14D4B07400282817 /* DataBank.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataBank.m; sourceTree = "<group>"; };
+		FA79E5D114D4C3AB00282817 /* RKTagsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RKTagsView.xib; sourceTree = "<group>"; };
+		FA79E5D314D4C3CB00282817 /* RKTagsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RKTagsView.h; sourceTree = "<group>"; };
+		FA79E5D414D4C3CB00282817 /* RKTagsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RKTagsView.m; sourceTree = "<group>"; };
 		FA80767E14CF452E0081A55A /* BTTabBarItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BTTabBarItem.h; sourceTree = "<group>"; };
 		FA80767F14CF452E0081A55A /* BTTabBarItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BTTabBarItem.m; sourceTree = "<group>"; };
 		FA80768114CF49E10081A55A /* gamesSelected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gamesSelected.png; sourceTree = "<group>"; };
@@ -210,6 +218,7 @@
 		FA1538B514CDFB100083A68B /* ExploreViewController */ = {
 			isa = PBXGroup;
 			children = (
+				FA79E5D014D4C37600282817 /* Chosen Filters View */,
 				FA96E99514D23B19005AC28F /* Filter Tables */,
 				FA80768914CF50080081A55A /* JMtabViewCustomization */,
 				FAFBEB3E14C3872700235178 /* Cell Views */,
@@ -309,14 +318,33 @@
 			name = Cells;
 			sourceTree = "<group>";
 		};
-		FA79E5C614D4AAA100282817 /* Speakers */ = {
+		FA79E5C614D4AAA100282817 /* Detail */ = {
 			isa = PBXGroup;
 			children = (
 				FA79E5C714D4AB0800282817 /* DetailTableViewController.h */,
 				FA79E5C814D4AB0800282817 /* DetailTableViewController.m */,
 				FA79E5C914D4AB0800282817 /* DetailTableViewController.xib */,
 			);
-			name = Speakers;
+			name = Detail;
+			sourceTree = "<group>";
+		};
+		FA79E5CC14D4B03900282817 /* Data - For Testing */ = {
+			isa = PBXGroup;
+			children = (
+				FA79E5CD14D4B07400282817 /* DataBank.h */,
+				FA79E5CE14D4B07400282817 /* DataBank.m */,
+			);
+			name = "Data - For Testing";
+			sourceTree = "<group>";
+		};
+		FA79E5D014D4C37600282817 /* Chosen Filters View */ = {
+			isa = PBXGroup;
+			children = (
+				FA79E5D114D4C3AB00282817 /* RKTagsView.xib */,
+				FA79E5D314D4C3CB00282817 /* RKTagsView.h */,
+				FA79E5D414D4C3CB00282817 /* RKTagsView.m */,
+			);
+			name = "Chosen Filters View";
 			sourceTree = "<group>";
 		};
 		FA80767D14CF44E90081A55A /* JMTabView Customization */ = {
@@ -405,7 +433,7 @@
 		FA96E99514D23B19005AC28F /* Filter Tables */ = {
 			isa = PBXGroup;
 			children = (
-				FA79E5C614D4AAA100282817 /* Speakers */,
+				FA79E5C614D4AAA100282817 /* Detail */,
 				FA79E5B314D48AF700282817 /* Cells */,
 				FA79E5AE14D4875400282817 /* FilterTableViewController.h */,
 				FA79E5AF14D4875400282817 /* FilterTableViewController.m */,
@@ -445,6 +473,7 @@
 		FAFBEB0914C37BD100235178 /* Big Think */ = {
 			isa = PBXGroup;
 			children = (
+				FA79E5CC14D4B03900282817 /* Data - For Testing */,
 				FA80768514CF4D590081A55A /* BTTabBarController */,
 				FA1538FB14CDFC9D0083A68B /* SpeakersViewController */,
 				FA1538B514CDFB100083A68B /* ExploreViewController */,
@@ -595,6 +624,7 @@
 				FA79E5BF14D48C3900282817 /* BTFilterTableViewCell.xib in Resources */,
 				FA79E5C514D48EEE00282817 /* FilterTableViewController.xib in Resources */,
 				FA79E5CB14D4AB0800282817 /* DetailTableViewController.xib in Resources */,
+				FA79E5D214D4C3AB00282817 /* RKTagsView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -632,6 +662,8 @@
 				FA79E5B114D4875400282817 /* FilterTableViewController.m in Sources */,
 				FA79E5BD14D48C2100282817 /* BTFilterTableViewCell.m in Sources */,
 				FA79E5CA14D4AB0800282817 /* DetailTableViewController.m in Sources */,
+				FA79E5CF14D4B07400282817 /* DataBank.m in Sources */,
+				FA79E5D514D4C3CB00282817 /* RKTagsView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

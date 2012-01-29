@@ -1,5 +1,5 @@
 //
-//  BTFilterTableViewCell.h
+//  RKTagsView.h
 //  Big Think
 //
 //  Created by Richard Kirk on 1/28/12.
@@ -8,10 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface BTFilterTableViewCell : UITableViewCell
-
-@property (strong, nonatomic) IBOutlet UILabel *myLabel;
-
-
-
+@interface RKTagsView : UIView
+{
+    NSMutableArray*     _tags;
+}
+@property (strong, nonatomic) NSArray *tags;
 @end

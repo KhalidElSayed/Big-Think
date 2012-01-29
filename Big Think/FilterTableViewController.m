@@ -8,7 +8,8 @@
 
 #import "FilterTableViewController.h"
 #import "BTFilterTableViewCell.h"
-
+#import "DetailTableViewController.h"
+#import "DataBank.h"
 
 @implementation FilterTableViewController
 @synthesize tableValues = _tableValues;
@@ -17,7 +18,7 @@
 {
     self = [super initWithStyle:style];
     if (self) {
-        _tableValues = [[NSArray alloc]initWithObjects:@"one", @"two", @"three", @"four", @"five", @"six", nil];
+       
     }
     return self;
 }
@@ -26,7 +27,7 @@
 {
     if((self = [super initWithCoder:aDecoder]))
     {
-        _tableValues = [[NSArray alloc]initWithObjects:@"one", @"two", @"three", @"four", @"five", @"six", nil];
+       
     }
     return self;
 }
@@ -35,7 +36,7 @@
 {
     if((self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]))
     {
-        _tableValues = [[NSArray alloc]initWithObjects:@"one", @"two", @"three", @"four", @"five", @"six", nil];
+       
     }
     return self;
 
@@ -60,7 +61,8 @@
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    _tableValues = [[NSArray alloc]initWithObjects:@"one", @"two", @"three", @"four", @"five", @"six", nil];
+    _tableValues = [[[DataBank sharedManager] filterCategories] allKeys];
+    
     NSString *myIdentifier = @"FilterCell";
     [self.tableView registerNib:[UINib nibWithNibName:@"BTFilterTableViewCell" bundle:nil]
                   forCellReuseIdentifier:myIdentifier];
@@ -133,6 +135,8 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
    
     [[(BTFilterTableViewCell *)cell myLabel] setText:[_tableValues objectAtIndex:indexPath.row]];
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    
     return cell;
     
 }
@@ -180,13 +184,13 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     */
+    
+     DetailTableViewController *detailViewController = [[DetailTableViewController alloc] initWithNibName:@"DetailTableViewController" bundle:nil];
+    detailViewController.delegate = (NSObject*)[self.navigationController parentViewController];
+    NSString* chosenCategory = [_tableValues objectAtIndex:indexPath.row];
+    detailViewController.values = [[[DataBank sharedManager] filterCategories] objectForKey:chosenCategory];
+    [self.navigationController pushViewController:detailViewController animated:YES];
+     
 }
 
 @end

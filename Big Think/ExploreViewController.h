@@ -9,13 +9,13 @@
 #import <UIKit/UIKit.h>
 #import "RKMatrixView.h"
 #import "BTTabView.h"
-
-@interface ExploreViewController : UIViewController <RKMatrixViewDelegate, RKMatrixViewDatasource, JMTabViewDelegate>
+#import "DetailTableViewController.h"
+@interface ExploreViewController : UIViewController <RKMatrixViewDelegate, RKMatrixViewDatasource, JMTabViewDelegate, DetailTableDelegate>
 {
-    RKMatrixView*   _matrixView;
-    BTTabView*      _tabView;
+    RKMatrixView*       _matrixView;
+    BTTabView*          _tabView;
+    NSMutableArray*     _chosenFilters;
 }
-
 @property (strong, nonatomic) IBOutlet RKMatrixView *matrixView;
 @property (strong, nonatomic) IBOutlet UINavigationController *filterNavController;
 
