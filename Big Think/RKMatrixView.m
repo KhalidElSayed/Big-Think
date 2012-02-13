@@ -8,6 +8,7 @@
 
 #import "RKMatrixView.h"
 #import "RKMatrixViewCell.h"
+#import "RKCellViewController.h"
 #import "UIImage+RKImage.h"
 
 #define MAX_RESUABLE_CELLS 30
@@ -64,14 +65,14 @@ static inline bool RK2DLocationEqualToLocation(RK2DLocation loc1, RK2DLocation l
 
 -(void)loadPageAtLocation:(RK2DLocation)page;
 -(void)unloadPageAtLocation:(RK2DLocation)page;
--(RKMatrixViewCell *)cellForLocation:(RK2DLocation)location;
--(RKMatrixViewCell *)loadCellForLocation:(RK2DLocation)location;
+-(RKCellViewController *)cellForLocation:(RK2DLocation)location;
+-(RKCellViewController *)loadCellForLocation:(RK2DLocation)location;
 -(NSSet*)cellsForPage:(RK2DLocation)page;
 
 -(NSArray *)cellLocationsForPageAtLocation:(RK2DLocation)page withLayout:(RKGridViewLayoutType)layout;
 -(CGRect)cellFrameForLocation:(RK2DLocation)location withLayout:(RKGridViewLayoutType)layout;
 -(RK2DLocation)pageForCellLocation:(RK2DLocation)location withLayout:(RKGridViewLayoutType)layout;
--(void)enqueCell:(RKMatrixViewCell*)cell;
+-(void)enqueCell:(RKCellViewController*)cell;
     
 -(void)willRotate:(NSNotification *)notification;
 @end
@@ -178,9 +179,10 @@ static inline bool RK2DLocationEqualToLocation(RK2DLocation loc1, RK2DLocation l
         _didRotate = NO;
     }
     
-    for (RKMatrixViewCell* cell in _visableCells) 
+    for (RKCellViewController* cell in _visableCells) 
     {
-        cell.frame = [self cellFrameForLocation:cell.location withLayout:_layout];
+
+        cell.view.frame = [self cellFrameForLocation:cell.location withLayout:_layout];
     }
     
     
@@ -331,12 +333,12 @@ static inline bool RK2DLocationEqualToLocation(RK2DLocation loc1, RK2DLocation l
     NSLog(@"%@,%@", NSStringFromCGRect(_scrollView.bounds),NSStringFromCGRect(boundsToSave));
     
     NSSet *cellsToRemove = [_visableCells objectsPassingTest:^BOOL(id obj, BOOL *stop){
-        return !CGRectContainsRect(boundsToSave, [(RKMatrixViewCell*)obj frame]);
+        return !CGRectContainsRect(boundsToSave, [[(RKCellViewController*)obj view] frame]);
     }];
     
-    for (RKMatrixViewCell *cell in cellsToRemove) 
+    for (RKCellViewController *cell in cellsToRemove) 
     {
-        if (!CGRectContainsRect(boundsToSave, cell.frame))
+        if (!CGRectContainsRect(boundsToSave, cell.view.frame))
         {
             if(DEBUG_CELL_LOAD)
                 NSLog(@"UnLoaded Cell at Location : %@", NSStringFromRK2DLocation(cell.location));
@@ -357,7 +359,7 @@ static inline bool RK2DLocationEqualToLocation(RK2DLocation loc1, RK2DLocation l
     NSMutableSet *setOfCells = [[NSMutableSet alloc]initWithCapacity:6];
     for (NSString *locationString in [self cellLocationsForPageAtLocation:page withLayout:_layout])
     {
-        RKMatrixViewCell* cell = [self cellForLocation:RK2DLocationFromString(locationString)];
+        RKCellViewController* cell = [self cellForLocation:RK2DLocationFromString(locationString)];
         if(cell)
         {
             [setOfCells addObject:cell];
@@ -367,9 +369,9 @@ static inline bool RK2DLocationEqualToLocation(RK2DLocation loc1, RK2DLocation l
 }
 
 
--(RKMatrixViewCell *)dequeResuableCell
+-(RKCellViewController *)dequeResuableCell
 {
-    RKMatrixViewCell *cell = [_reusableCells anyObject];
+    RKCellViewController *cell = [_reusableCells anyObject];
     if(cell)
     {
         [_reusableCells removeObject:cell]; 
@@ -452,21 +454,22 @@ static inline bool RK2DLocationEqualToLocation(RK2DLocation loc1, RK2DLocation l
     
     for (NSString *location in neededCellLocations) 
     {
-        RKMatrixViewCell *cell = [self loadCellForLocation:RK2DLocationFromString(location)];
-        if (![cell superview]) 
-            [_scrollView addSubview:cell];
+        RKCellViewController *cell = [self loadCellForLocation:RK2DLocationFromString(location)];
+        if (![cell.view superview]) 
+            [_scrollView addSubview:cell.view];
         [_visableCells addObject:cell];
         [neededCells addObject:cell];
         
-        cell.frame = [self cellFrameForLocation:cell.location withLayout:_layout];
+        cell.view.frame = [self cellFrameForLocation:cell.location withLayout:_layout];
         
     }
     
     
     _isAnimating = YES;
     [UIView animateWithDuration:1.0f delay:0.0f options:UIViewAnimationCurveEaseInOut  animations:^{
-        for (RKMatrixViewCell *cell in _visableCells) {
-            cell.frame = [self cellFrameForLocation:cell.location withLayout:layout];
+        for (RKCellViewController *cell in _visableCells) 
+        {
+            cell.view.frame = [self cellFrameForLocation:cell.location withLayout:layout];
         }
         [self scrollToPageAtRow:newPage.row Column:newPage.column Animated:NO];
     }
@@ -500,10 +503,10 @@ static inline bool RK2DLocationEqualToLocation(RK2DLocation loc1, RK2DLocation l
     {
         //if(DEBUG_PAGE_LOAD)
           //  NSLog(@"\t%@", locationString);
-        RKMatrixViewCell* cell = [self cellForLocation:RK2DLocationFromString(locationString)];
+        RKCellViewController* cell = [self cellForLocation:RK2DLocationFromString(locationString)];
         if(cell)
         {
-            cell.frame = [self cellFrameForLocation:RK2DLocationFromString(locationString) withLayout:_layout];
+            cell.view.frame = [self cellFrameForLocation:RK2DLocationFromString(locationString) withLayout:_layout];
         }
         [self loadCellForLocation:RK2DLocationFromString(locationString)];
     }
@@ -516,7 +519,7 @@ static inline bool RK2DLocationEqualToLocation(RK2DLocation loc1, RK2DLocation l
     
     for (NSString *locationString in locationsForThisPage)
     {   
-        RKMatrixViewCell* cell = [self cellForLocation:RK2DLocationFromString(locationString)];
+        RKCellViewController* cell = [self cellForLocation:RK2DLocationFromString(locationString)];
         if(cell)
         {
         if(DEBUG_CELL_LOAD)
@@ -531,9 +534,9 @@ static inline bool RK2DLocationEqualToLocation(RK2DLocation loc1, RK2DLocation l
 
 
 
--(RKMatrixViewCell *)loadCellForLocation:(RK2DLocation)location
+-(RKCellViewController *)loadCellForLocation:(RK2DLocation)location
 {
-    RKMatrixViewCell *cell = [self cellForLocation:location];
+    RKCellViewController *cell = [self cellForLocation:location];
 
     if(!cell)
     {
@@ -542,20 +545,20 @@ static inline bool RK2DLocationEqualToLocation(RK2DLocation loc1, RK2DLocation l
         if([self.datasource respondsToSelector:@selector(matrixView:cellForLocation:)])
         {
             cell = [self.datasource matrixView:self cellForLocation:location];
-            cell.frame = cellFrame;
+            cell.view.frame = cellFrame;
         }
         else if([self.datasource respondsToSelector:@selector(matrixView:viewForLocation:withFrame:)])
         {
-            cell = [[RKMatrixViewCell alloc]init];
+            cell = [[RKCellViewController alloc]init];
             CGRect contentFrame = cellFrame;
             cellFrame.origin = CGPointZero;
-            cell.contentView = [self.datasource matrixView:self viewForLocation:location withFrame:contentFrame];
+            cell.view = [self.datasource matrixView:self viewForLocation:location withFrame:contentFrame];
         }
         else
             NSLog(@"Does not respond to selector!!");
         
         cell.location = location;
-        [_scrollView addSubview:cell];
+        [_scrollView addSubview:cell.view];
         [_visableCells addObject:cell];
       
         if (DEBUG_CELL_LOAD) 
@@ -568,31 +571,32 @@ static inline bool RK2DLocationEqualToLocation(RK2DLocation loc1, RK2DLocation l
 }
 
 
--(RKMatrixViewCell *)cellForLocation:(RK2DLocation)location
+-(RKCellViewController *)cellForLocation:(RK2DLocation)location
 {
-    __block RKMatrixViewCell *cell = nil;
+    __block RKCellViewController *cell = nil;
     [_visableCells enumerateObjectsUsingBlock:^(id obj, BOOL *stop)
     {        
-        if (RK2DLocationEqualToLocation([(RKMatrixViewCell*)obj location], location))
+        if (RK2DLocationEqualToLocation([(RKCellViewController*)obj location], location))
         {
-            cell  = (RKMatrixViewCell*)obj;
+            cell  = (RKCellViewController*)obj;
             *stop = YES;
         }
     }];
     return cell;
 }
 
-     
--(void)enqueCell:(RKMatrixViewCell*)cell
+
+-(void)enqueCell:(RKCellViewController*)cell
 {
-    if([_visableCells containsObject:cell])
-        [_visableCells removeObject:cell];
-    if ([_reusableCells count] < MAX_RESUABLE_CELLS) 
-    {   
-        [cell prepareForReuse];
-        [_reusableCells addObject:cell];
+    if(![_visableCells containsObject:cell])
+    {
+        if ([_reusableCells count] < MAX_RESUABLE_CELLS) 
+        {   
+            [cell prepareForReuse];
+            [_reusableCells addObject:cell];
+        }
+        else cell = nil;
     }
-    else cell = nil;
 }
 
 -(CGRect)cellFrameForLocation:(RK2DLocation)location withLayout:(RKGridViewLayoutType)layout

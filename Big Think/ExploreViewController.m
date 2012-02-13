@@ -9,6 +9,7 @@
 #import "ExploreViewController.h"
 #import "FilterTableViewController.h"
 #import "RKMatrixViewCell.h"
+#import "RKCellViewController.h"
 #import "RKMediumCellView.h"
 #import "RKLargeCellView.h"
 #import "BTTabView.h"
@@ -126,26 +127,20 @@
 }
 
 
--(RKMatrixViewCell *)matrixView:(RKMatrixView *)matrixView cellForLocation:(RK2DLocation)location
+-(RKCellViewController *)matrixView:(RKMatrixView *)matrixView cellForLocation:(RK2DLocation)location
 {
     
-    RKMatrixViewCell *cell = [_matrixView dequeResuableCell];    
+    RKCellViewController *cell = [_matrixView dequeResuableCell];    
     if(!cell)
     {
-        cell = [[RKMatrixViewCell alloc]init];
+        cell = [[RKCellViewController alloc]initWithNibName:@"RKCellViewController" bundle:nil];
        
     }
-    RKLargeCellView *view = [[RKLargeCellView alloc]initWithFrame:CGRectZero];
-    //UIView *view = [[UIView alloc]initWithFrame:CGRectZero];
-    //UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(50, 50, 100, 100)];
-    //label.text = [NSString stringWithFormat:@"{%i,%i}",location.row, location.column];
-    //[view addSubview:label];
-    //label.backgroundColor = [UIColor clearColor];
-    //view.backgroundColor = [UIColor randomColor];
+    //RKLargeCellView *view = [[RKLargeCellView alloc]initWithFrame:CGRectZero];    
+    [cell setVideo:[DataBank videoWithId:0]];
 
-   view.header.text = [NSString stringWithFormat:@"{%i,%i}",location.row, location.column];
-    cell.contentView = view;
-
+   
+    
     return cell;
 }
 

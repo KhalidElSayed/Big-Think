@@ -7,7 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
-
+@class BTSpeaker;
+@class BTVideo;
 @interface DataBank : NSObject
 {
     NSMutableDictionary*    _filterCategories;
@@ -16,5 +17,7 @@
 -(void)setupFilterCategories;
 +(DataBank*)sharedManager;
 
++(BTSpeaker*)speakerWithName:(NSString*)name;
++(BTVideo*)videoWithId:(NSInteger)idNum;
 
 @end

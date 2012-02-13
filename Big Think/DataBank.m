@@ -7,8 +7,9 @@
 //
 
 #import "DataBank.h"
-
-
+#import "BTSpeaker.h"
+#import "BTVideo.h"
+#import "UIImage+RKImage.h"
 
 static DataBank *sharedMyManager = nil;
 
@@ -62,6 +63,32 @@ static DataBank *sharedMyManager = nil;
     
 }
 
+
++(BTSpeaker*)speakerWithName:(NSString*)name
+{
+    BTSpeaker *speaker = [[BTSpeaker alloc]init];
+    if([name isEqualToString:@"Penn Jilette"])
+    {
+        speaker.name = name;
+        speaker.description  = @"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam gravida, odio a hendrerit hendrerit, felis purus accumsan sapien, quis malesuada arcu purus a lectus. Etiam sagittis cursus lorem, eu hendrerit mauris aliquet in. Praesent facilisis laoreet orci, vitae imperdiet arcu ultricies non. In sit amet tellus sit amet nisi dapibus bibendum vel in metus.";
+        speaker.image = [UIImage imageNamed:@"shot.jpg"]; 
+    }
+    return speaker;
+}
+
++(BTVideo*)videoWithId:(NSInteger)idNum
+{
+    BTVideo* video = [[BTVideo alloc]init];
+    
+    if (idNum == 0) {
+        video.speaker = [self speakerWithName:@"Penn Jilette"];
+        video.title = @"Why Tolerance Is Condesending";
+        video.image = [[UIImage imageNamed:@"shot.jpg"] imageWithTint:[UIColor blackColor]];
+        video.length = 2.05;
+        video.dateAdded = [NSDate date];
+    }
+    return video;
+}
 
 
 @end

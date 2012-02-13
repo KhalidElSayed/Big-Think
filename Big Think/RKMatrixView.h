@@ -11,6 +11,7 @@
 #import <UIKit/UIKit.h>
 
 @class RKMatrixViewCell;
+@class RKCellViewController;
 
 struct RK2DLocation{
     NSUInteger row;
@@ -49,7 +50,7 @@ typedef NSUInteger RKGridViewLayoutType;
 @property (nonatomic) NSUInteger maxColumns;                        // default is NSUINTEGER_MAX
 @property (nonatomic) NSUInteger maxRows;                           // default is NSUINTEGER_MAX
 
--(RKMatrixViewCell *)dequeResuableCell;
+-(RKCellViewController *)dequeResuableCell;
 -(void)unloadUneccesaryCells:(int)level;
 -(void)scrollToPageAtRow:(NSUInteger)row Column:(NSUInteger)column Animated:(BOOL)animate;
 
@@ -58,7 +59,7 @@ typedef NSUInteger RKGridViewLayoutType;
 
 
 @protocol RKMatrixViewDatasource<NSObject>
--(RKMatrixViewCell*) matrixView:(RKMatrixView *)matrixView cellForLocation:(RK2DLocation)location;
+-(RKCellViewController*) matrixView:(RKMatrixView *)matrixView cellForLocation:(RK2DLocation)location;
 -(int)numberOfCellsInMatrix:(RKMatrixView *)matrix;
 @optional 
 -(UIView *) matrixView:(RKMatrixView *)matrixView viewForLocation:(RK2DLocation)location withFrame:(CGRect)frame;
