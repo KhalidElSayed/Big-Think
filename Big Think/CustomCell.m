@@ -9,10 +9,7 @@
 #import "CustomCell.h"
 #import "BTCellView.h"
 
-
-
 @implementation CustomCell
-
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
@@ -20,22 +17,16 @@
         // Initialization code
         self.frame = CGRectMake(self.frame.origin.x, self.frame.origin.y, self.frame.size.width, 70 );
         _cellView = [[BTCellView alloc ]initWithFrame:CGRectMake(0, 0, self.bounds.size.width, self.bounds.size.height)];
-
         [self.contentView addSubview:_cellView];        
     }
     return self;
 }
 
-
 -(id)initWithCoder:(NSCoder *)aDecoder
 {
-    if((self = [super initWithCoder:aDecoder]))
-    {
-        
-      
-
+    if((self = [super initWithCoder:aDecoder])){
+ 
     }
-    
     return self;
 }
 /*
@@ -46,19 +37,16 @@
     [view applyNoise];
     return view;
 }
-
 -(void)layoutSubviews
 {
     self.myLabel.shadowOffset = CGSizeMake(0.0f, 2.0f);
- //self.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"cellBackround.png"]];
+    //self.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"cellBackround.png"]];
     myLabel.shadowColor = [UIColor colorWithWhite:0.0f alpha:0.75f];
     myLabel.shadowBlur = 5.0f;
-
 }
 */
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
 {
-
     [_cellView setSelected:selected];
 }
 

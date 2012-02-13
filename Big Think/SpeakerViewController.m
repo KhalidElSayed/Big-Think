@@ -9,6 +9,9 @@
 #import "SpeakerViewController.h"
 
 @implementation SpeakerViewController
+@synthesize tableView;
+@synthesize speakerCell;
+
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -37,6 +40,8 @@
 
 - (void)viewDidUnload
 {
+    [self setTableView:nil];
+    [self setSpeakerCell:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -47,5 +52,35 @@
     // Return YES for supported orientations
 	return YES;
 }
+
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return 1;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {return nil;};
+
+
+
+/*
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    static NSString *MyIdentifier = @"BTSpeakerCell";
+    
+    UITableViewCell *cell = [_tableView dequeueReusableCellWithIdentifier:MyIdentifier];
+    if (cell == nil) {
+        [[NSBundle mainBundle] loadNibNamed:@"TVCell" owner:self options:nil];
+        cell = tvCell;
+        self.tvCell = nil;
+    }
+    UILabel *label;
+    label = (UILabel *)[cell viewWithTag:1];
+    label.text = [NSString stringWithFormat:@"%d", indexPath.row];
+    
+    label = (UILabel *)[cell viewWithTag:2];
+    label.text = [NSString stringWithFormat:@"%d", NUMBER_OF_ROWS - indexPath.row];
+    
+    return cell;
+}
+*/
 
 @end

@@ -7,7 +7,9 @@
 
 
 @interface JMTabView()
-
+{
+    NSMutableArray* _tabItems;
+}
 
 @end
 
@@ -76,6 +78,7 @@
 - (void)addTabItem:(JMTabItem *)tabItem;
 {
     [self.tabContainer addTabItem:tabItem];
+    [_tabItems addObject:tabItem];
 }
 
 - (void)addTabItemWithTitle:(NSString *)title icon:(UIImage *)icon;
@@ -112,6 +115,12 @@
 {
     [self.tabContainer setItemSpacing:itemSpacing];
     [self.tabContainer setNeedsLayout];
+}
+
+
+-(NSArray*)tabItems
+{
+    return [NSArray arrayWithArray:_tabItems];
 }
 
 @end

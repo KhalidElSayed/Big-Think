@@ -59,6 +59,20 @@
 		FA80769814CF6F270081A55A /* FXLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = FA80769714CF6F270081A55A /* FXLabel.m */; };
 		FAAA217614D4F1530079ACE8 /* RKTagButton.m in Sources */ = {isa = PBXBuildFile; fileRef = FAAA217514D4F1530079ACE8 /* RKTagButton.m */; };
 		FAAA217D14D4FA830079ACE8 /* tagImage.png in Resources */ = {isa = PBXBuildFile; fileRef = FAAA217C14D4FA820079ACE8 /* tagImage.png */; };
+		FAD5038514D7149800E8F891 /* 46-movie-2.png in Resources */ = {isa = PBXBuildFile; fileRef = FAD5038414D7149800E8F891 /* 46-movie-2.png */; };
+		FAD5038814D714B800E8F891 /* 34-coffee.png in Resources */ = {isa = PBXBuildFile; fileRef = FAD5038714D714B800E8F891 /* 34-coffee.png */; };
+		FAD5038A14D714D100E8F891 /* 06-magnify.png in Resources */ = {isa = PBXBuildFile; fileRef = FAD5038914D714D100E8F891 /* 06-magnify.png */; };
+		FAD5038C14D714EC00E8F891 /* magnifyingglass.png in Resources */ = {isa = PBXBuildFile; fileRef = FAD5038B14D714EC00E8F891 /* magnifyingglass.png */; };
+		FAD5038E14D714F500E8F891 /* fire.png in Resources */ = {isa = PBXBuildFile; fileRef = FAD5038D14D714F500E8F891 /* fire.png */; };
+		FAD5039514D7157400E8F891 /* FeaturedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAD5039314D7157400E8F891 /* FeaturedViewController.m */; };
+		FAD5039614D7157400E8F891 /* FeaturedViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAD5039414D7157400E8F891 /* FeaturedViewController.xib */; };
+		FAD5039A14D7159B00E8F891 /* CatagoriesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAD5039814D7159B00E8F891 /* CatagoriesViewController.m */; };
+		FAD5039B14D7159B00E8F891 /* CatagoriesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAD5039914D7159B00E8F891 /* CatagoriesViewController.xib */; };
+		FAD5039F14D715AD00E8F891 /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAD5039D14D715AD00E8F891 /* SearchViewController.m */; };
+		FAD503A014D715AD00E8F891 /* SearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAD5039E14D715AD00E8F891 /* SearchViewController.xib */; };
+		FAD503A814D7378E00E8F891 /* magnifyingglassSelected.png in Resources */ = {isa = PBXBuildFile; fileRef = FAD503A514D7378E00E8F891 /* magnifyingglassSelected.png */; };
+		FAD503A914D7378E00E8F891 /* fireSelected.png in Resources */ = {isa = PBXBuildFile; fileRef = FAD503A614D7378E00E8F891 /* fireSelected.png */; };
+		FAD503AA14D7378E00E8F891 /* 46-movie-2Selected.png in Resources */ = {isa = PBXBuildFile; fileRef = FAD503A714D7378E00E8F891 /* 46-movie-2Selected.png */; };
 		FAFBEB0414C37BD100235178 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAFBEB0314C37BD100235178 /* UIKit.framework */; };
 		FAFBEB0614C37BD100235178 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAFBEB0514C37BD100235178 /* Foundation.framework */; };
 		FAFBEB0814C37BD100235178 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAFBEB0714C37BD100235178 /* CoreGraphics.framework */; };
@@ -160,6 +174,23 @@
 		FAAA217414D4F1530079ACE8 /* RKTagButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RKTagButton.h; sourceTree = "<group>"; };
 		FAAA217514D4F1530079ACE8 /* RKTagButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RKTagButton.m; sourceTree = "<group>"; };
 		FAAA217C14D4FA820079ACE8 /* tagImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tagImage.png; sourceTree = "<group>"; };
+		FAD5038414D7149800E8F891 /* 46-movie-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "46-movie-2.png"; sourceTree = "<group>"; };
+		FAD5038714D714B800E8F891 /* 34-coffee.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "34-coffee.png"; sourceTree = "<group>"; };
+		FAD5038914D714D100E8F891 /* 06-magnify.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "06-magnify.png"; sourceTree = "<group>"; };
+		FAD5038B14D714EC00E8F891 /* magnifyingglass.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = magnifyingglass.png; sourceTree = "<group>"; };
+		FAD5038D14D714F500E8F891 /* fire.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fire.png; sourceTree = "<group>"; };
+		FAD5039214D7157400E8F891 /* FeaturedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeaturedViewController.h; sourceTree = "<group>"; };
+		FAD5039314D7157400E8F891 /* FeaturedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeaturedViewController.m; sourceTree = "<group>"; };
+		FAD5039414D7157400E8F891 /* FeaturedViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FeaturedViewController.xib; sourceTree = "<group>"; };
+		FAD5039714D7159B00E8F891 /* CatagoriesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CatagoriesViewController.h; sourceTree = "<group>"; };
+		FAD5039814D7159B00E8F891 /* CatagoriesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CatagoriesViewController.m; sourceTree = "<group>"; };
+		FAD5039914D7159B00E8F891 /* CatagoriesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CatagoriesViewController.xib; sourceTree = "<group>"; };
+		FAD5039C14D715AD00E8F891 /* SearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchViewController.h; sourceTree = "<group>"; };
+		FAD5039D14D715AD00E8F891 /* SearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchViewController.m; sourceTree = "<group>"; };
+		FAD5039E14D715AD00E8F891 /* SearchViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchViewController.xib; sourceTree = "<group>"; };
+		FAD503A514D7378E00E8F891 /* magnifyingglassSelected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = magnifyingglassSelected.png; sourceTree = "<group>"; };
+		FAD503A614D7378E00E8F891 /* fireSelected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fireSelected.png; sourceTree = "<group>"; };
+		FAD503A714D7378E00E8F891 /* 46-movie-2Selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "46-movie-2Selected.png"; sourceTree = "<group>"; };
 		FAFBEAFF14C37BD100235178 /* Big Think.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Big Think.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAFBEB0314C37BD100235178 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		FAFBEB0514C37BD100235178 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -459,6 +490,36 @@
 			name = "Filter Tables";
 			sourceTree = "<group>";
 		};
+		FAD5038F14D7152600E8F891 /* FeaturedViewController */ = {
+			isa = PBXGroup;
+			children = (
+				FAD5039214D7157400E8F891 /* FeaturedViewController.h */,
+				FAD5039314D7157400E8F891 /* FeaturedViewController.m */,
+				FAD5039414D7157400E8F891 /* FeaturedViewController.xib */,
+			);
+			name = FeaturedViewController;
+			sourceTree = "<group>";
+		};
+		FAD5039014D7154100E8F891 /* CategoriesViewController */ = {
+			isa = PBXGroup;
+			children = (
+				FAD5039714D7159B00E8F891 /* CatagoriesViewController.h */,
+				FAD5039814D7159B00E8F891 /* CatagoriesViewController.m */,
+				FAD5039914D7159B00E8F891 /* CatagoriesViewController.xib */,
+			);
+			name = CategoriesViewController;
+			sourceTree = "<group>";
+		};
+		FAD5039114D7154D00E8F891 /* Search View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				FAD5039C14D715AD00E8F891 /* SearchViewController.h */,
+				FAD5039D14D715AD00E8F891 /* SearchViewController.m */,
+				FAD5039E14D715AD00E8F891 /* SearchViewController.xib */,
+			);
+			name = "Search View Controller";
+			sourceTree = "<group>";
+		};
 		FAFBEAF414C37BD100235178 = {
 			isa = PBXGroup;
 			children = (
@@ -492,6 +553,9 @@
 			children = (
 				FA79E5CC14D4B03900282817 /* Data - For Testing */,
 				FA80768514CF4D590081A55A /* BTTabBarController */,
+				FAD5039114D7154D00E8F891 /* Search View Controller */,
+				FAD5039014D7154100E8F891 /* CategoriesViewController */,
+				FAD5038F14D7152600E8F891 /* FeaturedViewController */,
 				FA1538FB14CDFC9D0083A68B /* SpeakersViewController */,
 				FA1538B514CDFB100083A68B /* ExploreViewController */,
 				FAFBEB1214C37BD100235178 /* AppDelegate.h */,
@@ -504,6 +568,14 @@
 		FAFBEB0A14C37BD100235178 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				FAD5038714D714B800E8F891 /* 34-coffee.png */,
+				FAD5038D14D714F500E8F891 /* fire.png */,
+				FAD5038B14D714EC00E8F891 /* magnifyingglass.png */,
+				FAD5038914D714D100E8F891 /* 06-magnify.png */,
+				FAD5038414D7149800E8F891 /* 46-movie-2.png */,
+				FAD503A514D7378E00E8F891 /* magnifyingglassSelected.png */,
+				FAD503A614D7378E00E8F891 /* fireSelected.png */,
+				FAD503A714D7378E00E8F891 /* 46-movie-2Selected.png */,
 				FA80768D14CF6D1E0081A55A /* Open Source Projects */,
 				FA15394314CE1F670083A68B /* noise-tile.png */,
 				FA15394414CE1F670083A68B /* noise-tile@2x.png */,
@@ -644,6 +716,17 @@
 				FA79E5CB14D4AB0800282817 /* DetailTableViewController.xib in Resources */,
 				FAAA217D14D4FA830079ACE8 /* tagImage.png in Resources */,
 				FA26EF1F14D5E6FB009C7E26 /* cellBackround.png in Resources */,
+				FAD5038514D7149800E8F891 /* 46-movie-2.png in Resources */,
+				FAD5038814D714B800E8F891 /* 34-coffee.png in Resources */,
+				FAD5038A14D714D100E8F891 /* 06-magnify.png in Resources */,
+				FAD5038C14D714EC00E8F891 /* magnifyingglass.png in Resources */,
+				FAD5038E14D714F500E8F891 /* fire.png in Resources */,
+				FAD5039614D7157400E8F891 /* FeaturedViewController.xib in Resources */,
+				FAD5039B14D7159B00E8F891 /* CatagoriesViewController.xib in Resources */,
+				FAD503A014D715AD00E8F891 /* SearchViewController.xib in Resources */,
+				FAD503A814D7378E00E8F891 /* magnifyingglassSelected.png in Resources */,
+				FAD503A914D7378E00E8F891 /* fireSelected.png in Resources */,
+				FAD503AA14D7378E00E8F891 /* 46-movie-2Selected.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -686,6 +769,9 @@
 				FA26EF1814D5C870009C7E26 /* RKTagBankView.m in Sources */,
 				FA26EF2214D5F63E009C7E26 /* UIView+JMNoise.m in Sources */,
 				FA16BD6114D5FE4E00CAF6BE /* BTCellView.m in Sources */,
+				FAD5039514D7157400E8F891 /* FeaturedViewController.m in Sources */,
+				FAD5039A14D7159B00E8F891 /* CatagoriesViewController.m in Sources */,
+				FAD5039F14D715AD00E8F891 /* SearchViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

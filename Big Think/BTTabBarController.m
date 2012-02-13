@@ -9,7 +9,9 @@
 #import "BTTabBarController.h"
 #import "ExploreViewController.h"
 #import "SpeakerViewController.h"
-
+#import "FeaturedViewController.h"
+#import "CatagoriesViewController.h"
+#import "SearchViewController.h"
 #import "CustomSelectionView.h"
 #import "BTTabBarBackroundLayer.h"
 #import "BTTabBarItem.h"
@@ -26,6 +28,10 @@
 @implementation BTTabBarController
 @synthesize tab1 = _tab1;
 @synthesize tab2 = _tab2;
+@synthesize tab3 = _tab3;
+@synthesize tab4 = _tab4;
+@synthesize tab5 = _tab5;
+
 @synthesize viewControllers;
 
 -(id)init
@@ -35,14 +41,21 @@
         _currentTab = 0;  
         
         if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
-            _tab1 = [[ExploreViewController alloc] initWithNibName:@"ExploreViewController_iPad" bundle:nil];
-            _tab2 = [[SpeakerViewController alloc] initWithNibName:@"SpeakerViewController_iPad" bundle:nil];
+            _tab1 = [[FeaturedViewController alloc]initWithNibName:@"FeaturedViewController" bundle:nil];
+            _tab2 = [[ExploreViewController alloc] initWithNibName:@"ExploreViewController_iPad" bundle:nil];
+            _tab3 = [[SpeakerViewController alloc] initWithNibName:@"SpeakerViewController_iPad" bundle:nil];
+            _tab4 = [[CatagoriesViewController alloc]initWithNibName:@"CatagoriesViewController" bundle:nil];
+            _tab5 = [[SearchViewController alloc]initWithNibName:@"SearchViewController" bundle:nil];
+            self.viewControllers = [NSArray arrayWithObjects:_tab1,_tab2, _tab3, _tab4, _tab5 ,nil];
+            
+            
         } else {
-            _tab1 = [[ExploreViewController alloc] initWithNibName:@"ExploreViewController_iPhone" bundle:nil];
-            _tab2 = [[SpeakerViewController alloc] initWithNibName:@"SpeakerViewController_iPhone" bundle:nil];
+            _tab2 = [[ExploreViewController alloc] initWithNibName:@"ExploreViewController_iPhone" bundle:nil];
+            _tab3 = [[SpeakerViewController alloc] initWithNibName:@"SpeakerViewController_iPhone" bundle:nil];
+            self.viewControllers = [NSArray arrayWithObjects:_tab2,_tab3 ,nil];
+
         }
         
-        self.viewControllers = [NSArray arrayWithObjects:_tab1,_tab2 ,nil];
     }
     return self;
 }
@@ -51,23 +64,36 @@
 -(void)setupTabView;
 {
     JMTabView * tabView = [[JMTabView alloc] initWithFrame:CGRectMake(0, self.view.bounds.size.height - 60., self.view.bounds.size.width, 60.)];
-    tabView.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleWidth;
+    tabView.autoresizingMask =  UIViewAutoresizingFlexibleWidth;
     
     [tabView setDelegate:self];
         
     UIImage * worldIcon = [UIImage imageNamed:@"world.png"];
     UIImage * gamesIcon = [UIImage imageNamed:@"games.png"];
+    UIImage * fireIcon = [UIImage imageNamed:@"fire.png"];
+    UIImage * catagoriesIcon = [UIImage imageNamed:@"46-movie-2.png"];
+
+    
     UIImage * worldIconSelected = [UIImage imageNamed:@"worldSelected.png"];
     UIImage * gamesIconSelected = [UIImage imageNamed:@"gamesSelected.png"];
+    UIImage * fireIconSelected = [UIImage imageNamed:@"fireSelected.png"];
+    UIImage * catagoriesIconSelected = [UIImage imageNamed:@"46-movie-2Selected.png"];
     
-    BTTabBarItem * tabItem1 = [[BTTabBarItem alloc]initWithTitle:@"Explore" icon:worldIcon alternateIcon:worldIconSelected];
-    BTTabBarItem * tabItem2 = [[BTTabBarItem alloc]initWithTitle:@"Speakers" icon:gamesIcon alternateIcon:gamesIconSelected];
+    
+    BTTabBarItem * tabItem1 = [[BTTabBarItem alloc]initWithTitle:@"Featured" icon:fireIcon alternateIcon:fireIconSelected];
+    BTTabBarItem * tabItem2 = [[BTTabBarItem alloc]initWithTitle:@"Explore" icon:worldIcon alternateIcon:worldIconSelected];
+    BTTabBarItem * tabItem3 = [[BTTabBarItem alloc]initWithTitle:@"Speakers" icon:gamesIcon alternateIcon:gamesIconSelected];
+    BTTabBarItem * tabItem4 = [[BTTabBarItem alloc]initWithTitle:@"Topics" icon:catagoriesIcon alternateIcon:catagoriesIconSelected];
+
+    
     
     [tabView addTabItem:tabItem1];
     [tabView addTabItem:tabItem2];
+    [tabView addTabItem:tabItem3];
+    [tabView addTabItem:tabItem4];
   
     [tabView setSelectionView:[CustomSelectionView createSelectionView]];
-    [tabView setItemSpacing:50.0f];
+    [tabView setItemSpacing:10.0f];
     [tabView setBackgroundLayer:[[BTTabBarBackroundLayer alloc]init] ];
     [tabView setSelectedIndex:_currentTab];
     [self.view addSubview:tabView];
@@ -109,6 +135,15 @@
 }
 
 
+-(void)viewWillLayoutSubviews
+{
+    _tabBarView.frame = CGRectMake(0, self.view.bounds.size.height - 60., self.view.bounds.size.width, 60.);
+    for (BTTabBarItem* item in _tabBarView.tabItems) {
+        item.fixedWidth = floorf( self.view.bounds.size.width / [_tabBarView.tabItems count]);
+    }
+}
+
+
 -(void)addTabWithViewController:(UIViewController *)viewController
 {
     
@@ -117,11 +152,19 @@
 }
 -(BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation;
 {
-    for (UIViewController* vc in [self childViewControllers])
-    {
-
-    }
+    
+    
     return YES;
+    
+}
+
+-(void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
+{
+    
+}
+-(void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
+{
+
 }
 
 @end

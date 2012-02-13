@@ -12,6 +12,9 @@
 
 @class ExploreViewController;
 @class SpeakerViewController;
+@class FeaturedViewController;
+@class CatagoriesViewController;
+@class SearchViewController;
 
 @interface BTTabBarController : UIViewController <JMTabViewDelegate>
 {
@@ -19,8 +22,11 @@
     NSUInteger  _currentTab;
     JMTabView*   _tabBarView;
 }
-@property (strong,nonatomic) ExploreViewController* tab1;
-@property (strong,nonatomic) SpeakerViewController* tab2;
+@property (strong,nonatomic) FeaturedViewController* tab1;
+@property (strong,nonatomic) ExploreViewController* tab2;
+@property (strong,nonatomic) SpeakerViewController* tab3;
+@property (strong, nonatomic) CatagoriesViewController* tab4;
+@property (strong, nonatomic) SearchViewController* tab5;
 @property (copy,nonatomic) NSArray* viewControllers;
 
 -(void)addTabWithViewController:(UIViewController *)viewController;

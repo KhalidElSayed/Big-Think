@@ -37,6 +37,6 @@
 - (void)setSelectionView:(JMSelectionView *)selectionView;
 - (void)setItemSpacing:(CGFloat)itemSpacing;
 - (void)setBackgroundLayer:(CALayer *)backgroundLayer;
-
+-(NSArray*)tabItems;
 
 @end
