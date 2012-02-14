@@ -15,4 +15,5 @@
 @property (nonatomic) NSUInteger length;
 @property (strong, nonatomic) NSDate* dateAdded;
 @property (strong, nonatomic) UIImage* image;
+@property (strong, nonatomic) NSURL* url;
 @end

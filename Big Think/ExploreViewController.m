@@ -135,8 +135,8 @@
     {
         cell = [[RKCellViewController alloc]initWithNibName:@"RKCellViewController" bundle:nil];
        
-    }
-    //RKLargeCellView *view = [[RKLargeCellView alloc]initWithFrame:CGRectZero];    
+    }  
+    
     [cell setVideo:[DataBank videoWithId:0]];
 
    

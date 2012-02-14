@@ -86,6 +86,7 @@ static DataBank *sharedMyManager = nil;
         video.image = [[UIImage imageNamed:@"shot.jpg"] imageWithTint:[UIColor blackColor]];
         video.length = 2.05;
         video.dateAdded = [NSDate date];
+        video.url = [[NSBundle mainBundle] URLForResource:@"WhyToleranceIsCondescending" withExtension:@"mp4"];
     }
     return video;
 }

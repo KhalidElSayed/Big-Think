@@ -9,6 +9,6 @@
 #import "BTVideo.h"
 
 @implementation BTVideo
-@synthesize title, speaker, length, dateAdded, image;
+@synthesize title, speaker, length, dateAdded, image, url;
 
 @end

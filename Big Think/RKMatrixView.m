@@ -330,7 +330,7 @@ static inline bool RK2DLocationEqualToLocation(RK2DLocation loc1, RK2DLocation l
 {   
     CGRect bounds = _scrollView.bounds;
     CGRect boundsToSave = CGRectInset(bounds, -(bounds.size.width * level), -(bounds.size.height *level));
-    NSLog(@"%@,%@", NSStringFromCGRect(_scrollView.bounds),NSStringFromCGRect(boundsToSave));
+   //NSLog(@"%@,%@", NSStringFromCGRect(_scrollView.bounds),NSStringFromCGRect(boundsToSave));
     
     NSSet *cellsToRemove = [_visableCells objectsPassingTest:^BOOL(id obj, BOOL *stop){
         return !CGRectContainsRect(boundsToSave, [[(RKCellViewController*)obj view] frame]);
@@ -365,7 +365,7 @@ static inline bool RK2DLocationEqualToLocation(RK2DLocation loc1, RK2DLocation l
             [setOfCells addObject:cell];
         }
     }
-    return ([setOfCells count] == 0) ? nil : [setOfCells copy];
+    return ([setOfCells count] == 0) ? nil : setOfCells;
 }
 
 
@@ -375,7 +375,7 @@ static inline bool RK2DLocationEqualToLocation(RK2DLocation loc1, RK2DLocation l
     if(cell)
     {
         [_reusableCells removeObject:cell]; 
-        
+
     }
     return cell;
 }
@@ -432,7 +432,7 @@ static inline bool RK2DLocationEqualToLocation(RK2DLocation loc1, RK2DLocation l
 {
     if (_layout == layout)
     {// Don't waste time if the layout isn't being changed
-        return;
+               return;
     }
     // Choose a cell to focus on, expand,
     RK2DLocation currentPage = [self currentPage];
@@ -448,27 +448,28 @@ static inline bool RK2DLocationEqualToLocation(RK2DLocation loc1, RK2DLocation l
     RK2DLocation cellToFocusOnLocation = RK2DLocationFromString(cellToFocusOnLocationString);
     RK2DLocation newPage = [self pageForCellLocation:cellToFocusOnLocation withLayout:layout];
     
+    
     NSArray *neededCellLocations = [self cellLocationsForPageAtLocation:newPage withLayout:layout];
-    NSMutableSet *neededCells = [[NSMutableSet alloc]initWithCapacity:14];
-    [neededCells unionSet:[self cellsForPage:currentPage]];
     
     for (NSString *location in neededCellLocations) 
     {
         RKCellViewController *cell = [self loadCellForLocation:RK2DLocationFromString(location)];
+        cell.view.frame = [self cellFrameForLocation:cell.location withLayout:_layout];
         if (![cell.view superview]) 
             [_scrollView addSubview:cell.view];
         [_visableCells addObject:cell];
-        [neededCells addObject:cell];
-        
-        cell.view.frame = [self cellFrameForLocation:cell.location withLayout:_layout];
-        
+
     }
+    
+
+    
     
     
     _isAnimating = YES;
     [UIView animateWithDuration:1.0f delay:0.0f options:UIViewAnimationCurveEaseInOut  animations:^{
         for (RKCellViewController *cell in _visableCells) 
         {
+            cell.currentLayout = layout;
             cell.view.frame = [self cellFrameForLocation:cell.location withLayout:layout];
         }
         [self scrollToPageAtRow:newPage.row Column:newPage.column Animated:NO];
@@ -478,8 +479,9 @@ static inline bool RK2DLocationEqualToLocation(RK2DLocation loc1, RK2DLocation l
                          if (finished) {
                              _layout = layout;
                              _isAnimating = NO;
+                             [self unloadUneccesaryCells:0];
                              [self setNeedsLayout];
-                             [self unloadUneccesaryCells:1];
+                             _currentPage = newPage;
                                                    
                          }
                      }];
@@ -527,6 +529,7 @@ static inline bool RK2DLocationEqualToLocation(RK2DLocation loc1, RK2DLocation l
         
             
             [self enqueCell:cell];
+            
         }
     }
     [_visableCells minusSet:_reusableCells];
@@ -558,6 +561,7 @@ static inline bool RK2DLocationEqualToLocation(RK2DLocation loc1, RK2DLocation l
             NSLog(@"Does not respond to selector!!");
         
         cell.location = location;
+        cell.currentLayout = _layout;
         [_scrollView addSubview:cell.view];
         [_visableCells addObject:cell];
       
@@ -588,11 +592,12 @@ static inline bool RK2DLocationEqualToLocation(RK2DLocation loc1, RK2DLocation l
 
 -(void)enqueCell:(RKCellViewController*)cell
 {
-    if(![_visableCells containsObject:cell])
+    if([_visableCells containsObject:cell])
     {
         if ([_reusableCells count] < MAX_RESUABLE_CELLS) 
         {   
             [cell prepareForReuse];
+            [_visableCells removeObject:cell];
             [_reusableCells addObject:cell];
         }
         else cell = nil;
@@ -755,6 +760,7 @@ if(DEBUG_CELL_FRAME)
         } completion:^(BOOL fin){}];
     else
         [_scrollView setContentOffset:pageFrame.origin];
+
 }
 
 

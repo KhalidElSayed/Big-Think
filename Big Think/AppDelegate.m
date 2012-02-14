@@ -21,6 +21,7 @@
     // Override point for customization after application launch.
     
     self.tabBarController = [[BTTabBarController alloc]init];
+
     self.window.rootViewController = self.tabBarController;
     [self.window makeKeyAndVisible];
     return YES;

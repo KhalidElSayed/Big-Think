@@ -11,7 +11,6 @@
 #import "SpeakerViewController.h"
 #import "FeaturedViewController.h"
 #import "CatagoriesViewController.h"
-#import "SearchViewController.h"
 #import "CustomSelectionView.h"
 #import "BTTabBarBackroundLayer.h"
 #import "BTTabBarItem.h"
@@ -45,7 +44,7 @@
             _tab2 = [[ExploreViewController alloc] initWithNibName:@"ExploreViewController_iPad" bundle:nil];
             _tab3 = [[SpeakerViewController alloc] initWithNibName:@"SpeakerViewController_iPad" bundle:nil];
             _tab4 = [[CatagoriesViewController alloc]initWithNibName:@"CatagoriesViewController" bundle:nil];
-            _tab5 = [[SearchViewController alloc]initWithNibName:@"SearchViewController" bundle:nil];
+           
             self.viewControllers = [NSArray arrayWithObjects:_tab1,_tab2, _tab3, _tab4, _tab5 ,nil];
             
             
@@ -113,6 +112,11 @@
     UIViewController *viewController = (UIViewController*)[viewControllers objectAtIndex:0]; 
     viewController.view.frame = CGRectMake(0,0,self.view.frame.size.width, 10 + self.view.frame.size.height - _tabBarSize.height);
     [self.view insertSubview:viewController.view belowSubview:_tabBarView];
+    
+    //_-----------------_----_--_--__-------
+    [self tabView:nil didSelectTabAtIndex:1];
+    //_-----------------_----_--_--__-------    
+    
 }
 
 -(void)tabView:(JMTabView *)tabView didSelectTabAtIndex:(NSUInteger)itemIndex;
