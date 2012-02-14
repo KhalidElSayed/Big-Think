@@ -33,6 +33,9 @@
 		FA15394614CE1F680083A68B /* noise-tile@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA15394414CE1F670083A68B /* noise-tile@2x.png */; };
 		FA15394A14CE2A720083A68B /* TabBarHeader.png in Resources */ = {isa = PBXBuildFile; fileRef = FA15394914CE2A710083A68B /* TabBarHeader.png */; };
 		FA16BD6114D5FE4E00CAF6BE /* BTCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA16BD6014D5FE4E00CAF6BE /* BTCellView.m */; };
+		FA24AEB614EAE2BE00D32C8F /* WhyToleranceIsCondescending.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = FA24AEB514EAE2BE00D32C8F /* WhyToleranceIsCondescending.mp4 */; };
+		FA24AEB914EAE39B00D32C8F /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA24AEB814EAE39B00D32C8F /* MediaPlayer.framework */; };
+		FA24AEBB14EB099400D32C8F /* shareBig.png in Resources */ = {isa = PBXBuildFile; fileRef = FA24AEBA14EB099400D32C8F /* shareBig.png */; };
 		FA26EF1814D5C870009C7E26 /* RKTagBankView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA26EF1714D5C870009C7E26 /* RKTagBankView.m */; };
 		FA26EF1F14D5E6FB009C7E26 /* cellBackround.png in Resources */ = {isa = PBXBuildFile; fileRef = FA26EF1E14D5E6FB009C7E26 /* cellBackround.png */; };
 		FA26EF2214D5F63E009C7E26 /* UIView+JMNoise.m in Sources */ = {isa = PBXBuildFile; fileRef = FA26EF2114D5F63E009C7E26 /* UIView+JMNoise.m */; };
@@ -149,6 +152,9 @@
 		FA15394914CE2A710083A68B /* TabBarHeader.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TabBarHeader.png; sourceTree = "<group>"; };
 		FA16BD5F14D5FE4E00CAF6BE /* BTCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BTCellView.h; sourceTree = "<group>"; };
 		FA16BD6014D5FE4E00CAF6BE /* BTCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BTCellView.m; sourceTree = "<group>"; };
+		FA24AEB514EAE2BE00D32C8F /* WhyToleranceIsCondescending.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = WhyToleranceIsCondescending.mp4; sourceTree = "<group>"; };
+		FA24AEB814EAE39B00D32C8F /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		FA24AEBA14EB099400D32C8F /* shareBig.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shareBig.png; sourceTree = "<group>"; };
 		FA26EF1614D5C870009C7E26 /* RKTagBankView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RKTagBankView.h; sourceTree = "<group>"; };
 		FA26EF1714D5C870009C7E26 /* RKTagBankView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RKTagBankView.m; sourceTree = "<group>"; };
 		FA26EF1E14D5E6FB009C7E26 /* cellBackround.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cellBackround.png; sourceTree = "<group>"; };
@@ -255,6 +261,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA24AEB914EAE39B00D32C8F /* MediaPlayer.framework in Frameworks */,
 				FA15393114CE07BE0083A68B /* QuartzCore.framework in Frameworks */,
 				FAFBEB0414C37BD100235178 /* UIKit.framework in Frameworks */,
 				FAFBEB0614C37BD100235178 /* Foundation.framework in Frameworks */,
@@ -407,6 +414,7 @@
 		FA79E5CC14D4B03900282817 /* Data - For Testing */ = {
 			isa = PBXGroup;
 			children = (
+				FA24AEB514EAE2BE00D32C8F /* WhyToleranceIsCondescending.mp4 */,
 				FA79E5CD14D4B07400282817 /* DataBank.h */,
 				FA79E5CE14D4B07400282817 /* DataBank.m */,
 				FACB55E514E97B2E00D3C45F /* BTVideo.h */,
@@ -538,6 +546,7 @@
 		FACB55F914E9903C00D3C45F /* assets */ = {
 			isa = PBXGroup;
 			children = (
+				FA24AEBA14EB099400D32C8F /* shareBig.png */,
 				FACB55FA14E991BC00D3C45F /* likeButtonImageSelected.png */,
 				FACB55FB14E991BC00D3C45F /* likeButtonImage.png */,
 				FACB55FC14E991BC00D3C45F /* shareButtonImageSelected.png */,
@@ -594,6 +603,7 @@
 		FAFBEB0214C37BD100235178 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				FA24AEB814EAE39B00D32C8F /* MediaPlayer.framework */,
 				FA15393014CE07BE0083A68B /* QuartzCore.framework */,
 				FAFBEB0314C37BD100235178 /* UIKit.framework */,
 				FAFBEB0514C37BD100235178 /* Foundation.framework */,
@@ -793,6 +803,8 @@
 				FACB560114E991BC00D3C45F /* shareButtonImageSelected.png in Resources */,
 				FACB560214E991BC00D3C45F /* shareButtonImage.png in Resources */,
 				FACB560314E991BC00D3C45F /* saveButtonImageSelected.png in Resources */,
+				FA24AEB614EAE2BE00D32C8F /* WhyToleranceIsCondescending.mp4 in Resources */,
+				FA24AEBB14EB099400D32C8F /* shareBig.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
