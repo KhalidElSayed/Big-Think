@@ -27,7 +27,7 @@ static DataBank *sharedMyManager = nil;
 
 - (id)init {
     if (self = [super init]) {
-
+        
         _filterCategories = [[NSMutableDictionary alloc]init];
         [self setupFilterCategories];
         
@@ -47,13 +47,13 @@ static DataBank *sharedMyManager = nil;
     
     
     NSArray *speakers = [[NSArray alloc]initWithObjects:@"Penn Jillete", @"Rod Stewart", @"Zvi Bodie", @"Mark Cheney", @"Jaan Tallinn", @"George Steel", @"Lynda Weinman", @"Keli Carender", nil];
-
-        [_filterCategories setObject:speakers forKey:@"speakers"];
-
+    
+    [_filterCategories setObject:speakers forKey:@"speakers"];
+    
     
     NSArray* topics = [[NSArray alloc]initWithObjects:@"Arts & Culture", @"Belief", @"Enviroment", @"Future", @"History", @"Identity", @"Life & death" @"Politics & policy", @"World", nil];
     [_filterCategories setObject:topics forKey:@"topics"];
-
+    
     NSArray* popularity = [[NSArray alloc]initWithObjects:@"Very Popluar", @"Hot", @"Dead Middle", @"\"Working My Way Up\"", @"Not so Popular", nil];
     [_filterCategories setObject:popularity forKey:@"popularity"];
     
