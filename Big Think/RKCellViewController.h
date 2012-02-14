@@ -19,7 +19,7 @@
     RKGridViewLayoutType        _currentLayout;
     BTVideo*                    _video;
     MPMoviePlayerController*    _player;
-
+    
 }
 @property (strong, nonatomic) BTVideo* video;
 @property (nonatomic)RK2DLocation location;

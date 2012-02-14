@@ -19,7 +19,7 @@
 @interface BTTabBarController()
 {
     CGSize _tabBarSize;
-
+    
 }
 -(void)setupTabView;
 @end
@@ -44,7 +44,7 @@
             _tab2 = [[ExploreViewController alloc] initWithNibName:@"ExploreViewController_iPad" bundle:nil];
             _tab3 = [[SpeakerViewController alloc] initWithNibName:@"SpeakerViewController_iPad" bundle:nil];
             _tab4 = [[CatagoriesViewController alloc]initWithNibName:@"CatagoriesViewController" bundle:nil];
-           
+            
             self.viewControllers = [NSArray arrayWithObjects:_tab1,_tab2, _tab3, _tab4, _tab5 ,nil];
             
             
@@ -52,7 +52,7 @@
             _tab2 = [[ExploreViewController alloc] initWithNibName:@"ExploreViewController_iPhone" bundle:nil];
             _tab3 = [[SpeakerViewController alloc] initWithNibName:@"SpeakerViewController_iPhone" bundle:nil];
             self.viewControllers = [NSArray arrayWithObjects:_tab2,_tab3 ,nil];
-
+            
         }
         
     }
@@ -66,12 +66,12 @@
     tabView.autoresizingMask =  UIViewAutoresizingFlexibleWidth;
     
     [tabView setDelegate:self];
-        
+    
     UIImage * worldIcon = [UIImage imageNamed:@"world.png"];
     UIImage * gamesIcon = [UIImage imageNamed:@"games.png"];
     UIImage * fireIcon = [UIImage imageNamed:@"fire.png"];
     UIImage * catagoriesIcon = [UIImage imageNamed:@"46-movie-2.png"];
-
+    
     
     UIImage * worldIconSelected = [UIImage imageNamed:@"worldSelected.png"];
     UIImage * gamesIconSelected = [UIImage imageNamed:@"gamesSelected.png"];
@@ -83,14 +83,14 @@
     BTTabBarItem * tabItem2 = [[BTTabBarItem alloc]initWithTitle:@"Explore" icon:worldIcon alternateIcon:worldIconSelected];
     BTTabBarItem * tabItem3 = [[BTTabBarItem alloc]initWithTitle:@"Speakers" icon:gamesIcon alternateIcon:gamesIconSelected];
     BTTabBarItem * tabItem4 = [[BTTabBarItem alloc]initWithTitle:@"Topics" icon:catagoriesIcon alternateIcon:catagoriesIconSelected];
-
+    
     
     
     [tabView addTabItem:tabItem1];
     [tabView addTabItem:tabItem2];
     [tabView addTabItem:tabItem3];
     [tabView addTabItem:tabItem4];
-  
+    
     [tabView setSelectionView:[CustomSelectionView createSelectionView]];
     [tabView setItemSpacing:10.0f];
     [tabView setBackgroundLayer:[[BTTabBarBackroundLayer alloc]init] ];
@@ -100,14 +100,14 @@
     _tabBarSize = tabView.frame.size;
 }
 
-                            
+
 -(void)viewDidLoad
 {  
     [self setupTabView];
     self.view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     [self addChildViewController:_tab1];
     [self addChildViewController:_tab2];
-
+    
     
     UIViewController *viewController = (UIViewController*)[viewControllers objectAtIndex:0]; 
     viewController.view.frame = CGRectMake(0,0,self.view.frame.size.width, 10 + self.view.frame.size.height - _tabBarSize.height);
@@ -122,16 +122,16 @@
 -(void)tabView:(JMTabView *)tabView didSelectTabAtIndex:(NSUInteger)itemIndex;
 {    
     NSLog(@"Selected Tab Index: %d", itemIndex);
-
+    
     if (itemIndex == _currentTab)
         return;
-
+    
     UIViewController* currentViewController = [viewControllers objectAtIndex:_currentTab];
     [currentViewController.view removeFromSuperview];
-        
+    
     UIViewController* selectedViewController = [viewControllers objectAtIndex:itemIndex];
     selectedViewController.view.frame = CGRectMake(0,0,self.view.bounds.size.width, 10 + self.view.bounds.size.height - _tabBarSize.height);
-
+    
     [self.view insertSubview:selectedViewController.view belowSubview:_tabBarView];
     _currentTab = itemIndex;
     
@@ -152,7 +152,7 @@
 {
     
     [self addChildViewController:viewController];
-
+    
 }
 -(BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation;
 {
@@ -168,7 +168,7 @@
 }
 -(void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
 {
-
+    
 }
 
 @end

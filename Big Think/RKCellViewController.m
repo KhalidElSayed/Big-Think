@@ -46,7 +46,7 @@
 {
     // Releases the view if it doesn't have a superview.
     [super didReceiveMemoryWarning];
-      // Release any cached data, images, etc that aren't in use.
+    // Release any cached data, images, etc that aren't in use.
 }
 
 #pragma mark - View lifecycle
@@ -56,7 +56,7 @@
     [super viewDidLoad];
     UIImage* strechyBackroundImage = [[UIImage imageNamed:@"ExploreCellBackround.png"]stretchableImageWithLeftCapWidth:16 topCapHeight:65];
     [self.backroundImageView setImage:strechyBackroundImage];
-   
+    
     UIImage* strechyButtonCaseImage = [[UIImage imageNamed:@"buttonCase.png"] stretchableImageWithLeftCapWidth:10 topCapHeight:11];
     self.buttonCaseImageView.image = strechyButtonCaseImage;
     
@@ -66,9 +66,9 @@
     for (UIButton* button in self.caseButtons) {
         [button setBackgroundImage:strechyButtonImage forState:UIControlStateNormal];
         [button setBackgroundImage:strechyButtonImageSelected forState:UIControlStateSelected];
-                [button setBackgroundImage:strechyButtonImageSelected forState:UIControlStateHighlighted];
+        [button setBackgroundImage:strechyButtonImageSelected forState:UIControlStateHighlighted];
     }
-
+    
     
     speakerLabel.shadowOffset = CGSizeMake(1.0f, 1.0f);
     speakerLabel.shadowColor = [UIColor colorWithWhite:0.0f alpha:0.75];
@@ -77,18 +77,18 @@
     videoDescriptionLabel.innerShadowColor = [UIColor colorWithWhite:0.0f alpha:0.75f];
     videoDescriptionLabel.innerShadowOffset = CGSizeMake(1.0f, 1.0f);
     videoDescriptionLabel.shadowBlur = 5.0f;
-
+    
     
     _player = [[MPMoviePlayerController alloc]init];
     [_player setFullscreen:NO];
     _player.view.frame = self.videoViewInsideMainView.bounds;
     _player.view.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
     [self.videoViewInsideMainView addSubview:_player.view];
-   
-    //[_player.backgroundView addSubview:self.videoPlaceHolderView];
-   
     
-       
+    //[_player.backgroundView addSubview:self.videoPlaceHolderView];
+    
+    
+    
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(mediaPlayerDidChangeState) name:@"MPMoviePlayerPlaybackStateDidChangeNotification" object:_player];
     
@@ -105,7 +105,7 @@
         _player.contentURL = _video.url;
         
     }
-
+    
 }
 
 - (void)viewDidUnload
@@ -116,7 +116,7 @@
     [self setVideoImageView:nil];
     [self setVideoDescriptionLabel:nil];
     [self setButtonCaseImageView:nil];
-
+    
     [self setCaseButtons:nil];
     [self setVideoPlaceHolderView:nil];
     [self setVideoViewInsideMainView:nil];
@@ -137,12 +137,12 @@
 
 -(void)setVideo:(BTVideo *)newVideo
 {
-
+    
     self.speakerLabel.text = newVideo.speaker.name;
     self.videoDescriptionLabel.text = newVideo.title;
     self.videoImageView.image = newVideo.image;
     _player.contentURL = _video.url;
-
+    
     
     _video = newVideo;
 }
@@ -169,7 +169,7 @@
     {
         self.speakerLabel.font = [UIFont fontWithName:[self.speakerLabel.font fontName] size:50.0f]; 
         self.videoDescriptionLabel.font = [UIFont fontWithName:[self.videoDescriptionLabel.font fontName] size:115.0f]; 
-       
+        
         self.videoDescriptionLabel.innerShadowColor = [UIColor colorWithWhite:0.0f alpha:0.75f];
         self.videoDescriptionLabel.innerShadowOffset = CGSizeMake(1.0f, 1.0f);
         self.videoDescriptionLabel.shadowBlur = 5.0f;
@@ -200,7 +200,7 @@
         self.playButton.alpha = 0.0f;
         self.shareBig.alpha = 1.0f;
     }
-
+    
     _currentLayout = layout;
     //[self.view setNeedsLayout];
     
@@ -209,7 +209,7 @@
 - (IBAction)playButtonSelected:(id)sender 
 {
     self.videoPlaceHolderView.alpha = 0;
-
+    
     [_player play];
 }
 
@@ -217,11 +217,11 @@
 {
     NSLog(@"%@",NSStringFromCGRect(self.view.frame));    
     NSLog(@"%@",NSStringFromCGRect(self.videoViewInsideMainView.frame));
-
+    
     NSLog(@"%@",NSStringFromCGRect(_player.view.frame));
     NSLog(@"%@",NSStringFromCGRect(_player.backgroundView.frame));
     NSLog(@"%@",NSStringFromCGRect(self.videoPlaceHolderView.frame));
-
+    
 }
 
 
@@ -235,7 +235,7 @@
         self.playButton.alpha = 1.0f;
     }
     else   
-       self.playButton.alpha = 0;
+        self.playButton.alpha = 0;
     
 }
 

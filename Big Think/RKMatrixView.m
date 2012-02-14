@@ -73,7 +73,7 @@ static inline bool RK2DLocationEqualToLocation(RK2DLocation loc1, RK2DLocation l
 -(CGRect)cellFrameForLocation:(RK2DLocation)location withLayout:(RKGridViewLayoutType)layout;
 -(RK2DLocation)pageForCellLocation:(RK2DLocation)location withLayout:(RKGridViewLayoutType)layout;
 -(void)enqueCell:(RKCellViewController*)cell;
-    
+
 -(void)willRotate:(NSNotification *)notification;
 @end
 
@@ -113,7 +113,7 @@ static inline bool RK2DLocationEqualToLocation(RK2DLocation loc1, RK2DLocation l
     _scrollView.delegate = self;
     _scrollView.pagingEnabled = YES;
     _scrollView.directionalLockEnabled = YES;
-
+    
     _scrollView.autoresizingMask =  UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     
     //-------------------------------------------
@@ -171,7 +171,7 @@ static inline bool RK2DLocationEqualToLocation(RK2DLocation loc1, RK2DLocation l
 -(void)layoutSubviews
 {
     [super layoutSubviews];
-
+    
     // -- reset content size 
     if(_didRotate)
     {
@@ -181,27 +181,27 @@ static inline bool RK2DLocationEqualToLocation(RK2DLocation loc1, RK2DLocation l
     
     for (RKCellViewController* cell in _visableCells) 
     {
-
+        
         cell.view.frame = [self cellFrameForLocation:cell.location withLayout:_layout];
     }
     
     
     UIDeviceOrientation orientation = [[UIDevice currentDevice]orientation];
     if(UIDeviceOrientationIsLandscape(orientation)) 
-           _scrollView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageWithImage:[UIImage imageNamed:@"landscapeBackround.png"] scaledToSize:_scrollView.bounds.size]]; 
+        _scrollView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageWithImage:[UIImage imageNamed:@"landscapeBackround.png"] scaledToSize:_scrollView.bounds.size]]; 
     else if(UIDeviceOrientationIsPortrait(orientation))
         _scrollView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageWithImage:[UIImage imageNamed:@"portraitBackround.png"] scaledToSize:_scrollView.bounds.size] ];     
-
-   
+    
+    
     
     
     if(DEBUG_LAYOUT_SUBVIEWS)
     {
-            NSLog(@"Layout SubViews Called");
+        NSLog(@"Layout SubViews Called");
         UIDeviceOrientation orientation = [[UIDevice currentDevice]orientation];
         if(UIDeviceOrientationIsLandscape(orientation))
         {
-
+            
             CGRect correctSelfFrame = CGRectMake(0, 44, 1024, 704);
             if(!CGRectEqualToRect(correctSelfFrame, self.frame))
                 NSLog(@"!ERROR!self.frame : %@", NSStringFromCGRect(self.frame));
@@ -243,10 +243,10 @@ static inline bool RK2DLocationEqualToLocation(RK2DLocation loc1, RK2DLocation l
         NSLog(@"_scrollView.contentOffset : %f, %f\n\n ", _scrollView.contentOffset.x, _scrollView.contentOffset.y);
     _contentOffsetMarker = _scrollView.contentOffset;
     
-        CGFloat pageWidth = _scrollView.bounds.size.width;
-        _currentPage.column = floor((_scrollView.contentOffset.x - pageWidth / 2) / pageWidth) + 1;
-        CGFloat pageHeight = _scrollView.bounds.size.height;
-        _currentPage.row = floor((_scrollView.contentOffset.y - pageHeight / 2) / pageHeight) + 1;
+    CGFloat pageWidth = _scrollView.bounds.size.width;
+    _currentPage.column = floor((_scrollView.contentOffset.x - pageWidth / 2) / pageWidth) + 1;
+    CGFloat pageHeight = _scrollView.bounds.size.height;
+    _currentPage.row = floor((_scrollView.contentOffset.y - pageHeight / 2) / pageHeight) + 1;
 }
 
 
@@ -260,7 +260,7 @@ static inline bool RK2DLocationEqualToLocation(RK2DLocation loc1, RK2DLocation l
     {
         [_scrollView setContentOffset:CGPointMake(_scrollView.contentOffset.x, subPage * pageHeight)];
     } 
-
+    
     if(DEBUG_DRAGGING)
     {
         RK2DLocation location = [self currentPage];
@@ -300,24 +300,24 @@ static inline bool RK2DLocationEqualToLocation(RK2DLocation loc1, RK2DLocation l
         }
     }
     
-
+    
     if(DEBUG_DRAGGING_DIRECTION)
         NSLog(@"%@",direction);
     
     if(!_isAnimating && _scrollView.isTracking)
-    [self loadPageAtLocation:locationUserIsMovingTo];
-
+        [self loadPageAtLocation:locationUserIsMovingTo];
+    
 }
 
 
 -(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
-        CGFloat pageWidth = _scrollView.bounds.size.width;
-        _currentPage.column = floor((_scrollView.contentOffset.x - pageWidth / 2) / pageWidth) + 1;
-        
-        CGFloat pageHeight = _scrollView.bounds.size.height;
-        _currentPage.row = floor((_scrollView.contentOffset.y - pageHeight / 2) / pageHeight) + 1;
-        [self unloadUneccesaryCells:1];    
+    CGFloat pageWidth = _scrollView.bounds.size.width;
+    _currentPage.column = floor((_scrollView.contentOffset.x - pageWidth / 2) / pageWidth) + 1;
+    
+    CGFloat pageHeight = _scrollView.bounds.size.height;
+    _currentPage.row = floor((_scrollView.contentOffset.y - pageHeight / 2) / pageHeight) + 1;
+    [self unloadUneccesaryCells:1];    
 }
 
 
@@ -330,7 +330,7 @@ static inline bool RK2DLocationEqualToLocation(RK2DLocation loc1, RK2DLocation l
 {   
     CGRect bounds = _scrollView.bounds;
     CGRect boundsToSave = CGRectInset(bounds, -(bounds.size.width * level), -(bounds.size.height *level));
-   //NSLog(@"%@,%@", NSStringFromCGRect(_scrollView.bounds),NSStringFromCGRect(boundsToSave));
+    //NSLog(@"%@,%@", NSStringFromCGRect(_scrollView.bounds),NSStringFromCGRect(boundsToSave));
     
     NSSet *cellsToRemove = [_visableCells objectsPassingTest:^BOOL(id obj, BOOL *stop){
         return !CGRectContainsRect(boundsToSave, [[(RKCellViewController*)obj view] frame]);
@@ -342,13 +342,13 @@ static inline bool RK2DLocationEqualToLocation(RK2DLocation loc1, RK2DLocation l
         {
             if(DEBUG_CELL_LOAD)
                 NSLog(@"UnLoaded Cell at Location : %@", NSStringFromRK2DLocation(cell.location));
-           [self enqueCell:cell];
+            [self enqueCell:cell];
         }
     }
     [_visableCells minusSet:cellsToRemove];
     if(DEBUG_CELL_LOAD)
         NSLog(@"Number Of Visable Cells : %i", [_visableCells count]);
-
+    
 }
 
 
@@ -375,7 +375,7 @@ static inline bool RK2DLocationEqualToLocation(RK2DLocation loc1, RK2DLocation l
     if(cell)
     {
         [_reusableCells removeObject:cell]; 
-
+        
     }
     return cell;
 }
@@ -397,14 +397,14 @@ static inline bool RK2DLocationEqualToLocation(RK2DLocation loc1, RK2DLocation l
 -(void)setNumberOfCells:(NSUInteger)newNumberOfCells
 {
     _numberOfCells = newNumberOfCells;
-  //  CGRect bounds = _scrollView.bounds;
+    //  CGRect bounds = _scrollView.bounds;
     //_scrollView.contentSize = CGSizeMake(bounds.size.width * sqrtf(_numberOfCells), bounds.size.height * sqrtf(_numberOfCells));
 }
 
 -(NSUInteger)maxRows
 {
     if([self.datasource respondsToSelector:@selector(maximumRowsInMatrixView:)])       
-       return [_datasource maximumRowsInMatrixView:self]; 
+        return [_datasource maximumRowsInMatrixView:self]; 
     else
         return NSUIntegerMax;
 }
@@ -432,7 +432,7 @@ static inline bool RK2DLocationEqualToLocation(RK2DLocation loc1, RK2DLocation l
 {
     if (_layout == layout)
     {// Don't waste time if the layout isn't being changed
-               return;
+        return;
     }
     // Choose a cell to focus on, expand,
     RK2DLocation currentPage = [self currentPage];
@@ -458,10 +458,10 @@ static inline bool RK2DLocationEqualToLocation(RK2DLocation loc1, RK2DLocation l
         if (![cell.view superview]) 
             [_scrollView addSubview:cell.view];
         [_visableCells addObject:cell];
-
+        
     }
     
-
+    
     
     
     
@@ -482,7 +482,7 @@ static inline bool RK2DLocationEqualToLocation(RK2DLocation loc1, RK2DLocation l
                              [self unloadUneccesaryCells:0];
                              [self setNeedsLayout];
                              _currentPage = newPage;
-                                                   
+                             
                          }
                      }];
     
@@ -504,7 +504,7 @@ static inline bool RK2DLocationEqualToLocation(RK2DLocation loc1, RK2DLocation l
     for (NSString *locationString in [self cellLocationsForPageAtLocation:page withLayout:_layout])
     {
         //if(DEBUG_PAGE_LOAD)
-          //  NSLog(@"\t%@", locationString);
+        //  NSLog(@"\t%@", locationString);
         RKCellViewController* cell = [self cellForLocation:RK2DLocationFromString(locationString)];
         if(cell)
         {
@@ -524,9 +524,9 @@ static inline bool RK2DLocationEqualToLocation(RK2DLocation loc1, RK2DLocation l
         RKCellViewController* cell = [self cellForLocation:RK2DLocationFromString(locationString)];
         if(cell)
         {
-        if(DEBUG_CELL_LOAD)
-            NSLog(@"UnLoaded Cell at Location : %@", NSStringFromRK2DLocation(cell.location));
-        
+            if(DEBUG_CELL_LOAD)
+                NSLog(@"UnLoaded Cell at Location : %@", NSStringFromRK2DLocation(cell.location));
+            
             
             [self enqueCell:cell];
             
@@ -540,7 +540,7 @@ static inline bool RK2DLocationEqualToLocation(RK2DLocation loc1, RK2DLocation l
 -(RKCellViewController *)loadCellForLocation:(RK2DLocation)location
 {
     RKCellViewController *cell = [self cellForLocation:location];
-
+    
     if(!cell)
     {
         CGRect cellFrame = [self cellFrameForLocation:location withLayout:_layout];
@@ -564,12 +564,12 @@ static inline bool RK2DLocationEqualToLocation(RK2DLocation loc1, RK2DLocation l
         cell.currentLayout = _layout;
         [_scrollView addSubview:cell.view];
         [_visableCells addObject:cell];
-      
+        
         if (DEBUG_CELL_LOAD) 
         {
             NSLog(@"Loaded Cell at Location : %@", NSStringFromRK2DLocation(cell.location));
         }
-
+        
     }
     return cell;
 }
@@ -579,13 +579,13 @@ static inline bool RK2DLocationEqualToLocation(RK2DLocation loc1, RK2DLocation l
 {
     __block RKCellViewController *cell = nil;
     [_visableCells enumerateObjectsUsingBlock:^(id obj, BOOL *stop)
-    {        
-        if (RK2DLocationEqualToLocation([(RKCellViewController*)obj location], location))
-        {
-            cell  = (RKCellViewController*)obj;
-            *stop = YES;
-        }
-    }];
+     {        
+         if (RK2DLocationEqualToLocation([(RKCellViewController*)obj location], location))
+         {
+             cell  = (RKCellViewController*)obj;
+             *stop = YES;
+         }
+     }];
     return cell;
 }
 
@@ -630,7 +630,7 @@ static inline bool RK2DLocationEqualToLocation(RK2DLocation loc1, RK2DLocation l
             cellFrame.origin.y = (bounds.size.height * (location.row / 2)) + _pagePadding + _cellMarginHeight;              
         else        //row is odd
             cellFrame.origin.y = (bounds.size.height * (location.row / 2) - 1) + cellFrame.size.height + _pagePadding + _cellMarginHeight + cellPadding * 2 ;              
-
+        
         if(0 == location.column % 2) // column is even
             cellFrame.origin.x = (bounds.size.width  * (location.column / 2)) + _pagePadding + _cellMarginWidth;
         else    // column is odd
@@ -649,7 +649,7 @@ static inline bool RK2DLocationEqualToLocation(RK2DLocation loc1, RK2DLocation l
         switch (location.column % 3) 
         {
             case 0:
-               cellFrame.origin.x = (bounds.size.width  * (location.column / 3)) + _pagePadding + _cellMarginWidth; 
+                cellFrame.origin.x = (bounds.size.width  * (location.column / 3)) + _pagePadding + _cellMarginWidth; 
                 break;
             case 1:
                 cellFrame.origin.x = (bounds.size.width  * (location.column / 3) - 1) + cellFrame.size.width + _pagePadding + _cellMarginWidth + cellPadding * 2;
@@ -666,8 +666,8 @@ static inline bool RK2DLocationEqualToLocation(RK2DLocation loc1, RK2DLocation l
     }
     else
         cellFrame =  CGRectZero;
-if(DEBUG_CELL_FRAME)
-    NSLog(@"Location : %@ CellFrame : %@",NSStringFromRK2DLocation(location), NSStringFromCGRect(cellFrame) );
+    if(DEBUG_CELL_FRAME)
+        NSLog(@"Location : %@ CellFrame : %@",NSStringFromRK2DLocation(location), NSStringFromCGRect(cellFrame) );
     return cellFrame;
 }
 
@@ -753,14 +753,14 @@ if(DEBUG_CELL_FRAME)
     pageFrame.origin.y = (bounds.size.height * row);;             
     pageFrame.size.width    -= (2 * _pagePadding);
     pageFrame.size.height   -= (2 * _pagePadding);      
-  
+    
     if (animate) 
         [UIView animateWithDuration:1.0f delay:0.0f options:UIViewAnimationCurveEaseInOut animations:^{
-        [_scrollView setContentOffset:pageFrame.origin];
+            [_scrollView setContentOffset:pageFrame.origin];
         } completion:^(BOOL fin){}];
     else
         [_scrollView setContentOffset:pageFrame.origin];
-
+    
 }
 
 

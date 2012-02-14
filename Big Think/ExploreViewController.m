@@ -42,7 +42,7 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
-
+    
     _matrixView.datasource = self;
     _matrixView.delegate = self;
     [self setupTabView];
@@ -57,7 +57,7 @@
     //_tagTable.autoresizingMask = UIViewAutoresizingFlexibleWidth;
     //_tagTable.backgroundColor = [UIColor orangeColor];
     
-   // [self.view insertSubview:_tagTable belowSubview:_tabView];
+    // [self.view insertSubview:_tagTable belowSubview:_tabView];
     
     [_matrixView demoo];
 }
@@ -82,12 +82,12 @@
     tabView.clipsToBounds = YES;    
     
     [tabView setBackgroundLayer:nil];
-
+    
     
     tabView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"TabBarHeader.png"]];
-  
+    
     FXLabel *bigThinkLabel = [[FXLabel alloc]initWithFrame:CGRectMake(0, 0, 400, TAB_VIEW_HEIGHT)];
-
+    
     bigThinkLabel.shadowColor = nil;
     bigThinkLabel.shadowOffset = CGSizeMake(0.0f, 2.0f);
     bigThinkLabel.shadowColor = [UIColor colorWithWhite:0.0f alpha:0.75f];
@@ -97,24 +97,24 @@
     bigThinkLabel.textColor = [UIColor whiteColor];
     bigThinkLabel.backgroundColor = [UIColor clearColor];
     bigThinkLabel.userInteractionEnabled = YES;
-   // UITapGestureRecognizer *touch = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(filterButtonPressed)];
+    // UITapGestureRecognizer *touch = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(filterButtonPressed)];
     //[touch setNumberOfTapsRequired:2];
     //[bigThinkLabel addGestureRecognizer:touch];
-   
+    
     tabView.middleView = bigThinkLabel;
-
+    
     UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-       button.frame = CGRectMake(0, 0, 100, 44);
+    button.frame = CGRectMake(0, 0, 100, 44);
     button.titleLabel.text = @"Filter";
-
+    
     [button addTarget:self action:@selector(filterButtonPressed) forControlEvents:UIControlEventTouchUpInside];
     tabView.leftView = button;
     
     [tabView setSelectedIndex:0];
-
+    
     _tabView = tabView;
     [self.view addSubview:tabView];
-
+    
     
 }
 
@@ -122,8 +122,8 @@
 
 -(UIView *) matrixView:(RKMatrixView *)matrixView viewForLocation:(RK2DLocation)location withFrame:(CGRect)frame
 {
-        RKLargeCellView *cell = [[RKLargeCellView alloc]initWithFrame:frame];
-             return cell;
+    RKLargeCellView *cell = [[RKLargeCellView alloc]initWithFrame:frame];
+    return cell;
 }
 
 
@@ -134,12 +134,12 @@
     if(!cell)
     {
         cell = [[RKCellViewController alloc]initWithNibName:@"RKCellViewController" bundle:nil];
-       
+        
     }  
     
     [cell setVideo:[DataBank videoWithId:0]];
-
-   
+    
+    
     
     return cell;
 }
@@ -149,17 +149,17 @@
 -(int)numberOfCellsInMatrix:(RKMatrixView *)matrix
 {
     return 25;  // **** need to get to this ****
-                // The amount of cells needs to be a perfect square
+    // The amount of cells needs to be a perfect square
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
-        return YES;
+    return YES;
 }
 
 -(void)tabView:(JMTabView *)tabView didSelectTabAtIndex:(NSUInteger)itemIndex
 {
-        [self.matrixView setLayout:itemIndex];
+    [self.matrixView setLayout:itemIndex];
 }
 
 
@@ -185,7 +185,7 @@
         _filterNavController.view.frame = filterFrame;
         _matrixView.frame = matrixFrame;
     } completion:^(BOOL finished){
-    
+        
         _showingFilter = !_showingFilter;
     } ];
     
@@ -206,7 +206,7 @@
     
     _filterNavController.view.frame = filterFrame;
     
-     
+    
     
 }
 
@@ -216,14 +216,14 @@
     RKTagButton *button = [[RKTagButton alloc]initWithTag:(NSString*)obj];
     [button addTarget:self action:@selector(removeTagButton:) forControlEvents:UIControlEventTouchUpInside];
     
-   // [_tagTable addRKTag:button];
-   // [self animateTagTableIfNecessary];
+    // [_tagTable addRKTag:button];
+    // [self animateTagTableIfNecessary];
 }
 
 
 -(void)didDeselectObject:(id)obj
 {
-   
+    
     //[_tagTable removeTagWithString:(NSString*)obj];
     //[self animateTagTableIfNecessary];
 }
@@ -231,7 +231,7 @@
 
 -(void)removeTagButton:(id)sender
 {
-   
+    
     //[_tagTable removeRKTag:(RKTagButton*)sender];
     //[self animateTagTableIfNecessary];
 }
@@ -254,9 +254,9 @@
         [UIView animateWithDuration:0.5f delay:0.0f options:UIViewAnimationCurveEaseInOut animations:^{
             _tagTable.frame = tagTableFrame;
         } completion:^(BOOL finished){  }];
-
+        
     }
-
+    
 }
 
 
