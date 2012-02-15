@@ -7,28 +7,21 @@
 //
 
 #import "ExploreViewController.h"
-#import "FilterTableViewController.h"
-#import "RKMatrixViewCell.h"
 #import "RKCellViewController.h"
-#import "RKMediumCellView.h"
-#import "RKLargeCellView.h"
 #import "BTTabView.h"
 #import "FXLabel.h"
-#import "RKTagButton.h"
 #import "DataBank.h"
+
+
 #define TAB_VIEW_HEIGHT 60.0f
 
 @interface ExploreViewController()
-{
-    BOOL _showingFilter;
-    UINavigationController* filterTable;
-}
 -(void)setupTabView;
--(void)animateTagTableIfNecessary;
+
 @end
 @implementation ExploreViewController
 @synthesize matrixView = _matrixView;
-@synthesize filterNavController = _filterNavController;
+
 
 - (void)didReceiveMemoryWarning
 {
@@ -47,25 +40,12 @@
     _matrixView.delegate = self;
     [self setupTabView];
     
-    [self addChildViewController:_filterNavController];
-    [self.view addSubview:_filterNavController.view];
-    
-    _chosenFilters = [[NSMutableArray alloc]init];
-    
-    
-    //_tagTable = [[RKTagBankView alloc] initWithFrame:CGRectMake(50.0f, -48.0f, self.view.bounds.size.width - 100, 48.0f)];
-    //_tagTable.autoresizingMask = UIViewAutoresizingFlexibleWidth;
-    //_tagTable.backgroundColor = [UIColor orangeColor];
-    
-    // [self.view insertSubview:_tagTable belowSubview:_tabView];
-    
-    [_matrixView demoo];
+ 
 }
 
 - (void)viewDidUnload
 {
     [self setMatrixView:nil];
-    [self setFilterNavController:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -120,27 +100,15 @@
 
 #pragma mark - RKMatrixViewDatasource Functions
 
--(UIView *) matrixView:(RKMatrixView *)matrixView viewForLocation:(RK2DLocation)location withFrame:(CGRect)frame
-{
-    RKLargeCellView *cell = [[RKLargeCellView alloc]initWithFrame:frame];
-    return cell;
-}
-
-
 -(RKCellViewController *)matrixView:(RKMatrixView *)matrixView cellForLocation:(RK2DLocation)location
 {
-    
     RKCellViewController *cell = [_matrixView dequeResuableCell];    
     if(!cell)
     {
         cell = [[RKCellViewController alloc]initWithNibName:@"RKCellViewController" bundle:nil];
-        
-    }  
-    
+    } 
     [cell setVideo:[DataBank videoWithId:0]];
-    
-    
-    
+
     return cell;
 }
 
@@ -163,101 +131,6 @@
 }
 
 
-
--(void)filterButtonPressed
-{
-    CGRect filterFrame = _filterNavController.view.frame;
-    CGRect matrixFrame = _matrixView.frame;
-    if (_showingFilter)
-    {
-        filterFrame.origin.x = -filterFrame.size.width;
-        matrixFrame.origin.x = 0;
-        
-    }
-    else 
-    {
-        filterFrame.origin.x = 0;
-        matrixFrame.origin.x = filterFrame.size.width;
-    }
-    
-    
-    [UIView animateWithDuration:0.5f delay:0.0f options:UIViewAnimationCurveEaseInOut animations:^{
-        _filterNavController.view.frame = filterFrame;
-        _matrixView.frame = matrixFrame;
-    } completion:^(BOOL finished){
-        
-        _showingFilter = !_showingFilter;
-    } ];
-    
-    
-    
-    
-}
--(void)viewWillLayoutSubviews
-{
-    [super viewWillLayoutSubviews];
-    
-    CGRect filterFrame = self.view.bounds;
-    filterFrame.origin.y = TAB_VIEW_HEIGHT;
-    filterFrame.size.height -= TAB_VIEW_HEIGHT;
-    filterFrame.size.width = 320.0f;
-    if (!_showingFilter)
-        filterFrame.origin.x = -320.f;
-    
-    _filterNavController.view.frame = filterFrame;
-    
-    
-    
-}
-
-#pragma mark - DetailTableDelegate
--(void)didSelectObject:(id)obj
-{
-    RKTagButton *button = [[RKTagButton alloc]initWithTag:(NSString*)obj];
-    [button addTarget:self action:@selector(removeTagButton:) forControlEvents:UIControlEventTouchUpInside];
-    
-    // [_tagTable addRKTag:button];
-    // [self animateTagTableIfNecessary];
-}
-
-
--(void)didDeselectObject:(id)obj
-{
-    
-    //[_tagTable removeTagWithString:(NSString*)obj];
-    //[self animateTagTableIfNecessary];
-}
-
-
--(void)removeTagButton:(id)sender
-{
-    
-    //[_tagTable removeRKTag:(RKTagButton*)sender];
-    //[self animateTagTableIfNecessary];
-}
-
--(void)animateTagTableIfNecessary
-{
-    
-    if([_tagTable.tags count] > 0 && _tagTable.frame.origin.y < 0) // First tag chosen, animate tagtable into view;
-    {
-        CGRect tagTableFrame = _tagTable.frame;
-        tagTableFrame.origin.y = 60.0f;
-        [UIView animateWithDuration:0.5f delay:0.0f options:UIViewAnimationCurveEaseInOut animations:^{
-            _tagTable.frame = tagTableFrame;
-        } completion:^(BOOL finished){  }];
-    }
-    else if([_tagTable.tags count] == 0)
-    {
-        CGRect tagTableFrame = _tagTable.frame;
-        tagTableFrame.origin.y = -tagTableFrame.size.height;
-        [UIView animateWithDuration:0.5f delay:0.0f options:UIViewAnimationCurveEaseInOut animations:^{
-            _tagTable.frame = tagTableFrame;
-        } completion:^(BOOL finished){  }];
-        
-    }
-    
-}
 
 
 

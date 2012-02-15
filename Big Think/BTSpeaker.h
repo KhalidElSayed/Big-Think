@@ -12,6 +12,7 @@
 
 @property (strong, nonatomic) NSString* name;
 @property (strong, nonatomic) NSString* description;
-@property (strong, nonatomic) UIImage* image;
+@property (strong, nonatomic) UIImage* photo;
+@property (strong, nonatomic) NSSet* videos;
 
 @end

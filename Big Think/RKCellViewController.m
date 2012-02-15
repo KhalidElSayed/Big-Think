@@ -87,7 +87,10 @@
     
     //[_player.backgroundView addSubview:self.videoPlaceHolderView];
     
-    
+    if(self.isModalInPopover)
+    {
+        
+    }
     
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(mediaPlayerDidChangeState) name:@"MPMoviePlayerPlaybackStateDidChangeNotification" object:_player];
@@ -209,7 +212,6 @@
 - (IBAction)playButtonSelected:(id)sender 
 {
     self.videoPlaceHolderView.alpha = 0;
-    
     [_player play];
 }
 
@@ -238,5 +240,10 @@
         self.playButton.alpha = 0;
     
 }
+
+
+
+
+
 
 @end

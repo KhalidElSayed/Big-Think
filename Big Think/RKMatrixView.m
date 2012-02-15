@@ -270,7 +270,7 @@ static inline bool RK2DLocationEqualToLocation(RK2DLocation loc1, RK2DLocation l
         NSLog(@"_contentOffsetMarker : %@", NSStringFromCGPoint(_contentOffsetMarker));
     }
     
-    NSString *direction;
+    
     RK2DLocation locationUserIsMovingTo = self.currentPage;
     
     if (_contentOffsetMarker.x == _scrollView.contentOffset.x)   // scrolling Vertically
@@ -278,12 +278,12 @@ static inline bool RK2DLocationEqualToLocation(RK2DLocation loc1, RK2DLocation l
         if(_contentOffsetMarker.y < _scrollView.contentOffset.y + 10)    // pushing up
         {
             locationUserIsMovingTo.row += 1;
-            direction = @"pushing up";
+    
         }
         else if (_contentOffsetMarker.y > _scrollView.contentOffset.y + 20) // pulling down
         {
             locationUserIsMovingTo.row -= 1;
-            direction = @"pulling down";
+    
         }
     }
     else if(_contentOffsetMarker.y == _scrollView.contentOffset.y) // scrolling Horizontally
@@ -291,18 +291,16 @@ static inline bool RK2DLocationEqualToLocation(RK2DLocation loc1, RK2DLocation l
         if(_contentOffsetMarker.x < _scrollView.contentOffset.x + 10)    //swiping left
         {
             locationUserIsMovingTo.column += 1;
-            direction = @"swiping left";
+    
         }
         else if(_contentOffsetMarker.x > _scrollView.contentOffset.x + 20)   // swiping right
         {
             locationUserIsMovingTo.column -= 1;
-            direction = @"swiping right";
+    
         }
     }
     
     
-    if(DEBUG_DRAGGING_DIRECTION)
-        NSLog(@"%@",direction);
     
     if(!_isAnimating && _scrollView.isTracking)
         [self loadPageAtLocation:locationUserIsMovingTo];
@@ -768,16 +766,6 @@ static inline bool RK2DLocationEqualToLocation(RK2DLocation loc1, RK2DLocation l
 {
     _visablePageBeforeRotation = [self currentPage];
     _didRotate = YES;
-}
-
-//---------------------Havent used anything below just yet-----------------------------
-
--(void)demoo
-{
-    RK2DLocation loc;
-    loc.row = 0;
-    loc.column = 0;
-    [self loadPageAtLocation:loc];
 }
 
 

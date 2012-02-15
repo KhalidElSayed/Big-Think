@@ -7,16 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface SpeakerViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
+#import "SpeakerTableViewCell.h"
+@class BTSpeaker;
+@interface SpeakerViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, SpeakerTableViewCellDelegate>
 {
     UITableView*        _tableView;
     UITableViewCell*    _speakerCell;
+    BTSpeaker*          _speaker;
 }
 
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 
-@property (strong, nonatomic) IBOutlet UITableViewCell *speakerCell;
 
 
 

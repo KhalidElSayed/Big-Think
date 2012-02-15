@@ -31,7 +31,7 @@
     
     
     if(self.fixedWidth == 0){
-        CGFloat titleWidth = titleSize.width;
+    CGFloat titleWidth = titleSize.width;
         CGFloat iconWidth = [self.icon size].width;
         CGFloat width = (iconWidth > titleWidth) ? iconWidth : titleWidth;
         width += (18 * 6);

@@ -54,7 +54,7 @@ typedef NSUInteger RKGridViewLayoutType;
 -(void)unloadUneccesaryCells:(int)level;
 -(void)scrollToPageAtRow:(NSUInteger)row Column:(NSUInteger)column Animated:(BOOL)animate;
 
--(void)demoo;
+
 @end
 
 

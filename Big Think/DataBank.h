@@ -7,6 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "BTSpeaker.h"
+#import "BTVideo.h"
 @class BTSpeaker;
 @class BTVideo;
 @interface DataBank : NSObject

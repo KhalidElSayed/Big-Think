@@ -9,7 +9,7 @@
 #import "BTSpeaker.h"
 
 @implementation BTSpeaker
-@synthesize name, description, image;
+@synthesize name, description, photo, videos;
 
 
 -(id)init

@@ -71,7 +71,14 @@ static DataBank *sharedMyManager = nil;
     {
         speaker.name = name;
         speaker.description  = @"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam gravida, odio a hendrerit hendrerit, felis purus accumsan sapien, quis malesuada arcu purus a lectus. Etiam sagittis cursus lorem, eu hendrerit mauris aliquet in. Praesent facilisis laoreet orci, vitae imperdiet arcu ultricies non. In sit amet tellus sit amet nisi dapibus bibendum vel in metus.";
-        speaker.image = [UIImage imageNamed:@"shot.jpg"]; 
+        speaker.photo = [UIImage imageNamed:@"shot.jpg"]; 
+    }
+    if([name isEqualToString:@"Penny Jilette"])
+    {
+        speaker.name = name;
+        speaker.description  = @"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam gravida, odio a hendrerit hendrerit, felis purus accumsan sapien, quis malesuada arcu purus a lectus. Etiam sagittis cursus lorem, eu hendrerit mauris aliquet in. Praesent facilisis laoreet orci, vitae imperdiet arcu ultricies non. In sit amet tellus sit amet nisi dapibus bibendum vel in metus.";
+        speaker.photo = [UIImage imageNamed:@"shot.jpg"]; 
+        speaker.videos = [NSSet setWithObjects:[self videoWithId:0], [self videoWithId:0], [self videoWithId:0] , nil];
     }
     return speaker;
 }
